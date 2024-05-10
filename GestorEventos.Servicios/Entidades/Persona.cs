@@ -14,14 +14,13 @@ namespace GestorEventos.Servicios.Entidades
 
 		 */
 		public int IdPersona { get; set; }
-
-		public string Nombre { get; set; } 
+        public int IdLocalidad { get; set; }
+        public bool isDelete;
+        public string Nombre { get; set; } 
 		public string Apellido { get; set; }
 		//public string Direccion { get; set; }
 		public string Telefono { get; set; }
 		public string Email { get; set; }
-
-		public int IdLocalidad {  get; set; }
 
         public string DireccionCalle { get; set; }
         public int DireccionNumero { get; set; }

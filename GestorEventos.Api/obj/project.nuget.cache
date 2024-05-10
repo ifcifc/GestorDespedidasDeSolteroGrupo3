@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Frwy1VbdWAFQeVG0N0pg12QY1IcHGnn5Y4MAUtsJsKZnhHhfM+ilLdcXqHNZz1f2Jf4Zc7bRsGxZ0+IVI/Zrxw==",
+  "dgSpecHash": "w4mR+tDOWUEQs7sAm7PXOqmskJL6+tmK2zmLOkNyZvZBkkydwzF2F+0U9diwtRbbWAI9JyK7GdHLKzjo/0lkHg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\igna\\Desktop\\GestorDespedidasDeSoltero\\GestorEventos.Api\\GestorEventos.Api.csproj",
+  "projectFilePath": "C:\\Users\\igna\\source\\repos\\ifcifc\\GestorDespedidasDeSolteroGrupo3\\GestorEventos.Api\\GestorEventos.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\igna\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "C:\\Users\\igna\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",

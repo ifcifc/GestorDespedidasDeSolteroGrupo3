@@ -22,16 +22,35 @@ namespace GestorEventos.Api.Controllers
 		public IActionResult Get(int idTipoEvento)
 		{
 			TipoEventoService tipoEventoService = new TipoEventoService();
-			TipoEvento tipoEvento = null;
+            TipoEvento tipoEvento = tipoEventoService.GetTipoEventoPorId(idTipoEvento);
 
-			tipoEvento = tipoEventoService.GetTipoEventoPorId(idTipoEvento);
-
-			if (tipoEvento == null)
-				return NotFound();
-			else
-				return Ok(tipoEvento);
-		}
+            return (tipoEvento == null) ? NotFound() : Ok(tipoEvento);
+        }
 
 
-	}
+        [HttpDelete("{idTipoEvento:int}/Delete")]
+        public IActionResult Delete(int idTipoEvento)
+        {
+            TipoEventoService service = new TipoEventoService();
+
+            return service.Eliminar(idTipoEvento) ? Ok() : UnprocessableEntity();
+        }
+
+        [HttpPut("{idTipoEvento:int}/Modificar")]
+        public IActionResult Modificar(int idTipoEvento, [FromBody] TipoEvento tipoEvento)
+        {
+            TipoEventoService service = new TipoEventoService();
+
+            return service.Modificar(idTipoEvento, tipoEvento) ? Ok() : UnprocessableEntity();
+        }
+
+        [HttpPost("nuevo")]
+        public IActionResult PostNuevo([FromBody] TipoEvento tipoEvento)
+        {
+
+            TipoEventoService service = new TipoEventoService();
+
+            return service.Agregar(tipoEvento) ? Ok() : UnprocessableEntity();//UnprocessableEntity -> 422 error
+        }
+    }
 }

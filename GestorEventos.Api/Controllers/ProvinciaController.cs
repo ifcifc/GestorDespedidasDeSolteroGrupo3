@@ -24,23 +24,34 @@ namespace GestorEventos.Api.Controllers
 
 			var provincia = provinciaService.GetProvinciaPorId(idProvincia);
 
-			if (provincia == null)
-				return NotFound();
-			else
-				return Ok(provincia);
-		}
+            return (provincia == null) ? NotFound() : Ok(provincia);
+        }
 
 		[HttpPost("nuevo")]
 		public IActionResult PostNuevaProvincia([FromBody] Provincia provinciaNueva)
 		{
-
             ProvinciaService provinciaService = new ProvinciaService();
-            provinciaService.AgregarProvincia(provinciaNueva);
+            provinciaService.Agregar(provinciaNueva);
 
 			return Ok();
 		}
 
+        [HttpDelete("{idProvincia:int}/Delete")]
+        public IActionResult Delete(int idProvincia)
+        {
+            ProvinciaService service = new ProvinciaService();
+
+            return service.Eliminar(idProvincia) ? Ok() : UnprocessableEntity();
+        }
 
 
-	}
+        [HttpPut("{idProvincia:int}/Modificar")]
+        public IActionResult Modificar(int idProvincia, [FromBody] Provincia provincia)
+        {
+            ProvinciaService service = new ProvinciaService();
+
+            return service.Modificar(idProvincia, provincia) ? Ok() : UnprocessableEntity();
+        }
+
+    }
 }

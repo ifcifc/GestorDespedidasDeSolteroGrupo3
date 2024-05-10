@@ -8,6 +8,7 @@ namespace GestorEventos.Servicios.Entidades
 {
     public class Localidad
     {
+        public bool isDelete;
         public int IdLocalidad { get; set; }
         public int IdProvincia { get; set; }
         public string Nombre { get; set; }

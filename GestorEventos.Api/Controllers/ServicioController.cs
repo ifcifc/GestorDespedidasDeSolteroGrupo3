@@ -24,23 +24,33 @@ namespace GestorEventos.Api.Controllers
 
 			var servicio = servicioService.GetServicioPorId(idServicio);
 
-			if (servicio == null)
-				return NotFound();
-			else
-				return Ok(servicio);
-		}
+            return (servicio == null) ? NotFound() : Ok(servicio);
+        }
 
 		[HttpPost("nuevo")]
 		public IActionResult PostNuevoServicio([FromBody] Servicio servicionuevo)
 		{
-
 			ServicioService servicioService = new ServicioService();
-            servicioService.AgregarServicio(servicionuevo);
+            servicioService.Agregar(servicionuevo);
 
 			return Ok();
 		}
 
+        [HttpDelete("{idServicio:int}/Delete")]
+        public IActionResult Delete(int idServicio)
+        {
+            ServicioService service = new ServicioService();
 
+            return service.Eliminar(idServicio) ? Ok() : UnprocessableEntity();
+        }
 
-	}
+        [HttpPut("{idServicio:int}/Modificar")]
+        public IActionResult Modificar(int idServicio, [FromBody] Servicio servicio)
+        {
+            ServicioService service = new ServicioService();
+
+            return service.Modificar(idServicio, servicio) ? Ok() : UnprocessableEntity();
+        }
+
+    }
 }

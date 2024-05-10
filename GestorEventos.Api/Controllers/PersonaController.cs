@@ -14,23 +14,42 @@ namespace GestorEventos.Api.Controllers
 		{
 			PersonaService personaService = new PersonaService();
 
-			return Ok(personaService.GetPersonasDePrueba());
+			return Ok(personaService.GetPersonas());
 		}
 
 		[HttpGet("{idPersona:int}")]
 		public IActionResult GetPersonaPorId(int idPersona)
 		{
 			PersonaService personaService = new PersonaService();
+			Persona persona = personaService.GetPersonaPorId(idPersona);
+
+            return (persona == null) ? NotFound() : Ok(persona);
+        }
+
+        [HttpDelete("{idPersona:int}/Delete")]
+        public IActionResult Delete(int idPersona)
+        {
+            PersonaService service = new PersonaService();
+
+            return service.Eliminar(idPersona) ? Ok() : UnprocessableEntity();
+        }
 
 
+        [HttpPut("{idPersona:int}/Modificar")]
+        public IActionResult Modificar(int idPersona, [FromBody] Persona persona)
+        {
+            PersonaService service = new PersonaService();
 
-			Persona persona = personaService.GetPersonaDePruebaSegunId(idPersona);
+            return service.Modificar(idPersona, persona) ? Ok() : UnprocessableEntity();
+        }
 
-			if (persona == null)
-				return NotFound();
-			else
-				return Ok(persona);
-		}
+        [HttpPost("nuevo")]
+        public IActionResult PostNuevo([FromBody] Persona persona)
+        {
 
-	}
+            PersonaService service = new PersonaService();
+
+            return service.Agregar(persona) ? Ok() : UnprocessableEntity();//UnprocessableEntity -> 422 error
+        }
+    }
 }

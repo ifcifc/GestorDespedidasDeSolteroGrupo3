@@ -25,20 +25,53 @@ namespace GestorEventos.Servicios.Servicios
 
 		public IEnumerable<TipoEvento> GetTipoEventos ()
 		{
-			return this.TiposDeEvento;
+			return this.TiposDeEvento.Where(e => !e.isDelete); ;
 		}
 
 		public TipoEvento GetTipoEventoPorId(int IdTipoEvento)
 		{
 			var tiposDeEvento = TiposDeEvento.Where(x => x.IdTipoEvento == IdTipoEvento);
 
-			if (tiposDeEvento == null)
-				return null;
+			return (tiposDeEvento == null) ? null: tiposDeEvento.First();
+        }
+        public bool Eliminar(int idTipoEvento)
+        {
+            try
+            {
+                var e = this.TiposDeEvento.FirstOrDefault(x => x.IdTipoEvento == idTipoEvento);
+                e.isDelete = true;
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
 
-			return tiposDeEvento.First();
-		}
+        public bool Agregar(TipoEvento tipoEvento)
+        {
+            try
+            {
+                List<TipoEvento> lista = this.TiposDeEvento.ToList();
+                lista.Add(tipoEvento);
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
 
+            return true;
+        }
 
+        public bool Modificar(int idTipoEvento, TipoEvento tipoEvento)
+        {
 
-	}
+            var e = this.TiposDeEvento.FirstOrDefault(x => x.IdTipoEvento == idTipoEvento);
+            if (e == null) return false;
+
+            e.Descripcion = tipoEvento.Descripcion;
+
+            return true;
+        }
+    }
 }

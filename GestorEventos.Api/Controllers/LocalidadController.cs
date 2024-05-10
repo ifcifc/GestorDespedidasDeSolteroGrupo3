@@ -24,19 +24,31 @@ namespace GestorEventos.Api.Controllers
 
             var localidad = localidadService.GetLocalidadPorId(idLocalidad);
 
-            if (localidad == null)
-                return NotFound();
-            else
-                return Ok(localidad);
+            return (localidad == null) ? NotFound() : Ok(localidad);
         }
 
         [HttpPost("nuevo")]
         public IActionResult PostNuevaProvincia([FromBody] Localidad localidadNueva)
         {
             LocalidadService localidadService = new LocalidadService();
-            localidadService.AgregarLocalidad(localidadNueva);
+            localidadService.Agregar(localidadNueva);
 
             return Ok();
+        }
+
+        [HttpDelete("{idLocalidad:int}/Delete")]
+        public IActionResult Delete(int idLocalidad)
+        {
+            LocalidadService service = new LocalidadService();
+
+            return service.Eliminar(idLocalidad) ? Ok() : UnprocessableEntity();
+        }
+
+        [HttpPut("{IdLocalidad:int}/Modificar")]
+        public IActionResult Modificar(int IdLocalidad, [FromBody] Localidad localidad)
+        {
+            LocalidadService eventosService = new LocalidadService();
+            return eventosService.Modificar(IdLocalidad, localidad) ? Ok() : UnprocessableEntity();
         }
     }
 }

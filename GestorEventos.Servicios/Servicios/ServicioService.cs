@@ -24,36 +24,56 @@ namespace GestorEventos.Servicios.Servicios
 
 		public IEnumerable<Servicio> GetServicios()
 		{
-			return this.Servicios;
+			return this.Servicios.Where(e => !e.isDelete); ;
 		}
 
 		public Servicio GetServicioPorId(int IdServicio)
 		{
 			var servicios = Servicios.Where(x => x.IdServicio == IdServicio);
 
-			if (servicios == null)
-				return null;
-
-			return servicios.First();
+            return (servicios == null)? null : servicios.First();
 		}
 
 
-		public bool AgregarServicio(Servicio servicio)
+		public bool Agregar(Servicio servicio)
 		{
 			try
 			{
 				List<Servicio> lista = this.Servicios.ToList();
 				lista.Add(servicio);
 //				this.Servicios.ToList().Add(servicio);
-				return true;
 			}
 			catch(Exception ex)
 			{
 				return false;
 			}
 
+            return true;
+        }
+        public bool Eliminar(int idServicio)
+        {
+            try
+            {
+                var e = this.Servicios.FirstOrDefault(x => x.IdServicio == idServicio);
+                e.isDelete = true;
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
 
-		}
+        public bool Modificar(int idServicio, Servicio servicio)
+        {
 
-	}
+            var e = this.Servicios.FirstOrDefault(x => x.IdServicio == idServicio);
+            if (e == null) return false;
+
+            e.Descripcion = servicio.Descripcion;
+            e.PrecioServicio = servicio.PrecioServicio;
+
+            return true;
+        }
+    }
 }

@@ -21,32 +21,57 @@ namespace GestorEventos.Servicios.Servicios
 
         public IEnumerable<Localidad> GetLocalidades()
         {
-            return this.Localidades;
+            return this.Localidades.Where(e => !e.isDelete); ;
         }
 
         public Localidad GetLocalidadPorId(int idLocalidad)
         {
             var localidad = this.Localidades.Where(x => x.IdLocalidad == idLocalidad);
 
-            if (localidad == null)
-                return null;
-
-            return localidad.First();
+            return (localidad == null) ? null : localidad.First();
         }
 
-        public bool AgregarLocalidad(Localidad localidad)
+        public bool Agregar(Localidad localidad)
         {
             try
             {
                 List<Localidad> lista = this.Localidades.ToList();
                 lista.Add(localidad);
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public bool Modificar(int idLocalidad, Localidad localidad)
+        {
+
+            var e = this.Localidades.FirstOrDefault(x => x.IdLocalidad == idLocalidad);
+            if (e == null) return false;
+
+            e.IdProvincia = localidad.IdProvincia;
+            e.CodigoArea = localidad.CodigoArea;
+            e.Nombre = localidad.Nombre;
+
+            return true;
+        }
+
+        public bool Eliminar(int idLocalidad)
+        {
+            try
+            {
+                var e = this.Localidades.FirstOrDefault(x => x.IdLocalidad == idLocalidad);
+                e.isDelete = true;
                 return true;
             }
             catch (Exception ex)
             {
                 return false;
             }
-
         }
     }
+
+
 }

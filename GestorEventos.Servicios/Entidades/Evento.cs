@@ -10,6 +10,8 @@ namespace GestorEventos.Servicios.Entidades
 	{
 		/*IdEvento, Nombre, FechaEvento, CantPersonas, IdTipoDespedida, IdPersonaAgasajada, IdPersonaContacto*/
 		public int IdEvento { get; set; }
+
+		public bool isDelete;//Para borrado logico
 		public string NombreEvento { get; set; }
 		public DateTime FechaEvento { get; set; }
 		public int CantidadPersonas { get; set; }
