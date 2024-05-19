@@ -1,96 +1,70 @@
 ﻿using GestorEventos.Servicios.Entidades;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using GestorEventos.Servicios.SQLUtils;
 
 namespace GestorEventos.Servicios.Servicios
 {
-	public class PersonaService
+    public class PersonaService : Service<Persona>
 	{
-		//IENumerable para esstablecer que es una Lista de Entidades
-		public IEnumerable<Persona> Personas{ get; set; }
-
-
-		//constructor
 		public PersonaService()
 		{
-            this.Personas = new List<Persona>
-			{
-				new Persona{ IdPersona = 1, Nombre = "Esteban", Apellido = "Gomez", Email = "estebangomez@yopmail.com", Telefono = "1111111", DireccionCalle="Calle_1", DireccionNumero=463, DireccionDepartamento="", DireccionPiso=0, IdLocalidad=1},
-				new Persona{ IdPersona = 2, Nombre = "Jose", Apellido = "Peñaloza", Email = "Josepenaloza@yopmail.com", Telefono = "22222222", DireccionCalle="Calle_2", DireccionNumero=753, DireccionDepartamento="B", DireccionPiso=2, IdLocalidad=2},
-				new Persona{ IdPersona = 3, Nombre = "Juana", Apellido = "Manzo",  Email = "juanamanzo@yopmail.com", Telefono = "3333333", DireccionCalle="Calle_3", DireccionNumero=1146, DireccionDepartamento="S", DireccionPiso=9, IdLocalidad=3},
-
-			};
 		}
 
-		public IEnumerable<Persona> GetPersonas()
+		override public IEnumerable<Persona>? GetAll()
 		{
-			return Personas.Where(e => !e.isDelete); ;
+            return SQLExecute
+                    .New()
+                    .Query<Persona>(SQLExecute.TPERSONA_GET_ALL);
 		}
 
-		public Persona? GetPersonaPorId(int IdPersona)
+        override public Persona? GetByID(int idPersona)
 		{
-			try
-			{
-				Persona persona = this.Personas.Where(x => x.IdPersona == IdPersona).First();
-				return persona; 
-			}
-			catch (Exception ex)
-			{
-				return null;
-			}
-
-		}
-
-        public bool Agregar(Persona persona)
-        {
-            try
-            {
-                List<Persona> lista = this.Personas.ToList();
-                lista.Add(persona);
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
-
-            return true;
+            return SQLExecute
+                    .New()
+                    .QueryFirst<Persona>(SQLExecute.TPERSONA_GET_BY_ID, idPersona);
         }
 
-        public bool Eliminar(int IdPersona)
+        override public bool Add(Persona persona)
         {
-            try
-            {
-                var e = this.Personas.FirstOrDefault(x => x.IdPersona == IdPersona);
-                e.isDelete = true;
-                return true;
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
+            return SQLExecute
+                    .New()
+                    .Transaction(true)
+                    .Execute(SQLExecute.TPERSONA_INSERT, 
+                            persona.IdLocalidad, 
+                            persona.Nombre, 
+                            persona.Apellido,
+                            persona.Telefono,
+                            persona.Email, 
+                            persona.DireccionCalle, 
+                            persona.DireccionNumero, 
+                            persona.DireccionPiso, 
+                            persona.DireccionDepartamento);
+        }
+
+        override public bool Delete(int IdPersona)
+        {
+            return SQLExecute
+                    .New()
+                    .Transaction(true)
+                    .Execute(SQLExecute.TPERSONA_DELETE, IdPersona);
         }
 
 
-        public bool Modificar(int idPersona, Persona persona)
+        override public bool Modify(int idPersona, Persona persona)
         {
-
-            var e = this.Personas.FirstOrDefault(x => x.IdPersona == idPersona);
-            if (e == null) return false;
-
-            e.IdLocalidad = persona.IdLocalidad;
-            e.DireccionPiso = persona.DireccionPiso;
-            e.DireccionCalle = persona.DireccionCalle;
-            e.DireccionNumero = persona.DireccionNumero;
-            e.DireccionPiso = persona.DireccionPiso;
-            e.Nombre = persona.Nombre;
-            e.Apellido = persona.Apellido;
-            e.Telefono = persona.Telefono;
-            e.Email = persona.Email;
-
-            return true;
+            return SQLExecute
+                    .New()
+                    .Transaction(true)
+                    .Execute(SQLExecute.TPERSONA_MODIFY,
+                            idPersona,
+                            persona.IdLocalidad,
+                            persona.Nombre,
+                            persona.Apellido,
+                            persona.Telefono,
+                            persona.Email,
+                            persona.DireccionCalle,
+                            persona.DireccionNumero,
+                            persona.DireccionPiso,
+                            persona.DireccionDepartamento);
         }
 
     }

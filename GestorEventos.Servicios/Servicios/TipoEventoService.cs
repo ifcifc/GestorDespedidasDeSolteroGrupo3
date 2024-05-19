@@ -1,77 +1,52 @@
 ﻿using GestorEventos.Servicios.Entidades;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using GestorEventos.Servicios.SQLUtils;
 
 namespace GestorEventos.Servicios.Servicios
 {
-	public class TipoEventoService
-	{
+    public class TipoEventoService : Service<TipoEvento>
+    {
 
-		public IEnumerable<TipoEvento> TiposDeEvento { get; set; }
 
 		public TipoEventoService() 
 		{
-			TiposDeEvento = new List<TipoEvento>
-			{
-				new TipoEvento {IdTipoEvento = 1, Descripcion = "Despedida de Solteros" },
-				new TipoEvento {IdTipoEvento = 2, Descripcion = "Despedida de Solteras" },
-			}; 
 
 		}
 
-		public IEnumerable<TipoEvento> GetTipoEventos ()
+		override public IEnumerable<TipoEvento>? GetAll ()
 		{
-			return this.TiposDeEvento.Where(e => !e.isDelete); ;
+            return SQLExecute
+                    .New()
+                    .Query<TipoEvento>(SQLExecute.TTIPOEVENTO_GET_ALL);
 		}
 
-		public TipoEvento GetTipoEventoPorId(int IdTipoEvento)
+        override public TipoEvento? GetByID(int idTipoEvento)
 		{
-			var tiposDeEvento = TiposDeEvento.Where(x => x.IdTipoEvento == IdTipoEvento);
-
-			return (tiposDeEvento == null) ? null: tiposDeEvento.First();
+            return SQLExecute
+                .New()
+                .QueryFirst<TipoEvento>(SQLExecute.TTIPOEVENTO_GET_BY_ID, idTipoEvento);
         }
-        public bool Eliminar(int idTipoEvento)
+        override public bool Delete(int idTipoEvento)
         {
-            try
-            {
-                var e = this.TiposDeEvento.FirstOrDefault(x => x.IdTipoEvento == idTipoEvento);
-                e.isDelete = true;
-                return true;
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
+            return SQLExecute
+                    .New()
+                    .Transaction(true)
+                    .Execute(SQLExecute.TTIPOEVENTO_DELETE, idTipoEvento);
         }
 
-        public bool Agregar(TipoEvento tipoEvento)
+        override public bool Add(TipoEvento tipoEvento)
         {
-            try
-            {
-                List<TipoEvento> lista = this.TiposDeEvento.ToList();
-                lista.Add(tipoEvento);
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
-
-            return true;
+            return SQLExecute
+                    .New()
+                    .Transaction(true)
+                    .Execute(SQLExecute.TTIPOEVENTO_INSERT, tipoEvento.Descripcion);
         }
 
-        public bool Modificar(int idTipoEvento, TipoEvento tipoEvento)
+        override public bool Modify(int idTipoEvento, TipoEvento tipoEvento)
         {
-
-            var e = this.TiposDeEvento.FirstOrDefault(x => x.IdTipoEvento == idTipoEvento);
-            if (e == null) return false;
-
-            e.Descripcion = tipoEvento.Descripcion;
-
-            return true;
+            return SQLExecute
+                    .New()
+                    .Transaction(true)
+                    .Execute(SQLExecute.TTIPOEVENTO_MODIFY, idTipoEvento, tipoEvento.Descripcion);
         }
     }
 }

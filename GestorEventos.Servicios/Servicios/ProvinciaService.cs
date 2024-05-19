@@ -1,5 +1,6 @@
 ﻿
 using GestorEventos.Servicios.Entidades;
+using GestorEventos.Servicios.SQLUtils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,71 +9,51 @@ using System.Threading.Tasks;
 
 namespace GestorEventos.Servicios.Servicios
 {
-	public class ProvinciaService
+	public class ProvinciaService : Service<Provincia>
 	{
-		public IEnumerable<Provincia> Provincias { get; set; }
 
 		public ProvinciaService()
 		{
-			this.Provincias = new List<Provincia>
-            {
-                new Provincia{ IdProvincia = 1, Nombre="Buenos Aires"},
-                new Provincia{ IdProvincia = 2, Nombre="Jujuy"},
-                new Provincia{ IdProvincia = 3, Nombre="Cordoba"},
-            };
+
 		}
 
-		public IEnumerable<Provincia> GetProvincias()
-		{
-			return this.Provincias.Where(e => !e.isDelete); ;
-		}
-
-		public Provincia GetProvinciaPorId(int idProvincia)
-		{
-			var provincia = this.Provincias.Where(x => x.IdProvincia == idProvincia);
-
-			return (provincia == null)? null : provincia.First();
-		}
-
-
-		public bool Agregar(Provincia provincia)
-		{
-			try
-			{
-				List<Provincia> lista = this.Provincias.ToList();
-				lista.Add(provincia);
-			}
-			catch(Exception ex)
-			{
-				return false;
-            }
-            return true;
+        override public IEnumerable<Provincia>? GetAll()
+        {
+            return SQLExecute
+                .New()
+                .Query<Provincia>(SQLExecute.TPROVINCIAS_GET_ALL);
         }
 
-        public bool Eliminar(int idProvincia)
+        override public Provincia? GetByID(int idProvincia)
+		{
+			return SQLExecute
+                .New()
+                .QueryFirst<Provincia>(SQLExecute.TPROVINCIAS_GET_BY_ID, idProvincia);
+		}
+
+        override public bool Add(Provincia provincia)
+		{
+            return SQLExecute
+                .New()
+                .Transaction(true)
+                .Execute(SQLExecute.TPROVINCIAS_INSERT, provincia.Nombre);
+        }
+
+        override public bool Delete(int idProvincia)
         {
-            try
-            {
-                var e = this.Provincias.FirstOrDefault(x => x.IdProvincia == idProvincia);
-                e.isDelete = true;
-                return true;
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
+            return SQLExecute
+                .New()
+                .Transaction(true)
+                .Execute(SQLExecute.TPROVINCIAS_DELETE, idProvincia);
         }
 
 
-        public bool Modificar(int idProvincia, Provincia provincia)
+        override public bool Modify(int idProvincia, Provincia provincia)
         {
-
-            var e = this.Provincias.FirstOrDefault(x => x.IdProvincia == idProvincia);
-            if (e == null) return false;
-
-            e.Nombre = e.Nombre;
-
-            return true;
+            return SQLExecute
+                .New()
+                .Transaction(true)
+                .Execute(SQLExecute.TPROVINCIAS_MODIFY, idProvincia, provincia.Nombre);
         }
     }
 }

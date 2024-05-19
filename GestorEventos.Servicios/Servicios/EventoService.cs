@@ -1,86 +1,76 @@
 ﻿
 using GestorEventos.Servicios.Entidades;
+using GestorEventos.Servicios.SQLUtils;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace GestorEventos.Servicios.Servicios
 {
-	public class EventoService
-	{
-		public IEnumerable<Evento> Eventos { get; set; }
+	public class EventoService : Service<Evento>
+    {
 
 		public EventoService()
 		{
-			this.Eventos = new List<Evento>
-            {
-                new Evento{ IdEvento = 1, NombreEvento = "Evento 1", FechaEvento = DateTime.Now,  CantidadPersonas=30, IdTipoDespedida=1, IdPersonaAgasajada=1, IdPersonaContacto=2},
-                new Evento{ IdEvento = 2, NombreEvento = "Evento 2", FechaEvento = DateTime.Now,  CantidadPersonas=33, IdTipoDespedida=2, IdPersonaAgasajada=1, IdPersonaContacto=2},
-                new Evento{ IdEvento = 3, NombreEvento = "Evento 3", FechaEvento = DateTime.Now,  CantidadPersonas=36, IdTipoDespedida=1, IdPersonaAgasajada=1, IdPersonaContacto=2},
-            };
+			
 		}
 
-		public IEnumerable<Evento> GetEventos()
+		override public IEnumerable<Evento>? GetAll()
 		{
-			return this.Eventos.Where(e=>!e.isDelete);
+			return SQLExecute
+					.New()
+					.Query<Evento>(SQLExecute.TEVENTO_GET_ALL);
 		}
 
-		public Evento GetEventoPorId(int IdEvento)
+        override public Evento? GetByID(int IdEvento)
 		{
-			var eventos = this.Eventos.Where(x => x.IdEvento == IdEvento);
-
-			return (eventos == null) ? null : eventos.First();
-		}
-
-
-		public bool Agregar(Evento evento)
-		{
-			try
-			{
-				List<Evento> lista = this.Eventos.ToList();
-				lista.Add(evento);
-			}
-			catch(Exception ex)
-			{
-				return false;
-			}
-
-            return true;
+            return SQLExecute
+                    .New()
+                    .QueryFirst<Evento>(SQLExecute.TEVENTO_GET_BY_ID, IdEvento);
         }
 
-		public bool Modificar(int idEvento, Evento evento) {
 
-			var e = this.Eventos.FirstOrDefault(evento => evento.IdEvento == idEvento);
-			if (e == null) return false;
-
-			e.FechaEvento = evento.FechaEvento;
-			e.NombreEvento = evento.NombreEvento;
-			e.IdPersonaAgasajada = evento.IdPersonaAgasajada;
-			e.IdPersonaContacto = evento.IdPersonaContacto;
-			e.CantidadPersonas = evento.CantidadPersonas;
-
-			return true;
-		}
-
-		public bool Eliminar(int idEvento) 
+		override public bool Add(Evento evento)
 		{
-			try {
-                var e = this.Eventos.FirstOrDefault(evento => evento.IdEvento == idEvento);
-                //Borrado logico
-                e.isDelete = true;
-                
+            return SQLExecute
+                    .New()
+					.Transaction(true)
+                    .Execute(SQLExecute.TEVENTO_INSERT, 
+								evento.IdTipoEvento, 
+								evento.IdPersonaAgasajada, 
+								evento.IdPersonaContacto, 
+								evento.NombreEvento, 
+								evento.FechaEvento.ToString(), 
+								evento.CantidadPersonas);
+        }
 
-                //Borrado fisico
-                //return this.Eventos.ToList().Remove(e);
+        override public bool Modify(int idEvento, Evento evento)
+        {
+            return SQLExecute
+                    .New()
+                    .Transaction(true)
+                    .Execute(SQLExecute.TEVENTO_MODIFY,
+                                idEvento,
+                                evento.IdTipoEvento,
+                                evento.IdPersonaAgasajada,
+                                evento.IdPersonaContacto,
+                                evento.NombreEvento,
+                                evento.FechaEvento.ToString(),
+                                evento.CantidadPersonas);
+        }
 
-                return true;
-            }
-			catch (Exception ex) {
-				return false;	
-			}
-		}
+        override public bool Delete(int idEvento) 
+		{
+            return SQLExecute
+                    .New()
+                    .Transaction(true)
+                    .Execute(SQLExecute.TEVENTO_DELETE, idEvento);
+
+        }
 
 	}
 }

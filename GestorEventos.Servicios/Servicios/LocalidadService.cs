@@ -1,75 +1,51 @@
 ﻿using GestorEventos.Servicios.Entidades;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+using GestorEventos.Servicios.SQLUtils;
 
 namespace GestorEventos.Servicios.Servicios
 {
-    public class LocalidadService
+    public class LocalidadService : Service<Localidad>
     {
-        public IEnumerable<Localidad> Localidades { get; set; }
         public LocalidadService() {
-            this.Localidades = new List<Localidad> {
-                new Localidad{IdLocalidad=1, IdProvincia=1, Nombre="Ciudad 1", CodigoArea=1},
-                new Localidad{IdLocalidad=2, IdProvincia=2, Nombre="Ciudad 2", CodigoArea=2},
-                new Localidad{IdLocalidad=3, IdProvincia=3, Nombre="Ciudad 3", CodigoArea=3},
-            };
+
         }
 
-        public IEnumerable<Localidad> GetLocalidades()
+        override public IEnumerable<Localidad>? GetAll()
         {
-            return this.Localidades.Where(e => !e.isDelete); ;
+            return SQLExecute
+                    .New()
+                    .Query<Localidad>(SQLExecute.TLOCALIDADES_GET_ALL);
         }
 
-        public Localidad GetLocalidadPorId(int idLocalidad)
+        override public Localidad? GetByID(int idLocalidad)
         {
-            var localidad = this.Localidades.Where(x => x.IdLocalidad == idLocalidad);
-
-            return (localidad == null) ? null : localidad.First();
+            return SQLExecute
+                .New()
+                .QueryFirst<Localidad>(SQLExecute.TLOCALIDADES_GET_BY_ID, idLocalidad);
         }
 
-        public bool Agregar(Localidad localidad)
+        override public bool Add(Localidad localidad)
         {
-            try
-            {
-                List<Localidad> lista = this.Localidades.ToList();
-                lista.Add(localidad);
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
-            return true;
+            return SQLExecute
+                .New()
+                .Transaction(true)
+                .Execute(SQLExecute.TLOCALIDADES_INSERT, localidad.IdProvincia, localidad.Nombre, localidad.CodigoArea);
         }
 
-        public bool Modificar(int idLocalidad, Localidad localidad)
+        override public bool Modify(int idLocalidad, Localidad localidad)
         {
 
-            var e = this.Localidades.FirstOrDefault(x => x.IdLocalidad == idLocalidad);
-            if (e == null) return false;
-
-            e.IdProvincia = localidad.IdProvincia;
-            e.CodigoArea = localidad.CodigoArea;
-            e.Nombre = localidad.Nombre;
-
-            return true;
+            return SQLExecute
+                .New()
+                .Transaction(true)
+                .Execute(SQLExecute.TLOCALIDADES_MODIFY, idLocalidad, localidad.IdProvincia, localidad.Nombre, localidad.CodigoArea);
         }
 
-        public bool Eliminar(int idLocalidad)
+        override public bool Delete(int idLocalidad)
         {
-            try
-            {
-                var e = this.Localidades.FirstOrDefault(x => x.IdLocalidad == idLocalidad);
-                e.isDelete = true;
-                return true;
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
+            return SQLExecute
+                .New()
+                .Transaction(true)
+                .Execute(SQLExecute.TLOCALIDADES_DELETE, idLocalidad);
         }
     }
 
