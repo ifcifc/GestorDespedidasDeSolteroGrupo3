@@ -17,6 +17,7 @@ namespace GestorEventos.Servicios.Entidades
 		public int IdPersonaAgasajada { get; set; }
 
 		public int IdPersonaContacto { get; set; }
+		public bool Borrado { get; set; }
 
 	}
 }
