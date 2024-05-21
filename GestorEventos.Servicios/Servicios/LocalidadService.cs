@@ -19,12 +19,12 @@ namespace GestorEventos.Servicios.Servicios
             };
         }
 
-        public IEnumerable<Localidad> GetLocalidades()
+        public IEnumerable<Localidad> Get()
         {
             return this.Localidades;
         }
 
-        public Localidad GetLocalidadPorId(int idLocalidad)
+        public Localidad GetPorId(int idLocalidad)
         {
             var localidad = this.Localidades.Where(x => x.IdLocalidad == idLocalidad);
 
@@ -34,7 +34,7 @@ namespace GestorEventos.Servicios.Servicios
             return localidad.First();
         }
 
-        public bool AgregarLocalidad(Localidad localidad)
+        public bool Crear(Localidad localidad)
         {
             try
             {

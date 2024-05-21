@@ -25,12 +25,12 @@ namespace GestorEventos.Servicios.Servicios
 			};
 		}
 
-		public IEnumerable<Persona> GetPersonasDePrueba()
+		public IEnumerable<Persona> Get()
 		{
 			return PersonasDePrueba;
 		}
 
-		public Persona? GetPersonaDePruebaSegunId(int IdPersona)
+		public Persona? GetPorId(int IdPersona)
 		{
 			try
 			{

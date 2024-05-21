@@ -22,12 +22,12 @@ namespace GestorEventos.Servicios.Servicios
 			};
 		}
 
-		public IEnumerable<Servicio> GetServicios()
+		public IEnumerable<Servicio> Get()
 		{
 			return this.Servicios;
 		}
 
-		public Servicio GetServicioPorId(int IdServicio)
+		public Servicio GetPorId(int IdServicio)
 		{
 			var servicios = Servicios.Where(x => x.IdServicio == IdServicio);
 
@@ -38,7 +38,7 @@ namespace GestorEventos.Servicios.Servicios
 		}
 
 
-		public bool AgregarServicio(Servicio servicio)
+		public bool Crear(Servicio servicio)
 		{
 			try
 			{

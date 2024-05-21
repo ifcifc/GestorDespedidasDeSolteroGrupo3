@@ -22,12 +22,12 @@ namespace GestorEventos.Servicios.Servicios
             };
 		}
 
-		public IEnumerable<Provincia> GetProvincias()
+		public IEnumerable<Provincia> Get()
 		{
 			return this.Provincias;
 		}
 
-		public Provincia GetProvinciaPorId(int idProvincia)
+		public Provincia GetPorId(int idProvincia)
 		{
 			var provincia = this.Provincias.Where(x => x.IdProvincia == idProvincia);
 
@@ -38,7 +38,7 @@ namespace GestorEventos.Servicios.Servicios
 		}
 
 
-		public bool AgregarProvincia(Provincia provincia)
+		public bool Crear(Provincia provincia)
 		{
 			try
 			{

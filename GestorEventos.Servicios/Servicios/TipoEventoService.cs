@@ -23,12 +23,12 @@ namespace GestorEventos.Servicios.Servicios
 
 		}
 
-		public IEnumerable<TipoEvento> GetTipoEventos ()
+		public IEnumerable<TipoEvento> Get ()
 		{
 			return this.TiposDeEvento;
 		}
 
-		public TipoEvento GetTipoEventoPorId(int IdTipoEvento)
+		public TipoEvento GetPorId(int IdTipoEvento)
 		{
 			var tiposDeEvento = TiposDeEvento.Where(x => x.IdTipoEvento == IdTipoEvento);
 
