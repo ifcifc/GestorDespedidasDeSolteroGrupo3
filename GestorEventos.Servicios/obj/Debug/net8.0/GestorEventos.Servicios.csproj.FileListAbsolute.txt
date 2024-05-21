@@ -21,16 +21,3 @@ C:\Users\igna\Desktop\GestorDespedidasDeSoltero\GestorEventos.Servicios\obj\Debu
 C:\Users\igna\Desktop\GestorDespedidasDeSoltero\GestorEventos.Servicios\obj\Debug\net8.0\refint\GestorEventos.Servicios.dll
 C:\Users\igna\Desktop\GestorDespedidasDeSoltero\GestorEventos.Servicios\obj\Debug\net8.0\GestorEventos.Servicios.pdb
 C:\Users\igna\Desktop\GestorDespedidasDeSoltero\GestorEventos.Servicios\obj\Debug\net8.0\ref\GestorEventos.Servicios.dll
-C:\Users\igna\source\repos\ifcifc\GestorDespedidasDeSolteroGrupo3\GestorEventos.Servicios\bin\Debug\net8.0\GestorEventos.Servicios.deps.json
-C:\Users\igna\source\repos\ifcifc\GestorDespedidasDeSolteroGrupo3\GestorEventos.Servicios\bin\Debug\net8.0\GestorEventos.Servicios.dll
-C:\Users\igna\source\repos\ifcifc\GestorDespedidasDeSolteroGrupo3\GestorEventos.Servicios\bin\Debug\net8.0\GestorEventos.Servicios.pdb
-C:\Users\igna\source\repos\ifcifc\GestorDespedidasDeSolteroGrupo3\GestorEventos.Servicios\obj\Debug\net8.0\GestorEventos.Servicios.csproj.AssemblyReference.cache
-C:\Users\igna\source\repos\ifcifc\GestorDespedidasDeSolteroGrupo3\GestorEventos.Servicios\obj\Debug\net8.0\GestorEventos.Servicios.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\igna\source\repos\ifcifc\GestorDespedidasDeSolteroGrupo3\GestorEventos.Servicios\obj\Debug\net8.0\GestorEventos.Servicios.AssemblyInfoInputs.cache
-C:\Users\igna\source\repos\ifcifc\GestorDespedidasDeSolteroGrupo3\GestorEventos.Servicios\obj\Debug\net8.0\GestorEventos.Servicios.AssemblyInfo.cs
-C:\Users\igna\source\repos\ifcifc\GestorDespedidasDeSolteroGrupo3\GestorEventos.Servicios\obj\Debug\net8.0\GestorEventos.Servicios.csproj.CoreCompileInputs.cache
-C:\Users\igna\source\repos\ifcifc\GestorDespedidasDeSolteroGrupo3\GestorEventos.Servicios\obj\Debug\net8.0\GestorEventos.Servicios.sourcelink.json
-C:\Users\igna\source\repos\ifcifc\GestorDespedidasDeSolteroGrupo3\GestorEventos.Servicios\obj\Debug\net8.0\GestorEventos.Servicios.dll
-C:\Users\igna\source\repos\ifcifc\GestorDespedidasDeSolteroGrupo3\GestorEventos.Servicios\obj\Debug\net8.0\refint\GestorEventos.Servicios.dll
-C:\Users\igna\source\repos\ifcifc\GestorDespedidasDeSolteroGrupo3\GestorEventos.Servicios\obj\Debug\net8.0\GestorEventos.Servicios.pdb
-C:\Users\igna\source\repos\ifcifc\GestorDespedidasDeSolteroGrupo3\GestorEventos.Servicios\obj\Debug\net8.0\ref\GestorEventos.Servicios.dll

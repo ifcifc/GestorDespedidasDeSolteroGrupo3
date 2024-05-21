@@ -1,6 +1,5 @@
 ﻿
 using GestorEventos.Servicios.Entidades;
-using GestorEventos.Servicios.SQLUtils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,51 +8,50 @@ using System.Threading.Tasks;
 
 namespace GestorEventos.Servicios.Servicios
 {
-	public class ProvinciaService : Service<Provincia>
+	public class ProvinciaService
 	{
+		public IEnumerable<Provincia> Provincias { get; set; }
 
 		public ProvinciaService()
 		{
+			this.Provincias = new List<Provincia>
+            {
+                new Provincia{ IdProvincia = 1, Nombre="Buenos Aires"},
+                new Provincia{ IdProvincia = 2, Nombre="Jujuy"},
+                new Provincia{ IdProvincia = 3, Nombre="Cordoba"},
+            };
+		}
+
+		public IEnumerable<Provincia> GetProvincias()
+		{
+			return this.Provincias;
+		}
+
+		public Provincia GetProvinciaPorId(int idProvincia)
+		{
+			var provincia = this.Provincias.Where(x => x.IdProvincia == idProvincia);
+
+			if (provincia == null)
+				return null;
+
+			return provincia.First();
+		}
+
+
+		public bool AgregarProvincia(Provincia provincia)
+		{
+			try
+			{
+				List<Provincia> lista = this.Provincias.ToList();
+				lista.Add(provincia);
+				return true;
+			}
+			catch(Exception ex)
+			{
+				return false;
+			}
 
 		}
 
-        override public IEnumerable<Provincia>? GetAll()
-        {
-            return SQLExecute
-                .New()
-                .Query<Provincia>(SQLExecute.TPROVINCIAS_GET_ALL);
-        }
-
-        override public Provincia? GetByID(int idProvincia)
-		{
-			return SQLExecute
-                .New()
-                .QueryFirst<Provincia>(SQLExecute.TPROVINCIAS_GET_BY_ID, idProvincia);
-		}
-
-        override public bool Add(Provincia provincia)
-		{
-            return SQLExecute
-                .New()
-                .Transaction(true)
-                .Execute(SQLExecute.TPROVINCIAS_INSERT, provincia.Nombre);
-        }
-
-        override public bool Delete(int idProvincia)
-        {
-            return SQLExecute
-                .New()
-                .Transaction(true)
-                .Execute(SQLExecute.TPROVINCIAS_DELETE, idProvincia);
-        }
-
-
-        override public bool Modify(int idProvincia, Provincia provincia)
-        {
-            return SQLExecute
-                .New()
-                .Transaction(true)
-                .Execute(SQLExecute.TPROVINCIAS_MODIFY, idProvincia, provincia.Nombre);
-        }
-    }
+	}
 }

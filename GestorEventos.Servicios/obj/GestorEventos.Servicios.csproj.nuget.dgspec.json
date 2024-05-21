@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\igna\\source\\repos\\ifcifc\\GestorDespedidasDeSolteroGrupo3\\GestorEventos.Servicios\\GestorEventos.Servicios.csproj": {}
+    "C:\\Users\\igna\\Desktop\\GestorDespedidasDeSoltero\\GestorEventos.Servicios\\GestorEventos.Servicios.csproj": {}
   },
   "projects": {
-    "C:\\Users\\igna\\source\\repos\\ifcifc\\GestorDespedidasDeSolteroGrupo3\\GestorEventos.Servicios\\GestorEventos.Servicios.csproj": {
+    "C:\\Users\\igna\\Desktop\\GestorDespedidasDeSoltero\\GestorEventos.Servicios\\GestorEventos.Servicios.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\igna\\source\\repos\\ifcifc\\GestorDespedidasDeSolteroGrupo3\\GestorEventos.Servicios\\GestorEventos.Servicios.csproj",
+        "projectUniqueName": "C:\\Users\\igna\\Desktop\\GestorDespedidasDeSoltero\\GestorEventos.Servicios\\GestorEventos.Servicios.csproj",
         "projectName": "GestorEventos.Servicios",
-        "projectPath": "C:\\Users\\igna\\source\\repos\\ifcifc\\GestorDespedidasDeSolteroGrupo3\\GestorEventos.Servicios\\GestorEventos.Servicios.csproj",
+        "projectPath": "C:\\Users\\igna\\Desktop\\GestorDespedidasDeSoltero\\GestorEventos.Servicios\\GestorEventos.Servicios.csproj",
         "packagesPath": "C:\\Users\\igna\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\igna\\source\\repos\\ifcifc\\GestorDespedidasDeSolteroGrupo3\\GestorEventos.Servicios\\obj\\",
+        "outputPath": "C:\\Users\\igna\\Desktop\\GestorDespedidasDeSoltero\\GestorEventos.Servicios\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\igna\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -44,20 +44,6 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "dependencies": {
-            "Dapper": {
-              "target": "Package",
-              "version": "[2.1.35, )"
-            },
-            "MySql.Data": {
-              "target": "Package",
-              "version": "[8.4.0, )"
-            },
-            "System.Data.SqlClient": {
-              "target": "Package",
-              "version": "[4.8.6, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",
