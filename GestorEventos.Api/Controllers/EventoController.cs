@@ -10,19 +10,19 @@ namespace GestorEventos.Api.Controllers
 	public class EventoController : ControllerBase
 	{
 		[HttpGet]
-		public IActionResult GetEvento()
+		public IActionResult Get()
 		{
 			EventoService eventoService = new EventoService();
 
-			return Ok(eventoService.GetEventos());
+			return Ok(eventoService.Get());
 		}
 
 		[HttpGet("{idEvento:int}")]
-		public IActionResult GetEventoPorId(int idEvento)
+		public IActionResult GetPorId(int idEvento)
 		{
             EventoService eventoService = new EventoService();
 
-			var evento = eventoService.GetEventoPorId(idEvento);
+			var evento = eventoService.GetPorId(idEvento);
 
 			if (evento == null)
 				return NotFound();
@@ -31,11 +31,11 @@ namespace GestorEventos.Api.Controllers
 		}
 
 		[HttpPost("nuevo")]
-		public IActionResult PostNuevoEvento([FromBody] Evento eventoNuevo)
+		public IActionResult Post([FromBody] Evento eventoNuevo)
 		{
 
             EventoService eventosService = new EventoService();
-            eventosService.AgregarEvento(eventoNuevo);
+            eventosService.Crear(eventoNuevo);
 
 			return Ok();
 		}
