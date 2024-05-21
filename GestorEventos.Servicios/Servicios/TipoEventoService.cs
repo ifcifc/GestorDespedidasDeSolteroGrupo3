@@ -1,44 +1,52 @@
 ﻿using GestorEventos.Servicios.Entidades;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using GestorEventos.Servicios.SQLUtils;
 
 namespace GestorEventos.Servicios.Servicios
 {
-	public class TipoEventoService
-	{
+    public class TipoEventoService : Service<TipoEvento>
+    {
 
-		public IEnumerable<TipoEvento> TiposDeEvento { get; set; }
 
 		public TipoEventoService() 
 		{
-			TiposDeEvento = new List<TipoEvento>
-			{
-				new TipoEvento {IdTipoEvento = 1, Descripcion = "Despedida de Solteros" },
-				new TipoEvento {IdTipoEvento = 2, Descripcion = "Despedida de Solteras" },
-			}; 
 
 		}
 
-		public IEnumerable<TipoEvento> GetTipoEventos ()
+		override public IEnumerable<TipoEvento>? GetAll ()
 		{
-			return this.TiposDeEvento;
+            return SQLExecute
+                    .New()
+                    .Query<TipoEvento>(SQLExecute.TTIPOEVENTO_GET_ALL);
 		}
 
-		public TipoEvento GetTipoEventoPorId(int IdTipoEvento)
+        override public TipoEvento? GetByID(int idTipoEvento)
 		{
-			var tiposDeEvento = TiposDeEvento.Where(x => x.IdTipoEvento == IdTipoEvento);
+            return SQLExecute
+                .New()
+                .QueryFirst<TipoEvento>(SQLExecute.TTIPOEVENTO_GET_BY_ID, idTipoEvento);
+        }
+        override public bool Delete(int idTipoEvento)
+        {
+            return SQLExecute
+                    .New()
+                    .Transaction(true)
+                    .Execute(SQLExecute.TTIPOEVENTO_DELETE, idTipoEvento);
+        }
 
-			if (tiposDeEvento == null)
-				return null;
+        override public bool Add(TipoEvento tipoEvento)
+        {
+            return SQLExecute
+                    .New()
+                    .Transaction(true)
+                    .Execute(SQLExecute.TTIPOEVENTO_INSERT, tipoEvento.Descripcion);
+        }
 
-			return tiposDeEvento.First();
-		}
-
-
-
-	}
+        override public bool Modify(int idTipoEvento, TipoEvento tipoEvento)
+        {
+            return SQLExecute
+                    .New()
+                    .Transaction(true)
+                    .Execute(SQLExecute.TTIPOEVENTO_MODIFY, idTipoEvento, tipoEvento.Descripcion);
+        }
+    }
 }
