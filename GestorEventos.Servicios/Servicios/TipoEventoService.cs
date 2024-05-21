@@ -41,4 +41,13 @@ namespace GestorEventos.Servicios.Servicios
 
 
 	}
+    public bool Eliminar(int ID)
+    {
+        return false;
+    }
+
+    public bool Modificar(int ID, TipoEvento entidad)
+    {
+        return false;
+    }
 }
