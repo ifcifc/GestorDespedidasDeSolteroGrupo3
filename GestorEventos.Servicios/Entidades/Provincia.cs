@@ -10,5 +10,6 @@ namespace GestorEventos.Servicios.Entidades
     {
         public int IdProvincia { get; set; }
         public String Nombre { get; set; }
+        public bool Borrado { get; set; }
     }
 }

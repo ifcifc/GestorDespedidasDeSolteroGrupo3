@@ -27,6 +27,7 @@ namespace GestorEventos.Servicios.Entidades
         public int DireccionNumero { get; set; }
         public int DireccionPiso { get; set; }
         public string DireccionDepartamento { get; set; }
+        public bool Borrado { get; set; }
 
     }
 }

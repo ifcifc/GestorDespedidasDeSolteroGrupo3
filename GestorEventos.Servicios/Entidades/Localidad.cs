@@ -11,6 +11,7 @@ namespace GestorEventos.Servicios.Entidades
         public int IdLocalidad { get; set; }
         public int IdProvincia { get; set; }
         public string Nombre { get; set; }
-        public int CodigoArea { get; set;}
+        public string CodigoArea { get; set;}
+        public bool Borrado { get; set; }
     }
 }
