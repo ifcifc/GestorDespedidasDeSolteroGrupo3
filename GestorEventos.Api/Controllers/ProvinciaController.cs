@@ -14,15 +14,15 @@ namespace GestorEventos.Api.Controllers
 		{
 			ProvinciaService provinciaService = new ProvinciaService();
 
-			return Ok(provinciaService.GetProvincias());
+			return Ok(provinciaService.Get());
 		}
 
 		[HttpGet("{idProvincia:int}")]
-		public IActionResult GetProvinciaPorId(int idProvincia)
+		public IActionResult GetPorId(int idProvincia)
 		{
             ProvinciaService provinciaService = new ProvinciaService();
 
-			var provincia = provinciaService.GetProvinciaPorId(idProvincia);
+			var provincia = provinciaService.GetPorId(idProvincia);
 
 			if (provincia == null)
 				return NotFound();
@@ -31,11 +31,11 @@ namespace GestorEventos.Api.Controllers
 		}
 
 		[HttpPost("nuevo")]
-		public IActionResult PostNuevaProvincia([FromBody] Provincia provinciaNueva)
+		public IActionResult Post([FromBody] Provincia provinciaNueva)
 		{
 
             ProvinciaService provinciaService = new ProvinciaService();
-            provinciaService.AgregarProvincia(provinciaNueva);
+            provinciaService.Crear(provinciaNueva);
 
 			return Ok();
 		}

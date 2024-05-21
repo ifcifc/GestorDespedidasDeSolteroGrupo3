@@ -14,17 +14,17 @@ namespace GestorEventos.Api.Controllers
 		{
 			TipoEventoService tipoEventoService = new TipoEventoService();
 
-			return Ok(tipoEventoService.GetTipoEventos());
+			return Ok(tipoEventoService.Get());
 		}
 
 
 		[HttpGet("{idTipoEvento:int}")]
-		public IActionResult Get(int idTipoEvento)
+		public IActionResult GetPorId(int idTipoEvento)
 		{
 			TipoEventoService tipoEventoService = new TipoEventoService();
 			TipoEvento tipoEvento = null;
 
-			tipoEvento = tipoEventoService.GetTipoEventoPorId(idTipoEvento);
+			tipoEvento = tipoEventoService.GetPorId(idTipoEvento);
 
 			if (tipoEvento == null)
 				return NotFound();
