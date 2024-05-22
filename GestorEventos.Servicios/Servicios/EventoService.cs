@@ -1,62 +1,44 @@
 ﻿
 using GestorEventos.Servicios.Entidades;
+using GestorEventos.Servicios.SQL;
 
 namespace GestorEventos.Servicios.Servicios
 {
     public class EventoService
 	{
-		public IEnumerable<Evento> Eventos { get; set; }
-
 		public EventoService()
 		{
-			this.Eventos = new List<Evento>
-            {
-                new Evento{ IdEvento = 1, NombreEvento = "Evento 1", FechaEvento = DateTime.Now,  CantidadPersonas=30, IdTipoDespedida=1, IdPersonaAgasajada=1, IdPersonaContacto=2},
-                new Evento{ IdEvento = 2, NombreEvento = "Evento 2", FechaEvento = DateTime.Now,  CantidadPersonas=33, IdTipoDespedida=2, IdPersonaAgasajada=1, IdPersonaContacto=2},
-                new Evento{ IdEvento = 3, NombreEvento = "Evento 3", FechaEvento = DateTime.Now,  CantidadPersonas=36, IdTipoDespedida=1, IdPersonaAgasajada=1, IdPersonaContacto=2},
-            };
 		}
 
-		public IEnumerable<Evento> Get()
+		public IEnumerable<Evento>? Get()
 		{
-			return this.Eventos;
+			return SQLConnect.Query<Evento>("SELECT * FROM Eventos WHERE Borrado = 0");
 		}
 
-		public Evento GetPorId(int IdEvento)
+		public Evento? GetPorId(int IdEvento)
 		{
-			var eventos = this.Eventos.Where(x => x.IdEvento == IdEvento);
-
-			if (eventos == null)
-				return null;
-
-			return eventos.First();
-		}
+			return SQLConnect.QueryFirst<Evento>("SELECT * FROM Eventos WHERE IdEvento = " + IdEvento);
+        }
 
 
 		public bool Crear(Evento evento)
 		{
-			try
-			{
-				List<Evento> lista = this.Eventos.ToList();
-				lista.Add(evento);
-				return true;
-			}
-			catch(Exception ex)
-			{
-				return false;
-			}
+            string query = "INSERT INTO Eventos (NombreEvento, FechaEvento, CantidadPersonas, IdPersonaAgasajada, IdPersonaContacto, IdTipoEvento, Borrado, Visible) VALUES (@NombreEvento, @FechaEvento, @CantidadPersonas, @IdPersonaAgasajada, @IdPersonaContacto, @IdTipoEvento, 0, 0);";
+            return SQLConnect.Execute(query, evento);
 
-		}
-
-        public bool Eliminar(int IdEvento)
-        { 
-			return false ;
-		}
-
-        public  bool Modificar(int IdEvento, Evento entidad)
-        {
-            return false;
         }
 
-}
+        public bool Eliminar(int IdEvento)
+        {
+            string query = "UPDATE Eventos SET Borrado = 1 where IdEvento = " + IdEvento;
+			return SQLConnect.Execute(query);
+		}
+
+        public  bool Modificar(int IdEvento, Evento evento)
+        {
+			string query = "UPDATE Eventos SET IdTipoEvento=@IdTipoEvento, IdPersonaAgasajada=@IdPersonaAgasajada, IdPersonaContacto=@IdPersonaContacto, NombreEvento=@NombreEvento, FechaEvento=@FechaEvento, CantidadPersonas=@CantidadPersonas  WHERE IdEvento=" + IdEvento;
+            return SQLConnect.Execute(query, evento);
+        }
+
+    }
 }
