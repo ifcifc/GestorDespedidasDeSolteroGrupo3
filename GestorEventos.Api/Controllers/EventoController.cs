@@ -41,6 +41,31 @@ namespace GestorEventos.Api.Controllers
 		}
 
 
+        [HttpPut("{id:int}/modificar")]
+        public IActionResult Modificar(int id, [FromBody] Evento entidad)
+        {
+            try
+            {
+                return new EventoService().Modificar(id, entidad) ? Ok() : UnprocessableEntity();
+            }
+            catch (Exception)
+            {
+                return UnprocessableEntity();
+            }
+        }
 
-	}
+
+        [HttpDelete("{id:int}/Eliminar")]
+        public IActionResult Eliminar(int id)
+        {
+            try
+            {
+                return new EventoService().Eliminar(id) ? Ok() : UnprocessableEntity();
+            }
+            catch (Exception)
+            {
+                return UnprocessableEntity();
+            }
+        }
+    }
 }

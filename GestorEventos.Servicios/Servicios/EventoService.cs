@@ -48,12 +48,12 @@ namespace GestorEventos.Servicios.Servicios
 
 		}
 
-        public bool Eliminar(int ID)
+        public bool Eliminar(int IdEvento)
         { 
 			return false ;
 		}
 
-        public  bool Modificar(int ID, Evento entidad)
+        public  bool Modificar(int IdEvento, Evento entidad)
         {
             return false;
         }
