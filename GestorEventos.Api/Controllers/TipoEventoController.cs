@@ -22,9 +22,7 @@ namespace GestorEventos.Api.Controllers
 		public IActionResult GetPorId(int idTipoEvento)
 		{
 			TipoEventoService tipoEventoService = new TipoEventoService();
-			TipoEvento tipoEvento = null;
-
-			tipoEvento = tipoEventoService.GetPorId(idTipoEvento);
+			TipoEvento tipoEvento = tipoEventoService.GetPorId(idTipoEvento);
 
 			if (tipoEvento == null)
 				return NotFound();
@@ -32,6 +30,15 @@ namespace GestorEventos.Api.Controllers
 				return Ok(tipoEvento);
 		}
 
+        [HttpPost("nuevo")]
+        public IActionResult Post([FromBody] TipoEvento tipoEvento)
+        {
 
-	}
+            TipoEventoService tipoEventoService = new TipoEventoService();
+            tipoEventoService.Crear(tipoEvento);
+
+            return Ok();
+        }
+
+    }
 }

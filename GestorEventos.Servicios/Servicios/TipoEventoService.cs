@@ -1,14 +1,8 @@
 ﻿using GestorEventos.Servicios.Entidades;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GestorEventos.Servicios.Servicios
 {
-	public class TipoEventoService
+    public class TipoEventoService
 	{
 
 		public IEnumerable<TipoEvento> TiposDeEvento { get; set; }
@@ -38,16 +32,31 @@ namespace GestorEventos.Servicios.Servicios
 			return tiposDeEvento.First();
 		}
 
+        public bool Crear(TipoEvento tipoDeEvento)
+        {
+            try
+            {
+                List<TipoEvento> lista = this.TiposDeEvento.ToList();
+                lista.Add(tipoDeEvento);
+                //				this.Servicios.ToList().Add(servicio);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
 
 
-	}
-    public bool Eliminar(int ID)
-    {
-        return false;
-    }
+        }
 
-    public bool Modificar(int ID, TipoEvento entidad)
-    {
-        return false;
+        public bool Eliminar(int ID)
+		{
+			return false;
+		}
+
+		public bool Modificar(int ID, TipoEvento entidad)
+		{
+			return false;
+		}
     }
 }

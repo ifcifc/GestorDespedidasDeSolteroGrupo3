@@ -10,19 +10,19 @@ namespace GestorEventos.Api.Controllers
     public class LocalidadController : Controller
     {
         [HttpGet]
-        public IActionResult GetLocalidad()
+        public IActionResult Get()
         {
             LocalidadService localidadService = new LocalidadService();
 
-            return Ok(localidadService.GetLocalidades());
+            return Ok(localidadService.Get());
         }
 
         [HttpGet("{idLocalidad:int}")]
-        public IActionResult GetProvinciaPorId(int idLocalidad)
+        public IActionResult GetPorId(int idLocalidad)
         {
            LocalidadService localidadService = new LocalidadService();
 
-            var localidad = localidadService.GetLocalidadPorId(idLocalidad);
+            var localidad = localidadService.GetPorId(idLocalidad);
 
             if (localidad == null)
                 return NotFound();
@@ -31,10 +31,10 @@ namespace GestorEventos.Api.Controllers
         }
 
         [HttpPost("nuevo")]
-        public IActionResult PostNuevaProvincia([FromBody] Localidad localidadNueva)
+        public IActionResult Post([FromBody] Localidad localidadNueva)
         {
             LocalidadService localidadService = new LocalidadService();
-            localidadService.AgregarLocalidad(localidadNueva);
+            localidadService.Crear(localidadNueva);
 
             return Ok();
         }

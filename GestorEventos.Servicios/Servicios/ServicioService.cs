@@ -1,14 +1,9 @@
 ﻿
 using GestorEventos.Servicios.Entidades;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GestorEventos.Servicios.Servicios
 {
-	public class ServicioService
+    public class ServicioService
 	{
 		public IEnumerable<Servicio> Servicios { get; set; }
 
@@ -44,7 +39,6 @@ namespace GestorEventos.Servicios.Servicios
 			{
 				List<Servicio> lista = this.Servicios.ToList();
 				lista.Add(servicio);
-//				this.Servicios.ToList().Add(servicio);
 				return true;
 			}
 			catch(Exception ex)

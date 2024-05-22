@@ -1,14 +1,9 @@
 ﻿
 using GestorEventos.Servicios.Entidades;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GestorEventos.Servicios.Servicios
 {
-	public class ProvinciaService
+    public class ProvinciaService
 	{
 		public IEnumerable<Provincia> Provincias { get; set; }
 

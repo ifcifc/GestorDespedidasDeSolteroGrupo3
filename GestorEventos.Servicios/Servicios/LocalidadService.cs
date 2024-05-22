@@ -13,9 +13,9 @@ namespace GestorEventos.Servicios.Servicios
         public IEnumerable<Localidad> Localidades { get; set; }
         public LocalidadService() {
             this.Localidades = new List<Localidad> {
-                new Localidad{IdLocalidad=1, IdProvincia=1, Nombre="Ciudad 1", CodigoArea=1},
-                new Localidad{IdLocalidad=2, IdProvincia=2, Nombre="Ciudad 2", CodigoArea=2},
-                new Localidad{IdLocalidad=3, IdProvincia=3, Nombre="Ciudad 3", CodigoArea=3},
+                new Localidad{IdLocalidad=1, IdProvincia=1, Nombre="Ciudad 1", CodigoArea="1"},
+                new Localidad{IdLocalidad=2, IdProvincia=2, Nombre="Ciudad 2", CodigoArea="2"},
+                new Localidad{IdLocalidad=3, IdProvincia=3, Nombre="Ciudad 3", CodigoArea="3"},
             };
         }
 

@@ -14,17 +14,17 @@ namespace GestorEventos.Api.Controllers
 		{
 			PersonaService personaService = new PersonaService();
 
-			return Ok(personaService.GetPersonasDePrueba());
+			return Ok(personaService.Get());
 		}
 
 		[HttpGet("{idPersona:int}")]
-		public IActionResult GetPersonaPorId(int idPersona)
+		public IActionResult GetPorId(int idPersona)
 		{
 			PersonaService personaService = new PersonaService();
 
 
 
-			Persona persona = personaService.GetPersonaDePruebaSegunId(idPersona);
+			Persona persona = personaService.GetPorId(idPersona);
 
 			if (persona == null)
 				return NotFound();
@@ -32,5 +32,13 @@ namespace GestorEventos.Api.Controllers
 				return Ok(persona);
 		}
 
-	}
+        [HttpPost("nuevo")]
+        public IActionResult Post([FromBody] Persona persona)
+        {
+            PersonaService personaService = new PersonaService();
+            personaService.Crear(persona);
+
+            return Ok();
+        }
+    }
 }

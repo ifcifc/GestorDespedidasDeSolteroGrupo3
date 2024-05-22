@@ -1,13 +1,8 @@
 ﻿using GestorEventos.Servicios.Entidades;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GestorEventos.Servicios.Servicios
 {
-	public class PersonaService
+    public class PersonaService
 	{
 		//IENumerable para esstablecer que es una Lista de Entidades
 		public IEnumerable<Persona> PersonasDePrueba { get; set; }
@@ -45,6 +40,22 @@ namespace GestorEventos.Servicios.Servicios
 
 
 		}
+
+        public bool Crear(Persona persona)
+        {
+            try
+            {
+                List<Persona> lista = this.PersonasDePrueba.ToList();
+                lista.Add(persona);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
+        }
+
         public bool Eliminar(int ID)
         {
             return false;
