@@ -1,0 +1,15 @@
+﻿################################################################################
+# Este archivo .gitignore ha sido creado automáticamente por Microsoft(R) Visual Studio.
+################################################################################
+
+/GestorEventos.WebAdmin/bin
+/GestorEventos.WebAdmin/obj
+/GestorEventos.Api/bin
+/GestorEventos.Api/obj
+/GestorEventos.Test/bin
+/GestorEventos.Test/obj
+/GestorEventos.Servicios/bin
+/GestorEventos.Servicios/obj
+/.vs
+/GestorEventos.Test/obj/Debug/net8.0/GestorEventos.Test.assets.cache
+/GestorEventos.WebAdmin/obj/Debug/net8.0/GestorEventos.WebAdmin.assets.cache
