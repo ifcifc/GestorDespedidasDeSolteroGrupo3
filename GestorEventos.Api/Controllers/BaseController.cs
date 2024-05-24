@@ -6,17 +6,19 @@ namespace GestorEventos.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BaseController <T, V> : Controller where T : Service<V>, new() where V : Entidad, new()
+    public class BaseController <V> : Controller where V : Entidad, new()
     {
-
-        public BaseController() { }
+        private IService<V> Service;
+        public BaseController(IService<V> service) { 
+            this.Service = service;
+        }
 
         [HttpGet]
         public IActionResult Get()
         {
             try
             {
-                return Ok(new T().GetAll());
+                return Ok(this.Service.GetAll());
             }
             catch (Exception)
             {
@@ -29,7 +31,7 @@ namespace GestorEventos.Api.Controllers
         {
             try
             {
-                var entidad = new T().GetByID(id);
+                var entidad = this.Service.GetByID(id);
                 return (entidad == null) ? NotFound() : Ok(entidad);
             }
             catch (Exception)
@@ -42,7 +44,7 @@ namespace GestorEventos.Api.Controllers
         public IActionResult Add([FromBody] V entidad)
         {
             try {
-                return new T().Add(entidad)? Ok() : UnprocessableEntity();
+                return this.Service.Add(entidad)? Ok() : UnprocessableEntity();
             } catch (Exception) {
                 return UnprocessableEntity();   
             }
@@ -53,7 +55,7 @@ namespace GestorEventos.Api.Controllers
         {
             try
             {
-                return new T().Modify(id, entidad) ? Ok() : UnprocessableEntity();
+                return this.Service.Modify(id, entidad) ? Ok() : UnprocessableEntity();
             }
             catch (Exception)
             {
@@ -67,7 +69,7 @@ namespace GestorEventos.Api.Controllers
         {
             try
             {
-                return new T().Delete(id) ? Ok() : UnprocessableEntity();
+                return this.Service.Delete(id) ? Ok() : UnprocessableEntity();
             }
             catch (Exception)
             {

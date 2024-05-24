@@ -5,7 +5,8 @@ using System.Reflection;
 
 namespace GestorEventos.Servicios.Servicios
 {
-    public class Service<T> where T : Entidad, new()
+
+    public class Service<T> : IService<T> where T : Entidad, new()
     {
         public virtual string SQL_GetAll => "";
         public virtual string SQL_GetByID => "";
@@ -17,16 +18,6 @@ namespace GestorEventos.Servicios.Servicios
             //Para evitar el problema de las comas en los numeros
             Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
         }
-
-        /*public virtual IEnumerable<T>? GetAll();
-        public abstract T? GetByID(int ID);
-
-        public abstract bool Add(T entidad);
-
-        public abstract bool Delete(int ID);
-
-        public abstract bool Modify(int ID, T entidad);*/
-
 
         public virtual IEnumerable<T>? GetAll()
         {

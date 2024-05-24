@@ -4,19 +4,24 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GestorEventos.WebAdmin.Controllers
 {
-    public abstract class WebController<T, V> : Controller where T : Service<V>, new() where V : Entidad, new()
+    public abstract class WebController<V> : Controller where V : Entidad, new()
     {
+        private IService<V> Service;
+        public WebController(IService<V> service)
+        {
+            this.Service = service;
+        }
 
         // GET: ServiceController
         public ActionResult Index()
         {
-            return View(new T().GetAll());
+            return View(this.Service.GetAll());
         }
 
         // GET: ServiceController/Details/5
         public ActionResult Details(int id)
         {
-            return View(new T().GetByID(id));
+            return View(this.Service.GetByID(id));
         }
 
         // GET: ServiceController/Create
@@ -32,8 +37,7 @@ namespace GestorEventos.WebAdmin.Controllers
         {
             try
             {
-                T service = new T();
-                service.Add(service.FromFormCollection(collection));
+                this.Service.Add(this.Service.FromFormCollection(collection));
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -45,7 +49,7 @@ namespace GestorEventos.WebAdmin.Controllers
         // GET: ServiceController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View(new T().GetByID(id));
+            return View(this.Service.GetByID(id));
         }
 
         // POST: ServiceController/Edit/5
@@ -55,11 +59,9 @@ namespace GestorEventos.WebAdmin.Controllers
         {
             try
             {
-
-                T service = new T();
-                service.Modify(
+                this.Service.Modify(
                     id,
-                    service.FromFormCollection(collection));
+                    this.Service.FromFormCollection(collection));
 
                 return RedirectToAction(nameof(Index));
             }
@@ -72,7 +74,7 @@ namespace GestorEventos.WebAdmin.Controllers
         // GET: ServiceController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View(new T().GetByID(id));
+            return View(this.Service.GetByID(id));
         }
 
         // POST: ServiceController/Delete/5
@@ -82,7 +84,7 @@ namespace GestorEventos.WebAdmin.Controllers
         {
             try
             {
-                new T().Delete(id);
+                this.Service.Delete(id);
                 return RedirectToAction(nameof(Index));
             }
             catch

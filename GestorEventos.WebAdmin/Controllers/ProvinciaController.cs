@@ -5,8 +5,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GestorEventos.WebAdmin.Controllers
 {
-    public class ProvinciaController : WebController<ProvinciaService, Provincia>
+    public class ProvinciaController : WebController<Provincia>
     {
-       
+        public ProvinciaController(IService<Provincia> service) : base(service)
+        {
+        }
     }
 }

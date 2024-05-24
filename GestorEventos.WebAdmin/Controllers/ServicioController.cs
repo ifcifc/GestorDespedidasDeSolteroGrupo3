@@ -6,8 +6,10 @@ using Newtonsoft.Json;
 
 namespace GestorEventos.WebAdmin.Controllers
 {
-    public class ServicioController : WebController<ServicioService, Servicio>
+    public class ServicioController : WebController<Servicio>
     {
-      
+        public ServicioController(IService<Servicio> service) : base(service)
+        {
+        }
     }
 }

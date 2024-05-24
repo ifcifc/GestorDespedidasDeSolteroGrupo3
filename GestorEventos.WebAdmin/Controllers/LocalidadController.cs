@@ -3,7 +3,10 @@ using GestorEventos.Servicios.Servicios;
 
 namespace GestorEventos.WebAdmin.Controllers
 {
-    public class LocalidadController : WebController<LocalidadService, Localidad>
+    public class LocalidadController : WebController<Localidad>
     {
+        public LocalidadController(IService<Localidad> service) : base(service)
+        {
+        }
     }
 }

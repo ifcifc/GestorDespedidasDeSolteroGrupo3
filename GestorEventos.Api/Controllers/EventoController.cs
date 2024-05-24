@@ -3,7 +3,10 @@ using GestorEventos.Servicios.Servicios;
 
 namespace GestorEventos.Api.Controllers
 {
-    public class EventoController : BaseController<EventoService, Evento>
+    public class EventoController : BaseController<Evento>
     {
+        public EventoController(IService<Evento> service) : base(service)
+        {
+        }
     }
 }

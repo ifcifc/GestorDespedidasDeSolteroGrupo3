@@ -5,8 +5,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GestorEventos.Api.Controllers
 {
-	public class ServicioController : BaseController<ServicioService, Servicio>
+    public class ServicioController : BaseController<Servicio>
     {
-		
+        public ServicioController(IService<Servicio> service) : base(service)
+        {
+        }
     }
 }
