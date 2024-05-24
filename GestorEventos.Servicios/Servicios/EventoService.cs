@@ -1,76 +1,22 @@
 ﻿
 using GestorEventos.Servicios.Entidades;
-using GestorEventos.Servicios.SQLUtils;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GestorEventos.Servicios.Servicios
 {
-	public class EventoService : Service<Evento>
+    public class EventoService : Service<Evento>
     {
+        public override string SQL_GetAll => "SELECT * FROM Eventos WHERE IsDelete=0;";
+        public override string SQL_GetByID => "SELECT * FROM Eventos WHERE IsDelete=0 AND IdEvento={0};";
+        public override string SQL_Add => "INSERT INTO Eventos ([IdTipoEvento], [IdPersonaAgasajada], [IdPersonaContacto], [NombreEvento], [FechaEvento], [CantidadPersonas]) " +
+                                                       "VALUES (@IdTipoEvento,  @IdPersonaAgasajada,  @IdPersonaContacto,  @NombreEvento,  @FechaEvento,  @CantidadPersonas);";
+        public override string SQL_Delete => "UPDATE Eventos SET IdTipoEvento=@IdTipoEvento, IdPersonaAgasajada=@IdPersonaAgasajada, IdPersonaContacto=@IdPersonaContacto, NombreEvento=@NombreEvento, FechaEvento=@FechaEvento, CantidadPersonas=@CantidadPersonas  WHERE IdEvento={0}";
+        public override string SQL_Modify => "UPDATE Eventos SET IsDelete=1 WHERE IdEvento={0};";
 
-		public EventoService()
+        public EventoService()
 		{
 			
 		}
 
-		override public IEnumerable<Evento>? GetAll()
-		{
-			return SQLExecute
-					.New()
-					.Query<Evento>(SQLExecute.TEVENTO_GET_ALL);
-		}
-
-        override public Evento? GetByID(int IdEvento)
-		{
-            return SQLExecute
-                    .New()
-                    .QueryFirst<Evento>(SQLExecute.TEVENTO_GET_BY_ID, IdEvento);
-        }
-
-
-		override public bool Add(Evento evento)
-		{
-            return SQLExecute
-                    .New()
-					.Transaction(true)
-                    .Execute(SQLExecute.TEVENTO_INSERT, 
-								evento.IdTipoEvento, 
-								evento.IdPersonaAgasajada, 
-								evento.IdPersonaContacto, 
-								evento.NombreEvento, 
-								evento.FechaEvento.ToString(), 
-								evento.CantidadPersonas);
-        }
-
-        override public bool Modify(int idEvento, Evento evento)
-        {
-            return SQLExecute
-                    .New()
-                    .Transaction(true)
-                    .Execute(SQLExecute.TEVENTO_MODIFY,
-                                idEvento,
-                                evento.IdTipoEvento,
-                                evento.IdPersonaAgasajada,
-                                evento.IdPersonaContacto,
-                                evento.NombreEvento,
-                                evento.FechaEvento.ToString(),
-                                evento.CantidadPersonas);
-        }
-
-        override public bool Delete(int idEvento) 
-		{
-            return SQLExecute
-                    .New()
-                    .Transaction(true)
-                    .Execute(SQLExecute.TEVENTO_DELETE, idEvento);
-
-        }
 
 	}
 }

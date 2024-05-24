@@ -1,59 +1,19 @@
 ﻿
 using GestorEventos.Servicios.Entidades;
-using GestorEventos.Servicios.SQLUtils;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GestorEventos.Servicios.Servicios
 {
 	public class ProvinciaService : Service<Provincia>
 	{
+        public override string SQL_GetAll => "SELECT * FROM Provincias WHERE IsDelete=0;";
+        public override string SQL_GetByID => "SELECT * FROM Provincias WHERE IsDelete=0 AND IdProvincia={0};";
+        public override string SQL_Add => "INSERT INTO Provincias ([Nombre]) VALUES (@Nombre);";
+        public override string SQL_Delete => "UPDATE Provincias SET IsDelete=1 WHERE IdProvincia={0};";
+        public override string SQL_Modify => "UPDATE Provincias SET Nombre=@Nombre WHERE IdProvincia={0};";
 
-		public ProvinciaService()
+        public ProvinciaService()
 		{
 
 		}
-
-        override public IEnumerable<Provincia>? GetAll()
-        {
-            return SQLExecute
-                .New()
-                .Query<Provincia>(SQLExecute.TPROVINCIAS_GET_ALL);
-        }
-
-        override public Provincia? GetByID(int idProvincia)
-		{
-			return SQLExecute
-                .New()
-                .QueryFirst<Provincia>(SQLExecute.TPROVINCIAS_GET_BY_ID, idProvincia);
-		}
-
-        override public bool Add(Provincia provincia)
-		{
-            return SQLExecute
-                .New()
-                .Transaction(true)
-                .Execute(SQLExecute.TPROVINCIAS_INSERT, provincia.Nombre);
-        }
-
-        override public bool Delete(int idProvincia)
-        {
-            return SQLExecute
-                .New()
-                .Transaction(true)
-                .Execute(SQLExecute.TPROVINCIAS_DELETE, idProvincia);
-        }
-
-
-        override public bool Modify(int idProvincia, Provincia provincia)
-        {
-            return SQLExecute
-                .New()
-                .Transaction(true)
-                .Execute(SQLExecute.TPROVINCIAS_MODIFY, idProvincia, provincia.Nombre);
-        }
     }
 }

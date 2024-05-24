@@ -1,8 +1,10 @@
-﻿namespace GestorEventos.Servicios.Entidades
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace GestorEventos.Servicios.Entidades
 {
     public class Evento : Entidad
 	{
-		public int IdEvento { get; set; }
+        public int IdEvento { get; set; }
 		public string NombreEvento { get; set; }
 		public DateTime FechaEvento { get; set; }
 		public int CantidadPersonas { get; set; }

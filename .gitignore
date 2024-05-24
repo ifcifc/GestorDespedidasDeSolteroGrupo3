@@ -1,0 +1,8 @@
+﻿################################################################################
+# Este archivo .gitignore ha sido creado automáticamente por Microsoft(R) Visual Studio.
+################################################################################
+
+/GestorEventos.WebAdmin/bin/Debug/net8.0
+/.vs/GestorDespedidasDeSolteroGrupo3
+/.vs/slnx.sqlite
+/.vs/VSWorkspaceState.json

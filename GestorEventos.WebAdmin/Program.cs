@@ -1,5 +1,8 @@
 //Para evitar el problema de las comas en los numeros
+using GestorEventos.Servicios.SQLUtils;
+
 Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
+SQLExecute.DEFAULT_CONNECTION_STRING = "Server=(localdb)\\programacion;Database=gestioneventos;User Id=admin;Password=1234";
 
 var builder = WebApplication.CreateBuilder(args);
 

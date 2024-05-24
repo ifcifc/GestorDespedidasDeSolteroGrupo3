@@ -1,4 +1,6 @@
-﻿namespace GestorEventos.Servicios.Entidades
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace GestorEventos.Servicios.Entidades
 {
     public class Provincia : Entidad
     {

@@ -6,8 +6,11 @@ namespace GestorEventos.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BaseController <T, V> : Controller where T : Service<V>, new() where V : Entidad
+    public class BaseController <T, V> : Controller where T : Service<V>, new() where V : Entidad, new()
     {
+
+        public BaseController() { }
+
         [HttpGet]
         public IActionResult Get()
         {

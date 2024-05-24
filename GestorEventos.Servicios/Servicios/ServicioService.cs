@@ -1,77 +1,20 @@
 ﻿
 using GestorEventos.Servicios.Entidades;
-using GestorEventos.Servicios.SQLUtils;
 
 namespace GestorEventos.Servicios.Servicios
 {
     public class ServicioService : Service<Servicio>
 	{
+        public override string SQL_GetAll => "SELECT * FROM servicios WHERE IsDelete=0;";
+        public override string SQL_GetByID => "SELECT * FROM servicios WHERE IsDelete=0 AND IdServicio={0};";
+        public override string SQL_Add => "INSERT INTO servicios ([Descripcion], [PrecioServicio]) " +
+                                                         "VALUES (@Descripcion,  @PrecioServicio);";
+        public override string SQL_Delete => "UPDATE servicios SET IsDelete=1 WHERE IdServicio={0};";
+        public override string SQL_Modify => "UPDATE servicios SET Descripcion=@Descripcion, PrecioServicio=@PrecioServicio WHERE IdServicio={0};";
 
-		public ServicioService ()
+        public ServicioService ()
 		{
             
         }
-
-        override public IEnumerable<Servicio>? GetAll()
-		{
-            return SQLExecute.New().Query<Servicio>(SQLExecute.TSERVICIOS_GET_ALL);
-		}
-
-        override public Servicio? GetByID(int IdServicio)
-		{
-            return SQLExecute.New().QueryFirst<Servicio>(SQLExecute.TSERVICIOS_GET_BY_ID, IdServicio);
-
-        }
-
-
-        override public bool Add(Servicio servicio)
-		{
-			try
-			{
-                return SQLExecute
-                    .New()
-                    .Transaction(true)
-                    .Execute(
-                        SQLExecute.TSERVICIOS_INSERT,
-                        servicio.Descripcion,
-                        servicio.PrecioServicio);
-            }
-			catch(Exception)
-			{
-				return false;
-			}
-        }
-
-        override public bool Delete(int idServicio)
-        {
-            try
-            {
-                return SQLExecute
-                    .New()
-                    .Transaction(true)
-                    .Execute(SQLExecute.TSERVICIOS_DELETE, idServicio);
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-        }
-
-       override public bool Modify(int idServicio, Servicio servicio)
-        {
-            try
-            {
-                return SQLExecute
-                    .New()
-                    .Transaction(true)
-                    .Execute(SQLExecute.TSERVICIOS_MODIFY, idServicio, servicio.Descripcion, servicio.PrecioServicio);
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-
-        }
-
     }
 }

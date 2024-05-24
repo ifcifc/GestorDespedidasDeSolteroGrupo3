@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace GestorEventos.Servicios.Entidades
 {
 	public class TipoEvento : Entidad
 	{
-		public int IdTipoEvento { get; set; }
+        public int IdTipoEvento { get; set; }
 		public string Descripcion { get; set; }
 
         public override string ToString()
