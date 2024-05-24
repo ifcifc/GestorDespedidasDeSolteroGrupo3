@@ -11,3 +11,5 @@
 /GestorEventos.Servicios/bin
 /GestorEventos.Servicios/obj
 /.vs
+/GestorEventos.Test/obj/Debug/net8.0/GestorEventos.Test.assets.cache
+/GestorEventos.WebAdmin/obj/Debug/net8.0/GestorEventos.WebAdmin.assets.cache
