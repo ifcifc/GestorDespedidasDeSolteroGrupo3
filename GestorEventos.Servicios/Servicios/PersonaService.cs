@@ -1,69 +1,45 @@
 ﻿using GestorEventos.Servicios.Entidades;
+using GestorEventos.Servicios.SQL;
 
 namespace GestorEventos.Servicios.Servicios
 {
     public class PersonaService
 	{
-		//IENumerable para esstablecer que es una Lista de Entidades
-		public IEnumerable<Persona> PersonasDePrueba { get; set; }
-
-
+		
 		//constructor
 		public PersonaService()
 		{
-			PersonasDePrueba = new List<Persona>
-			{
-				new Persona{ IdPersona = 1, Nombre = "Esteban", Apellido = "Gomez", Email = "estebangomez@yopmail.com", Telefono = "1111111", DireccionCalle="Calle_1", DireccionNumero=463, DireccionDepartamento="", DireccionPiso=0, IdLocalidad=1},
-				new Persona{ IdPersona = 2, Nombre = "Jose", Apellido = "Peñaloza", Email = "Josepenaloza@yopmail.com", Telefono = "22222222", DireccionCalle="Calle_2", DireccionNumero=753, DireccionDepartamento="B", DireccionPiso=2, IdLocalidad=2},
-				new Persona{ IdPersona = 3, Nombre = "Juana", Apellido = "Manzo",  Email = "juanamanzo@yopmail.com", Telefono = "3333333", DireccionCalle="Calle_3", DireccionNumero=1146, DireccionDepartamento="S", DireccionPiso=9, IdLocalidad=3},
-
-			};
+			
 		}
 
-		public IEnumerable<Persona> Get()
-		{
-			return PersonasDePrueba;
-		}
+        public IEnumerable<Persona>? Get()
+        {
+            return SQLConnect.Query<Persona>("SELECT * FROM Personas WHERE Borrado = 0");
+        }
 
-		public Persona? GetPorId(int IdPersona)
-		{
-			try
-			{
-				Persona persona = PersonasDePrueba.Where(x => x.IdPersona == IdPersona).First();
-				return persona; 
-			}
-			catch (Exception ex)
-			{
-				return null;
-			}
+        public Persona? GetPorId(int IdPersona)
+        {
+            return SQLConnect.QueryFirst<Persona>("SELECT * FROM Personas WHERE IdPersona = " + IdPersona);
+        }
 
-
-
-		}
 
         public bool Crear(Persona persona)
         {
-            try
-            {
-                List<Persona> lista = this.PersonasDePrueba.ToList();
-                lista.Add(persona);
-                return true;
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
+            string query = "INSERT INTO Personas (Nombre, Apellido, Direccion, Telefono, Email) VALUES ( @Nombre, @Apellido, @Direccion, @Telefono, @Email);";
+            return SQLConnect.Execute(query, persona);
 
         }
 
-        public bool Eliminar(int ID)
+        public bool Eliminar(int idPersona)
         {
-            return false;
+            string query = "UPDATE Personas SET Borrado = 1 where IdPersona = " + idPersona;
+            return SQLConnect.Execute(query);
         }
 
-        public bool Modificar(int ID, Persona entidad)
+        public bool Modificar(int idPersona, Persona persona)
         {
-            return false;
+            string query = "UPDATE Personas SET Nombre = @Nombre, Apellido = @Apellido, Direccion = @Direccion, Telefono = @Telefono, Email = @Email  WHERE IdPersona = " + idPersona;
+            return SQLConnect.Execute(query, persona);
         }
 
 

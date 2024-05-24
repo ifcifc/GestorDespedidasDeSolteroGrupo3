@@ -17,14 +17,10 @@ namespace GestorEventos.Api.Controllers
 			return Ok(personaService.Get());
 		}
 
-		[HttpGet("{idPersona:int}")]
-		public IActionResult GetPorId(int idPersona)
-		{
-			PersonaService personaService = new PersonaService();
-
-
-
-			Persona persona = personaService.GetPorId(idPersona);
+        [HttpGet("{idPersona:int}")]
+        public IActionResult GetPorId(int idPersona)
+        {
+            Persona? persona = new PersonaService().GetPorId(idPersona);
 
 			if (persona == null)
 				return NotFound();
@@ -35,10 +31,34 @@ namespace GestorEventos.Api.Controllers
         [HttpPost("nuevo")]
         public IActionResult Post([FromBody] Persona persona)
         {
-            PersonaService personaService = new PersonaService();
-            personaService.Crear(persona);
+            return new PersonaService().Crear(persona)? Ok(): UnprocessableEntity();
+        }
 
-            return Ok();
+        [HttpPut("{id:int}/modificar")]
+        public IActionResult Modificar(int id, [FromBody] Persona persona)
+        {
+            try
+            {
+                return new PersonaService().Modificar(id, persona) ? Ok() : UnprocessableEntity();
+            }
+            catch (Exception)
+            {
+                return UnprocessableEntity();
+            }
+        }
+
+
+        [HttpDelete("{id:int}/Eliminar")]
+        public IActionResult Eliminar(int id)
+        {
+            try
+            {
+                return new PersonaService().Eliminar(id) ? Ok() : UnprocessableEntity();
+            }
+            catch (Exception)
+            {
+                return UnprocessableEntity();
+            }
         }
     }
 }

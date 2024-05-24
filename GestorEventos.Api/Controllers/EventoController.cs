@@ -20,9 +20,7 @@ namespace GestorEventos.Api.Controllers
 		[HttpGet("{idEvento:int}")]
 		public IActionResult GetPorId(int idEvento)
 		{
-            EventoService eventoService = new EventoService();
-
-			var evento = eventoService.GetPorId(idEvento);
+			var evento = new EventoService().GetPorId(idEvento);
 
 			if (evento == null)
 				return NotFound();
@@ -33,12 +31,8 @@ namespace GestorEventos.Api.Controllers
 		[HttpPost("nuevo")]
 		public IActionResult Post([FromBody] Evento eventoNuevo)
 		{
-
-            EventoService eventosService = new EventoService();
-            eventosService.Crear(eventoNuevo);
-
-			return Ok();
-		}
+            return new EventoService().Crear(eventoNuevo) ? Ok() : UnprocessableEntity();
+        }
 
 
         [HttpPut("{id:int}/modificar")]
