@@ -17,16 +17,17 @@ namespace GestorEventos.Servicios.Entidades
 
 		public string Nombre { get; set; } 
 		public string Apellido { get; set; }
-		//public string Direccion { get; set; }
+		
+		public string Direccion { get; set; }
 		public string Telefono { get; set; }
 		public string Email { get; set; }
 
-		public int IdLocalidad {  get; set; }
+		/*public int IdLocalidad {  get; set; }
 
         public string DireccionCalle { get; set; }
         public int DireccionNumero { get; set; }
         public int DireccionPiso { get; set; }
-        public string DireccionDepartamento { get; set; }
+        public string DireccionDepartamento { get; set; }*/
         public bool Borrado { get; set; }
 
     }
