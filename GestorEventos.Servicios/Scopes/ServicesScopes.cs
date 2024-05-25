@@ -6,9 +6,9 @@ using System.Reflection;
 
 namespace GestorEventos.Servicios.Scopes
 {
-    public class Scopes
+    public class ServicesScopes
     {
-        public static void RegisterAll(WebApplicationBuilder builder) 
+        public static void RegisterAllServices(WebApplicationBuilder builder) 
         {
             builder.Services.AddScoped<IService<Evento>, EventoService>();
             builder.Services.AddScoped<IService<Localidad>, LocalidadService>();

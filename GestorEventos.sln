@@ -7,9 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestorEventos.Api", "Gestor
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestorEventos.Servicios", "GestorEventos.Servicios\GestorEventos.Servicios.csproj", "{77B2AD96-B4FB-4132-8B7D-90CA0333329C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestorEventos.WebAdmin", "GestorEventos.WebAdmin\GestorEventos.WebAdmin.csproj", "{E3428093-E607-447D-B04E-83EB23B2009C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestorEventos.WebAdmin", "GestorEventos.WebAdmin\GestorEventos.WebAdmin.csproj", "{E3428093-E607-447D-B04E-83EB23B2009C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestorEventos.Test", "GestorEventos.Test\GestorEventos.Test.csproj", "{BFAB1E03-5C9F-4034-BF86-2F46885546EA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestorEventos.Test", "GestorEventos.Test\GestorEventos.Test.csproj", "{BFAB1E03-5C9F-4034-BF86-2F46885546EA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

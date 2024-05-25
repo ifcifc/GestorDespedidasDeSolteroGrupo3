@@ -8,7 +8,3 @@ using Google.Protobuf.WellKnownTypes;
 //Para evitar el problema de las comas en los numeros
 Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
 SQLExecute.DEFAULT_CONNECTION_STRING = "Server=(localdb)\\programacion;Database=gestioneventos;User Id=admin;Password=1234";
-
-SQLExecute.New().Query<Provincia>(SQLCommands.TPROVINCIAS_GET_ALL);
-
-Console.WriteLine("Wiiii");

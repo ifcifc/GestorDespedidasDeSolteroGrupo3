@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 SQLExecute.DEFAULT_CONNECTION_STRING = builder.Configuration.GetValue<string>("SQLConnectionString");
 //Registro todos los Scopes de Servicios
-Scopes.RegisterAll(builder);
+ServicesScopes.RegisterAllServices(builder);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

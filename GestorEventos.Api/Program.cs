@@ -12,7 +12,7 @@ SQLExecute.DEFAULT_CONNECTION_STRING = builder.Configuration.GetSection("SQLConn
 
 
 //Registro todos los Scopes de Servicios
-Scopes.RegisterAll(builder);
+ServicesScopes.RegisterAllServices(builder);
 
 // Add services to the container.
 
