@@ -13,3 +13,12 @@
 /.vs
 /GestorEventos.Test/obj/Debug/net8.0/GestorEventos.Test.assets.cache
 /GestorEventos.WebAdmin/obj/Debug/net8.0/GestorEventos.WebAdmin.assets.cache
+/GestorEventos.Servicios/bin/Debug/net8.0/GestorEventos.Servicios.deps.json
+/GestorEventos.Servicios/bin/Debug/net8.0/GestorEventos.Servicios.dll
+/GestorEventos.Servicios/bin/Debug/net8.0/GestorEventos.Servicios.pdb
+/GestorEventos.Servicios/obj/Debug/net8.0/ref/GestorEventos.Servicios.dll
+/GestorEventos.Test/obj/Debug/net8.0/GestorEventos.Test.csproj.FileListAbsolute.txt
+/GestorEventos.Test/obj/GestorEventos.Test.csproj.nuget.dgspec.json
+/GestorEventos.Test/obj/GestorEventos.Test.csproj.nuget.g.props
+/GestorEventos.Test/obj/project.assets.json
+/GestorEventos.Test/obj/project.nuget.cache
