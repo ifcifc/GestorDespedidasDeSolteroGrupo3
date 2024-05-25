@@ -22,3 +22,16 @@
 /GestorEventos.Test/obj/GestorEventos.Test.csproj.nuget.g.props
 /GestorEventos.Test/obj/project.assets.json
 /GestorEventos.Test/obj/project.nuget.cache
+/GestorEventos.WebClient/obj/Debug/net8.0/.NETCoreApp,Version=v8.0.AssemblyAttributes.cs
+/GestorEventos.WebClient/obj/Debug/net8.0/GestorEventos.WebClient.AssemblyInfo.cs
+/GestorEventos.WebClient/obj/Debug/net8.0/GestorEventos.WebClient.AssemblyInfoInputs.cache
+/GestorEventos.WebClient/obj/Debug/net8.0/GestorEventos.WebClient.assets.cache
+/GestorEventos.WebClient/obj/Debug/net8.0/GestorEventos.WebClient.GeneratedMSBuildEditorConfig.editorconfig
+/GestorEventos.WebClient/obj/Debug/net8.0/GestorEventos.WebClient.GlobalUsings.g.cs
+/GestorEventos.WebClient/obj/Debug/net8.0/GestorEventos.WebClient.RazorAssemblyInfo.cache
+/GestorEventos.WebClient/obj/Debug/net8.0/GestorEventos.WebClient.RazorAssemblyInfo.cs
+/GestorEventos.WebClient/obj/GestorEventos.WebClient.csproj.nuget.dgspec.json
+/GestorEventos.WebClient/obj/GestorEventos.WebClient.csproj.nuget.g.props
+/GestorEventos.WebClient/obj/GestorEventos.WebClient.csproj.nuget.g.targets
+/GestorEventos.WebClient/obj/project.assets.json
+/GestorEventos.WebClient/obj/project.nuget.cache
