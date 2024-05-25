@@ -35,3 +35,13 @@
 /GestorEventos.WebClient/obj/GestorEventos.WebClient.csproj.nuget.g.targets
 /GestorEventos.WebClient/obj/project.assets.json
 /GestorEventos.WebClient/obj/project.nuget.cache
+/GestorEventos.WebClient/bin/Debug/net8.0/appsettings.Development.json
+/GestorEventos.WebClient/bin/Debug/net8.0/appsettings.json
+/GestorEventos.WebClient/bin/Debug/net8.0/GestorEventos.WebClient.deps.json
+/GestorEventos.WebClient/bin/Debug/net8.0/GestorEventos.WebClient.dll
+/GestorEventos.WebClient/bin/Debug/net8.0/GestorEventos.WebClient.exe
+/GestorEventos.WebClient/bin/Debug/net8.0/GestorEventos.WebClient.pdb
+/GestorEventos.WebClient/bin/Debug/net8.0/GestorEventos.WebClient.runtimeconfig.json
+/GestorEventos.WebClient/bin/Debug/net8.0/GestorEventos.WebClient.staticwebassets.runtime.json
+/GestorEventos.WebClient/bin/Debug/net8.0/Microsoft.AspNetCore.Authentication.Google.dll
+/GestorEventos.WebClient/obj/Debug/net8.0
