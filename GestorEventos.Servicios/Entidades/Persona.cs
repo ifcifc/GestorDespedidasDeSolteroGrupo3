@@ -4,6 +4,7 @@
 	{
 		public int IdPersona { get; set; }
         public int IdLocalidad { get; set; }
+        public string GoogleIdentifier { get; set; }
         public string Nombre { get; set; } 
 		public string Apellido { get; set; }
 		public string Telefono { get; set; }

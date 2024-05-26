@@ -12,7 +12,10 @@ namespace GestorEventos.Servicios.Scopes
         {
             builder.Services.AddScoped<IService<Evento>, EventoService>();
             builder.Services.AddScoped<IService<Localidad>, LocalidadService>();
+            //builder.Services.AddScoped<PersonaService, PersonaService>();
+            //builder.Services.AddScoped<IPersonaService, PersonaService>();
             builder.Services.AddScoped<IService<Persona>, PersonaService>();
+
             builder.Services.AddScoped<IService<Provincia>, ProvinciaService>();
             builder.Services.AddScoped<IService<Servicio>, ServicioService>();
             builder.Services.AddScoped<IService<TipoEvento>, TipoEventoService>();

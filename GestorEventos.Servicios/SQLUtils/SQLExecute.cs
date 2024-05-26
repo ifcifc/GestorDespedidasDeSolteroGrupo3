@@ -92,7 +92,7 @@ namespace GestorEventos.Servicios.SQLUtils
                 using (IDbConnection db = new SqlConnection(this.ConnectionString))
                 {
                     db.Open();
-                    return db.QueryFirst<T>(this.FormatSQL(sql), args);
+                    return db.QueryFirstOrDefault<T>(this.FormatSQL(sql), args);
                 }
             }
             catch (Exception ex)
