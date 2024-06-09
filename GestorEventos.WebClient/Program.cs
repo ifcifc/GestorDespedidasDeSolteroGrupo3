@@ -5,10 +5,9 @@ using GestorEventos.Servicios.SQLUtils;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.Google;
 using System.Security.Claims;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 var builder = WebApplication.CreateBuilder(args);
-SQLExecute.DEFAULT_CONNECTION_STRING = builder.Configuration.GetValue<string>("SQLConnectionString");
+SQLConnect.DEFAULT_CONNECTION_STRING = builder.Configuration.GetValue<string>("SQLConnectionString");
 
 ServicesScopes.RegisterAllServices(builder);
 
@@ -41,10 +40,10 @@ builder.Services.AddAuthentication(options =>
             {
                 personaService.Add(new Persona
                 {
-                    Apellido = ctx.Identity.Claims.First(x => x.Type.Equals(ClaimTypes.Surname)).Value.ToString(),
-                    Nombre = ctx.Identity.Claims.First(x => x.Type.Equals(ClaimTypes.Name)).Value.ToString(),
+                    Apellido = ctx.Identity.Claims.FirstOrDefault(x => x.Type.Equals(ClaimTypes.Surname)).Value.ToString(),
+                    Nombre = ctx.Identity.Claims.FirstOrDefault(x => x.Type.Equals(ClaimTypes.Name)).Value.ToString(),
                     GoogleIdentifier = nameIdentifier,
-                    Email = ctx.Identity.Claims.First(x => x.Type.Equals(ClaimTypes.Email)).Value.ToString()
+                    Email = ctx.Identity.Claims.FirstOrDefault(x => x.Type.Equals(ClaimTypes.Email)).Value.ToString()
                 });
                 persona = personaService.GetByGoogleIdentifier(nameIdentifier);
             }

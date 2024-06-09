@@ -2,61 +2,57 @@
 using GestorEventos.Servicios.SQLUtils;
 using Microsoft.AspNetCore.Http;
 using System.Reflection;
+using static Dapper.SqlMapper;
 
 namespace GestorEventos.Servicios.Servicios
 {
-
     public class Service<T> : IService<T> where T : Entidad, new()
     {
-        public virtual string SQL_GetAll => "";
-        public virtual string SQL_GetByID => "";
-        public virtual string SQL_Add => "";
-        public virtual string SQL_Delete => "";
-        public virtual string SQL_Modify => "";
-
-        public Service() {
+        public Service()
+        {
             //Para evitar el problema de las comas en los numeros
             Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
         }
 
         public virtual IEnumerable<T>? GetAll()
         {
-            return SQLExecute
-                    .New()
-                    .Query<T>(SQL_GetAll);
+            using (var db = SQLConnect.New())
+            {
+                return db.Query<T>(new T().SQL_GetAll());
+            }
         }
 
         public virtual T? GetByID(int idEntity)
         {
-            return SQLExecute
-                    .New()
-                    .QueryFirst<T>(string.Format(SQL_GetByID, idEntity));
+            using (var db = SQLConnect.New())
+            {
+                return db.QueryFirst<T>(string.Format(new T().SQL_GetByID(), idEntity));
+            }
         }
 
 
         public virtual bool Add(T entity)
         {
-            return SQLExecute
-                    .New()
-                    .Transaction(true)
-                    .Execute(SQL_Add, entity);
+            using (var db = SQLConnect.New().Transaction())
+            {
+                return db.ExecuteWithCheck(new T().SQL_Add(), entity);
+            }       
         }
 
         public virtual bool Modify(int idEntity, T entity)
         {
-            return SQLExecute
-                    .New()
-                    .Transaction(true)
-                    .Execute(string.Format(SQL_Modify, idEntity), entity);
+            using (var db = SQLConnect.New().Transaction())
+            {
+                return db.ExecuteWithCheck(string.Format(new T().SQL_Modify(), idEntity), entity);
+            }
         }
 
         public virtual bool Delete(int idEntity)
         {
-            return SQLExecute
-                    .New()
-                    .Transaction(true)
-                    .Execute(string.Format(SQL_Delete, idEntity));
-
+            using (var db = SQLConnect.New().Transaction())
+            {
+                return db.ExecuteWithCheck(string.Format(new T().SQL_Delete(), idEntity));
+            }
         }
 
         public T FromFormCollection(IFormCollection collection)// where X : new()
@@ -91,6 +87,5 @@ namespace GestorEventos.Servicios.Servicios
 
             return value;
         }
-
     }
 }

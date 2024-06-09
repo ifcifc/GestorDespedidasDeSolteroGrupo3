@@ -8,7 +8,7 @@ Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.Invariant
 
 var builder = WebApplication.CreateBuilder(args);
 
-SQLExecute.DEFAULT_CONNECTION_STRING = builder.Configuration.GetSection("SQLConnectionString").Value;
+SQLConnect.DEFAULT_CONNECTION_STRING = builder.Configuration.GetSection("SQLConnectionString").Value;
 
 
 //Registro todos los Scopes de Servicios

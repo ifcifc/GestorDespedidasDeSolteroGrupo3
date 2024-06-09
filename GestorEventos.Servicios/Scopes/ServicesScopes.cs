@@ -2,7 +2,6 @@
 using GestorEventos.Servicios.Servicios;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
-using System.Reflection;
 
 namespace GestorEventos.Servicios.Scopes
 {
@@ -10,15 +9,13 @@ namespace GestorEventos.Servicios.Scopes
     {
         public static void RegisterAllServices(WebApplicationBuilder builder) 
         {
-            builder.Services.AddScoped<IService<Evento>, EventoService>();
-            builder.Services.AddScoped<IService<Localidad>, LocalidadService>();
-            //builder.Services.AddScoped<PersonaService, PersonaService>();
-            //builder.Services.AddScoped<IPersonaService, PersonaService>();
+            builder.Services.AddScoped<IService<Evento>, Service<Evento>>();
+            builder.Services.AddScoped<IService<Localidad>, Service<Localidad>>();
             builder.Services.AddScoped<IService<Persona>, PersonaService>();
 
-            builder.Services.AddScoped<IService<Provincia>, ProvinciaService>();
-            builder.Services.AddScoped<IService<Servicio>, ServicioService>();
-            builder.Services.AddScoped<IService<TipoEvento>, TipoEventoService>();
+            builder.Services.AddScoped<IService<Provincia>, Service<Provincia>>();
+            builder.Services.AddScoped<IService<Servicio>, Service<Servicio>>();
+            builder.Services.AddScoped<IService<TipoEvento>, Service<TipoEvento>>();
         }
     }
 }

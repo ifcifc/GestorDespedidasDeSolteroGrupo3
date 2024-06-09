@@ -5,7 +5,7 @@ using GestorEventos.Servicios.SQLUtils;
 Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
 var builder = WebApplication.CreateBuilder(args);
 
-SQLExecute.DEFAULT_CONNECTION_STRING = builder.Configuration.GetValue<string>("SQLConnectionString");
+SQLConnect.DEFAULT_CONNECTION_STRING = builder.Configuration.GetValue<string>("SQLConnectionString");
 //Registro todos los Scopes de Servicios
 ServicesScopes.RegisterAllServices(builder);
 

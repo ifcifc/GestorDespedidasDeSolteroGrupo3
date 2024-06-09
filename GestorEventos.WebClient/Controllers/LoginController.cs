@@ -32,6 +32,8 @@ namespace GestorEventos.WebClient.Controllers
                 x.Value
             });
 
+
+
             return RedirectToAction("Index", "Home");
         }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GestorEventos.Servicios.Entidades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -9,6 +10,12 @@ namespace GestorEventos.Servicios.Entidades
 {
 	public class Servicio : Entidad
     {
+        public override string SQL_GetAll() => "SELECT * FROM servicios WHERE IsDelete=0;";
+        public override string SQL_GetByID() => "SELECT * FROM servicios WHERE IsDelete=0 AND IdServicio={0};";
+        public override string SQL_Add() => "INSERT INTO servicios ([Descripcion], [PrecioServicio]) " +
+                                                         "VALUES (@Descripcion,  @PrecioServicio);";
+        public override string SQL_Delete() => "UPDATE servicios SET IsDelete=1 WHERE IdServicio={0};";
+        public override string SQL_Modify() => "UPDATE servicios SET Descripcion=@Descripcion, PrecioServicio=@PrecioServicio WHERE IdServicio={0};";
         public int IdServicio { get; set; }
 		public string Descripcion { get; set; }
 
