@@ -1,2 +1,6 @@
 # GestorDespedidasDeSolteroGrupo3
-- Proyecto personal Castellanos
+- Castellanos, Ignacio
+- Goñi, Jacqueline
+- Herr, Santiago 
+- Ristaño, Ana
+- Romano, Eliana
