@@ -61,15 +61,19 @@ namespace GestorEventos.Servicios.SQLUtils
             this.UseTransactions = true;
             return this;
         }
-
+        private string MakeTransaction(string sql) {
+            if (this.UseTransactions) return 
+                    ((CONNECTION_TYPE == ConnectionTypes.MYSQL)? "START":"BEGIN") +
+                    " TRANSACTION;\n" + sql + ";\n COMMIT;";
+            return sql;
+        }
         //Ejecuta un SQL
         //args -> Es la entidad
         public SQLConnect Execute(string sql, object? args = null)
         {
-            if (this.UseTransactions) sql = "START TRANSACTION;\n" + sql + ";\n COMMIT;";
             try
             {
-                this.DBConn.Execute(sql, args);//Ejecuta el sql
+                this.DBConn.Execute(MakeTransaction(sql), args);//Ejecuta el sql
             }
             catch (Exception ex)
             {
@@ -79,10 +83,10 @@ namespace GestorEventos.Servicios.SQLUtils
         }
 
         public T? ExecuteScalar<T>(string sql, object? args = null) {
-            if (this.UseTransactions) sql = "START TRANSACTION;\n" + sql + ";\n COMMIT;";
+            
             try
             {
-                return this.DBConn.ExecuteScalar<T>(sql, args);//Ejecuta el sql
+                return this.DBConn.ExecuteScalar<T>(MakeTransaction(sql), args);//Ejecuta el sql
             }
             catch (Exception ex)
             {
@@ -96,7 +100,7 @@ namespace GestorEventos.Servicios.SQLUtils
         {
             try
             {
-                return this.ExecuteWithResult(sql, args) == 1;
+                return this.ExecuteWithResult(MakeTransaction(sql), args) == 1;
             }
             catch (Exception) 
             {
@@ -107,11 +111,10 @@ namespace GestorEventos.Servicios.SQLUtils
         //Ejecuta un sql y devuelve un valor
         public int ExecuteWithResult(string sql, object? args = null)
         {
-            if (this.UseTransactions) sql = "START TRANSACTION;\n" + sql + ";\nCOMMIT;";
             try
             {
                 Console.WriteLine(sql);
-                int ret = this.DBConn.Execute(sql, args);
+                int ret = this.DBConn.Execute(MakeTransaction(sql), args);
                 return ret;
             }
             catch (Exception ex)
@@ -123,10 +126,10 @@ namespace GestorEventos.Servicios.SQLUtils
         //Ejecuta una Query
         public IEnumerable<T>? Query<T>(string sql, object? args = null)
         {
-            if (this.UseTransactions) sql = "START TRANSACTION;\n" + sql + ";\n COMMIT;";
+            
             try
             {
-                IEnumerable<T> query = this.DBConn.Query<T>(sql, args);
+                IEnumerable<T> query = this.DBConn.Query<T>(MakeTransaction(sql), args);
                 return query;
             }
             catch (Exception ex)
@@ -138,10 +141,10 @@ namespace GestorEventos.Servicios.SQLUtils
         //Ejecuta una Query y devuelve un unico elemento
         public T? QueryFirst<T>(string sql, object? args = null)
         {
-            if (this.UseTransactions) sql = "START TRANSACTION;\n" + sql + ";\n COMMIT;";
+            
             try
             {
-                T? query = this.DBConn.QueryFirstOrDefault<T>(sql, args);
+                T? query = this.DBConn.QueryFirstOrDefault<T>(MakeTransaction(sql), args);
                 return query;
             }
             catch (Exception ex)
