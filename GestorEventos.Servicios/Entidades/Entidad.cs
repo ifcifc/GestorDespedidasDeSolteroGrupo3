@@ -18,7 +18,7 @@ namespace GestorEventos.Servicios.Entidades
         public Entidad(){}
 
         [ScaffoldColumn(false)]
-        public bool IsDelete { get; set; }
+        public bool Borrado { get; set; }
 
         public abstract string ToString();
     }

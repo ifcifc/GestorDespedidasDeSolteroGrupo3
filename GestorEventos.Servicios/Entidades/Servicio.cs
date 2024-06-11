@@ -10,11 +10,11 @@ namespace GestorEventos.Servicios.Entidades
 {
 	public class Servicio : Entidad
     {
-        public override string SQL_GetAll() => "SELECT * FROM Servicios WHERE IsDelete=0";
-        public override string SQL_GetByID() => "SELECT * FROM Servicios WHERE IsDelete=0 AND IdServicio={0}";
+        public override string SQL_GetAll() => "SELECT * FROM Servicios WHERE Borrado=0";
+        public override string SQL_GetByID() => "SELECT * FROM Servicios WHERE Borrado=0 AND IdServicio={0}";
         public override string SQL_Add() => "INSERT INTO Servicios (Descripcion, PrecioServicio) " +
                                                          "VALUES (@Descripcion,  @PrecioServicio)";
-        public override string SQL_Delete() => "UPDATE Servicios SET IsDelete=1 WHERE IdServicio={0}";
+        public override string SQL_Delete() => "UPDATE Servicios SET Borrado=1 WHERE IdServicio={0}";
         public override string SQL_Modify() => "UPDATE Servicios SET Descripcion=@Descripcion, PrecioServicio=@PrecioServicio WHERE IdServicio={0}";
         public int IdServicio { get; set; }
 		public string Descripcion { get; set; }
@@ -24,8 +24,8 @@ namespace GestorEventos.Servicios.Entidades
         public override string ToString()
         {
             return string.Format(
-                "Servicio[IdServicio: {0}, Descripcion: {1}, PrecioServicio: {2}, isDelete]: {3}",
-                this.IdServicio, this.Descripcion, this.PrecioServicio, this.IsDelete);
+                "Servicio[IdServicio: {0}, Descripcion: {1}, PrecioServicio: {2}, Borrado]: {3}",
+                this.IdServicio, this.Descripcion, this.PrecioServicio, this.Borrado);
         }
     }
 }

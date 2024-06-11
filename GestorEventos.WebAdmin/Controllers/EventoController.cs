@@ -4,9 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GestorEventos.WebAdmin.Controllers
 {
-    public class EventoController : WebController<TipoEvento>
+    public class EventoController : WebController<Evento>
     {
-        public EventoController(IService<TipoEvento> service) : base(service)
+        public EventoController(IService<Evento> service) : base(service)
         {
         }
 }

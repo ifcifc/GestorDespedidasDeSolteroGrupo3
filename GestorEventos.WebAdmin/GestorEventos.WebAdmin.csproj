@@ -14,4 +14,8 @@
     <ProjectReference Include="..\GestorEventos.Servicios\GestorEventos.Servicios.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\Evento\" />
+  </ItemGroup>
+
 </Project>
