@@ -9,11 +9,11 @@ namespace GestorEventos.Servicios.Entidades
 {
 	public class TipoEvento : Entidad
 	{
-        public override string SQL_GetAll() => "SELECT * FROM TipoEventos WHERE IsDelete=0;";
-        public override string SQL_GetByID() => "SELECT * FROM TipoEventos WHERE IsDelete=0 AND IdTipoEvento={0};";
-        public override string SQL_Add() => "INSERT INTO TipoEventos ([Descripcion]) VALUES (@Descripcion);";
-        public override string SQL_Delete() => "UPDATE TipoEventos SET IsDelete=1 WHERE IdTipoEvento={0};";
-        public override string SQL_Modify() => "UPDATE TipoEventos SET Descripcion=@Descripcion WHERE IdTipoEvento={0};";
+        public override string SQL_GetAll() => "SELECT * FROM TiposEventos WHERE IsDelete=0";
+        public override string SQL_GetByID() => "SELECT * FROM TiposEventos WHERE IsDelete=0 AND IdTipoEvento={0}";
+        public override string SQL_Add() => "INSERT INTO TiposEventos (Descripcion) VALUES (@Descripcion)";
+        public override string SQL_Delete() => "UPDATE TiposEventos SET IsDelete=1 WHERE IdTipoEvento={0}";
+        public override string SQL_Modify() => "UPDATE TiposEventos SET Descripcion=@Descripcion WHERE IdTipoEvento={0}";
         public int IdTipoEvento { get; set; }
 		public string Descripcion { get; set; }
 

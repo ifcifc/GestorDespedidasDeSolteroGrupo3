@@ -95,3 +95,10 @@
 /GestorEventos.WebClient/obj/Release/net8.0/GestorEventos.WebClient.RazorAssemblyInfo.cache
 /GestorEventos.WebClient/obj/Release/net8.0/GestorEventos.WebClient.RazorAssemblyInfo.cs
 /GestorEventos.Test/obj/Debug/net8.0/apphost.exe
+/GestorEventos.Servicios/obj/Release/net8.0/GestorEventos.Servicios.AssemblyInfo.cs
+/GestorEventos.Servicios/obj/Release/net8.0/GestorEventos.Servicios.AssemblyInfoInputs.cache
+/GestorEventos.Servicios/obj/Release/net8.0/GestorEventos.Servicios.assets.cache
+/GestorEventos.Servicios/obj/Release/net8.0/GestorEventos.Servicios.GeneratedMSBuildEditorConfig.editorconfig
+/GestorEventos.Test/obj/GestorEventos.Test.csproj.nuget.g.targets
+/GestorEventos.WebAdmin/obj/Debug/net8.0/project.razor.vs.bin
+/GestorEventos.WebClient/obj/GestorEventos.WebClient.csproj.EntityFrameworkCore.targets

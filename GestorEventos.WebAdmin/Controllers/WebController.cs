@@ -38,6 +38,7 @@ namespace GestorEventos.WebAdmin.Controllers
             try
             {
                 this.Service.Add(this.Service.FromFormCollection(collection));
+
                 return RedirectToAction(nameof(Index));
             }
             catch

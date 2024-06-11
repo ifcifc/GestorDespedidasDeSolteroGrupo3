@@ -9,14 +9,21 @@ using System.Data;
 using Dapper;
 using GestorEventos.Test;
 using MySqlX.XDevAPI.Relational;
+using System.Data.SqlServerCe;
 
 //Para evitar el problema de las comas en los numeros
 Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
-SQLConnect.DEFAULT_CONNECTION_STRING = "Server=(localdb)\\programacion;Database=gestioneventos;User Id=admin;Password=1234";
+//SQLConnect.DEFAULT_CONNECTION_STRING = "Server=(localdb)\\programacion;Database=gestioneventos;User Id=admin;Password=1234";
+SQLConnect.DEFAULT_CONNECTION_STRING = "Server=sql10.freesqldatabase.com;Port=3306;Database=sql10712945;Uid=sql10712945;Pwd=12snVJGCyw;\r\n";
+SQLConnect.CONNECTION_TYPE = ConnectionTypes.MYSQL;
 
-
-
-
-
+using (SQLConnect connection = SQLConnect.New())
+{
+    IEnumerable<TipoEvento>? enumerable = connection.Query<TipoEvento>(new TipoEvento().SQL_GetAll());
+    foreach (var item in enumerable)
+    {
+        Console.WriteLine(item.ToString());
+    }
+}
 
 

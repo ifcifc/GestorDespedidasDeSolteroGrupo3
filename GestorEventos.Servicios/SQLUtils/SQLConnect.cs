@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using MySql.Data.MySqlClient;
 using System.Data;
 using System.Data.SqlClient;
 using static System.Runtime.InteropServices.JavaScript.JSType;
@@ -9,6 +10,9 @@ namespace GestorEventos.Servicios.SQLUtils
     {
 
         public static string DEFAULT_CONNECTION_STRING = "";
+
+        //Para indicar el tipo de servidor a conectarse
+        public static ConnectionTypes CONNECTION_TYPE = ConnectionTypes.MSSQL;
 
         private string ConnectionString;
         private IDbConnection?  DBConn;//Para almacenar manejar la coneccion con la DB
@@ -27,7 +31,16 @@ namespace GestorEventos.Servicios.SQLUtils
 
         public SQLConnect(string connectionString) { 
             this.ConnectionString = connectionString;
-            this.DBConn = new SqlConnection(this.ConnectionString);//Crea la un objeto IDbConnection con el ConnectionString
+
+            //Crea la un objeto IDbConnection con el ConnectionString
+            this.DBConn = (CONNECTION_TYPE == ConnectionTypes.MSSQL) ? 
+                new SqlConnection(this.ConnectionString) : 
+                new MySqlConnection(this.ConnectionString);
+            
+            
+                
+
+
             try//Para comprobar si hay errores
             {
                 this.DBConn.Open();//Conecta con la base de datos
@@ -49,35 +62,34 @@ namespace GestorEventos.Servicios.SQLUtils
             return this;
         }
 
-        private IDbTransaction? BeginTransaction() 
-        {
-            try
-            {
-                return this.UseTransactions ? this.DBConn.BeginTransaction() : null;
-            }
-            catch (Exception ex){
-                throw new Exception("SQL ERROR: Connection DB.\n", ex);
-            }
-        }
-
         //Ejecuta un SQL
         //args -> Es la entidad
         public SQLConnect Execute(string sql, object? args = null)
         {
-            var DBTran = this.BeginTransaction();
+            if (this.UseTransactions) sql = "START TRANSACTION;\n" + sql + ";\n COMMIT;";
             try
             {
-                this.DBConn.Execute(sql, args, DBTran);//Ejecuta el sql
-                DBTran?.Commit();
+                this.DBConn.Execute(sql, args);//Ejecuta el sql
             }
             catch (Exception ex)
             {
-                DBTran?.Rollback();
-                ////Se revierte las operaciones y se cierra la transaccion
                 throw new Exception("SQL ERROR:\n\t" + sql.Replace(";", ";\n\t") + "\n", ex);
             }
             return this;
         }
+
+        public T? ExecuteScalar<T>(string sql, object? args = null) {
+            if (this.UseTransactions) sql = "START TRANSACTION;\n" + sql + ";\n COMMIT;";
+            try
+            {
+                return this.DBConn.ExecuteScalar<T>(sql, args);//Ejecuta el sql
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("SQL ERROR:\n\t" + sql.Replace(";", ";\n\t") + "\n", ex);
+            }
+        }
+
 
         //Ejecuta un sql, si no se producen errores devuelve true
         public bool ExecuteWithCheck(string sql, object? args = null) 
@@ -95,16 +107,15 @@ namespace GestorEventos.Servicios.SQLUtils
         //Ejecuta un sql y devuelve un valor
         public int ExecuteWithResult(string sql, object? args = null)
         {
-            var DBTran = this.BeginTransaction();
+            if (this.UseTransactions) sql = "START TRANSACTION;\n" + sql + ";\nCOMMIT;";
             try
             {
-                int ret = this.DBConn.Execute(sql, args, DBTran);
-                DBTran?.Commit();
+                Console.WriteLine(sql);
+                int ret = this.DBConn.Execute(sql, args);
                 return ret;
             }
             catch (Exception ex)
             {
-                DBTran?.Rollback();
                 throw new Exception("SQL ERROR: " + sql.Replace(";", ";\n") + "\n", ex);
             }
         }
@@ -112,16 +123,14 @@ namespace GestorEventos.Servicios.SQLUtils
         //Ejecuta una Query
         public IEnumerable<T>? Query<T>(string sql, object? args = null)
         {
-            var DBTran = this.BeginTransaction();
+            if (this.UseTransactions) sql = "START TRANSACTION;\n" + sql + ";\n COMMIT;";
             try
             {
-                IEnumerable<T> query = this.DBConn.Query<T>(sql, args, DBTran);
-                DBTran?.Commit();
+                IEnumerable<T> query = this.DBConn.Query<T>(sql, args);
                 return query;
             }
             catch (Exception ex)
             {
-                DBTran?.Rollback();
                 throw new Exception("SQL ERROR: " + sql.Replace(";", ";\n") + "\n", ex);
             }
         }
@@ -129,16 +138,14 @@ namespace GestorEventos.Servicios.SQLUtils
         //Ejecuta una Query y devuelve un unico elemento
         public T? QueryFirst<T>(string sql, object? args = null)
         {
-            var DBTran = this.BeginTransaction();
+            if (this.UseTransactions) sql = "START TRANSACTION;\n" + sql + ";\n COMMIT;";
             try
             {
-                T? query = this.DBConn.QueryFirstOrDefault<T>(sql, args, DBTran);
-                DBTran?.Commit();
+                T? query = this.DBConn.QueryFirstOrDefault<T>(sql, args);
                 return query;
             }
             catch (Exception ex)
             {
-                DBTran?.Rollback();
                 throw new Exception("SQL ERROR: " + sql.Replace(";", ";\n") + "\n", ex);
             }
         }
@@ -149,4 +156,11 @@ namespace GestorEventos.Servicios.SQLUtils
             this.DBConn?.Dispose();
         }
     }
+
+
+    public enum ConnectionTypes { 
+        MSSQL,//SQL SERVER
+        MYSQL
+    }
+
 }
