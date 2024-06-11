@@ -102,3 +102,5 @@
 /GestorEventos.Test/obj/GestorEventos.Test.csproj.nuget.g.targets
 /GestorEventos.WebAdmin/obj/Debug/net8.0/project.razor.vs.bin
 /GestorEventos.WebClient/obj/GestorEventos.WebClient.csproj.EntityFrameworkCore.targets
+/GestorEventos.Servicios/obj/Debug/net8.0/GestorEventos.Servicios.csproj.FileListAbsolute.txt
+/GestorEventos.Servicios/obj/Debug/net8.0/GestorEventos.Servicios.GeneratedMSBuildEditorConfig.editorconfig

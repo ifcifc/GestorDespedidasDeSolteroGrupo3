@@ -8,7 +8,11 @@ using System.Security.Claims;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 var builder = WebApplication.CreateBuilder(args);
-SQLConnect.DEFAULT_CONNECTION_STRING = builder.Configuration.GetValue<string>("SQLConnectionString");
+//SQLConnect.DEFAULT_CONNECTION_STRING = builder.Configuration.GetValue<string>("SQLConnectionString");
+//SQLConnect.DEFAULT_CONNECTION_STRING = builder.Configuration.GetValue<string>("SQLConnectionString");
+SQLConnect.DEFAULT_CONNECTION_STRING = "Server=sql10.freesqldatabase.com;Port=3306;Database=sql10712945;Uid=sql10712945;Pwd=12snVJGCyw;\r\n";
+SQLConnect.CONNECTION_TYPE = ConnectionTypes.MYSQL;
+
 
 ServicesScopes.RegisterAllServices(builder);
 
@@ -24,7 +28,7 @@ builder.Services.AddAuthentication(options =>
         options.ClientSecret = builder.Configuration.GetSection("Google:ClientSecret").Value;
         options.Events.OnCreatingTicket = ctx =>
         {
-            var usuarioService = (UsuarioService)ctx.HttpContext.RequestServices.GetRequiredService<IService<Persona>>();//
+            var usuarioService = (UsuarioService)ctx.HttpContext.RequestServices.GetRequiredService<IService<Usuario>>();//
             string nameIdentifier = ctx.Identity.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier).Value;
 
             Usuario? usuario = usuarioService.GetByGoogleIdentifier(nameIdentifier);

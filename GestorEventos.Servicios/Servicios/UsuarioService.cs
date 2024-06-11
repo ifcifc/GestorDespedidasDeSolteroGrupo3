@@ -22,10 +22,9 @@ namespace GestorEventos.Servicios.Servicios
         {
             using (var db = SQLConnect.New().Transaction())
             {
-                return db.ExecuteScalar<int>(string.Format(Usuario.SQL_Add_GET_ID,
-                    (SQLConnect.CONNECTION_TYPE == ConnectionTypes.MSSQL) ?
-                        "CAST(SCOPE_IDENTITY() AS int" : "LAST_INSERT_ID()")
-                    , entity); ;
+
+                string sql = string.Format(Usuario.SQL_Add_GET_ID, ((SQLConnect.CONNECTION_TYPE == ConnectionTypes.MSSQL) ? "CAST(SCOPE_IDENTITY() AS int" : "LAST_INSERT_ID()"));
+                return db.ExecuteScalar<int>(sql, entity); 
             }
         }
     }
