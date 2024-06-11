@@ -1,15 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace GestorEventos.Servicios.Entidades
 {
-    public class Provincia
+    public class Provincia : Entidad
     {
+        public override string SQL_GetAll() => "SELECT * FROM Provincias WHERE Borrado=0";
+        public override string SQL_GetByID() => "SELECT * FROM Provincias WHERE Borrado=0 AND IdProvincia={0}";
+        public override string SQL_Add() => "INSERT INTO Provincias (Nombre) VALUES (@Nombre)";
+        public override string SQL_Delete() => "UPDATE Provincias SET Borrado=1 WHERE IdProvincia={0}";
+        public override string SQL_Modify() => "UPDATE Provincias SET Nombre=@Nombre WHERE IdProvincia={0}";
         public int IdProvincia { get; set; }
-        public String Nombre { get; set; }
-        public bool Borrado { get; set; }
+        public string Nombre { get; set; }
+
+        public override string ToString()
+        {
+            return string.Format("Provincia[IdProvincia: {0}, Nombre: {1}, Borrado: {2}]", this.IdProvincia, this.Nombre, this.Borrado);
+        }
     }
 }

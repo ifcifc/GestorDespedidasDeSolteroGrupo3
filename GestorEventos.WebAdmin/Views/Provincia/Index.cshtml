@@ -1,0 +1,42 @@
+﻿@model IEnumerable<GestorEventos.Servicios.Entidades.Provincia>
+
+@{
+    ViewData["Title"] = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>View</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdProvincia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdProvincia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.IdProvincia }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.IdProvincia}) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.IdProvincia })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
