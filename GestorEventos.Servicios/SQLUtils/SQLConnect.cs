@@ -2,7 +2,6 @@
 using MySql.Data.MySqlClient;
 using System.Data;
 using System.Data.SqlClient;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace GestorEventos.Servicios.SQLUtils
 {
@@ -157,6 +156,12 @@ namespace GestorEventos.Servicios.SQLUtils
         public void Dispose() {
             this.DBConn?.Close();//Si se establecio una coneccion con la DB se cierra.
             this.DBConn?.Dispose();
+        }
+
+        public static void SetConfig(string sqlConnection, string dbServer){
+            //"SQLConnectionString": "Server=(localdb)\\programacion;Database=gestioneventos;User Id=admin;Password=1234",
+            SQLConnect.DEFAULT_CONNECTION_STRING = sqlConnection;
+            SQLConnect.CONNECTION_TYPE = ConnectionTypes.Parse<ConnectionTypes>(dbServer);
         }
     }
 

@@ -5,9 +5,10 @@ using GestorEventos.Servicios.SQLUtils;
 Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
 var builder = WebApplication.CreateBuilder(args);
 
-//SQLConnect.DEFAULT_CONNECTION_STRING = builder.Configuration.GetValue<string>("SQLConnectionString");
-SQLConnect.DEFAULT_CONNECTION_STRING = "Server=sql10.freesqldatabase.com;Port=3306;Database=sql10712945;Uid=sql10712945;Pwd=12snVJGCyw;\r\n";
-SQLConnect.CONNECTION_TYPE = ConnectionTypes.MYSQL;
+SQLConnect.SetConfig(
+    builder.Configuration.GetValue<string>("SQLConnectionString") ?? "",
+    builder.Configuration.GetValue<string>("DBServer") ?? ""
+);
 
 // Registro todos los Scopes de Servicios
 ServicesScopes.RegisterAllServices(builder);

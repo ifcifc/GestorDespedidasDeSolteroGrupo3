@@ -17,6 +17,9 @@ Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.Invariant
 SQLConnect.DEFAULT_CONNECTION_STRING = "Server=sql10.freesqldatabase.com;Port=3306;Database=sql10712945;Uid=sql10712945;Pwd=12snVJGCyw;\r\n";
 SQLConnect.CONNECTION_TYPE = ConnectionTypes.MYSQL;
 
+
+Console.WriteLine(ConnectionTypes.Parse<ConnectionTypes>("MSSQL").ToString());
+
 using (SQLConnect connection = SQLConnect.New())
 {
     IEnumerable<TipoEvento>? enumerable = connection.Query<TipoEvento>(new TipoEvento().SQL_GetAll());

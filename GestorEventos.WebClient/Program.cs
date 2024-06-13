@@ -8,11 +8,11 @@ using System.Security.Claims;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 var builder = WebApplication.CreateBuilder(args);
-//SQLConnect.DEFAULT_CONNECTION_STRING = builder.Configuration.GetValue<string>("SQLConnectionString");
-//SQLConnect.DEFAULT_CONNECTION_STRING = builder.Configuration.GetValue<string>("SQLConnectionString");
-SQLConnect.DEFAULT_CONNECTION_STRING = "Server=sql10.freesqldatabase.com;Port=3306;Database=sql10712945;Uid=sql10712945;Pwd=12snVJGCyw;\r\n";
-SQLConnect.CONNECTION_TYPE = ConnectionTypes.MYSQL;
 
+SQLConnect.SetConfig(
+    builder.Configuration.GetValue<string>("SQLConnectionString") ?? "",
+    builder.Configuration.GetValue<string>("DBServer") ?? ""
+);
 
 ServicesScopes.RegisterAllServices(builder);
 
@@ -24,37 +24,37 @@ builder.Services.AddAuthentication(options =>
     .AddCookie()
     .AddGoogle(GoogleDefaults.AuthenticationScheme, options =>
     {
-        options.ClientId = builder.Configuration.GetSection("Google:ClientId").Value;
+        options.ClientId = builder.Configuration.GetSection("Google:ClientId").Value + ".apps.googleusercontent.com";
         options.ClientSecret = builder.Configuration.GetSection("Google:ClientSecret").Value;
         options.Events.OnCreatingTicket = ctx =>
         {
             var usuarioService = (UsuarioService)ctx.HttpContext.RequestServices.GetRequiredService<IService<Usuario>>();//
-            string nameIdentifier = ctx.Identity.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier).Value;
+            string nameIdentifier = ctx.Identity?.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value ?? "";
 
             Usuario? usuario = usuarioService.GetByGoogleIdentifier(nameIdentifier);
             int idUsuario = usuario?.IdUsuario ?? 0;
 
-            foreach (var item in ctx.Identity.Claims)
+            /*foreach (var item in ctx.Identity.Claims)
             {
                 Console.WriteLine(item.Value);
                 Console.WriteLine(item.Type);
                 Console.WriteLine("===================");
-            }
+            }*/
 
 
             if (usuario == null)
             {
                 idUsuario = usuarioService.AddGetID(new Usuario
                 {
-                    Apellido = ctx.Identity.Claims.FirstOrDefault(x => x.Type.Equals(ClaimTypes.Surname))?.Value ?? "",
-                    Nombre = ctx.Identity.Claims.FirstOrDefault(x => x.Type.Equals(ClaimTypes.GivenName))?.Value ?? "",
+                    Apellido = ctx.Identity?.Claims.FirstOrDefault(x => x.Type.Equals(ClaimTypes.Surname))?.Value ?? "",
+                    Nombre = ctx.Identity?.Claims.FirstOrDefault(x => x.Type.Equals(ClaimTypes.GivenName))?.Value ?? "",
                     GoogleIdentificador = nameIdentifier,
-                    Email = ctx.Identity.Claims.FirstOrDefault(x => x.Type.Equals(ClaimTypes.Email))?.Value ?? "",
-                    NombreCompleto = ctx.Identity.Claims.FirstOrDefault(x => x.Type.Equals(ClaimTypes.Name))?.Value ?? "",
+                    Email = ctx.Identity?.Claims.FirstOrDefault(x => x.Type.Equals(ClaimTypes.Email))?.Value ?? "",
+                    NombreCompleto = ctx.Identity?.Claims.FirstOrDefault(x => x.Type.Equals(ClaimTypes.Name))?.Value ?? "",
                 });
             }
             
-            ctx.Identity.AddClaim(new System.Security.Claims.Claim("Usuario", idUsuario.ToString()));
+            ctx.Identity?.AddClaim(new System.Security.Claims.Claim("Usuario", idUsuario.ToString()));
             return Task.CompletedTask;
         };
     });
