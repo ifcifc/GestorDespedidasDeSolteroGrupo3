@@ -41,7 +41,8 @@ namespace GestorEventos.Servicios.Servicios
 
         public virtual bool Modify(int idEntity, T entity)
         {
-            using (var db = SQLConnect.New().Transaction())
+            Console.WriteLine("Service Modify Transaction Disable");
+            using (var db = SQLConnect.New())//.Transaction()
             {
                 return db.ExecuteWithCheck(string.Format(new T().SQL_Modify(), idEntity), entity);
             }

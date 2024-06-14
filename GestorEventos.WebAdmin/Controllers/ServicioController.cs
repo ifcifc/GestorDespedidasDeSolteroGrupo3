@@ -3,6 +3,7 @@ using GestorEventos.Servicios.Servicios;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using GestorEventos.Servicios.Controller;
 
 namespace GestorEventos.WebAdmin.Controllers
 {

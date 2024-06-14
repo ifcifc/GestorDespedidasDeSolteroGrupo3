@@ -1,5 +1,6 @@
 ﻿using GestorEventos.Servicios.Entidades;
 using GestorEventos.Servicios.Servicios;
+using GestorEventos.Servicios.Controller;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GestorEventos.WebAdmin.Controllers

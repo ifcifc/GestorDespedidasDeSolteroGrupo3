@@ -1,4 +1,4 @@
-﻿@model GestorEventos.Servicios.Entidades.Localidad
+﻿@model GestorEventos.Servicios.Entidades.Models.LocalidadModel
 
 @{
     ViewData["Title"] = "Details";
@@ -8,20 +8,14 @@
 <h1>Details</h1>
 
 <div>
-    <h4>Localidad</h4>
+    <h4>LocalidadModel</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IdLocalidad)
+            @Html.DisplayNameFor(model => model.Provincia)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IdLocalidad)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IdProvincia)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IdProvincia)
+            @Html.DisplayFor(model => model.Provincia)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Nombre)
@@ -38,6 +32,6 @@
     </dl>
 </div>
 <div>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.IdLocalidad }) |
+    @Html.ActionLink("Edit", "Edit", new {  id = Model.IdLocalidad }) |
     <a asp-action="Index">Back to List</a>
 </div>

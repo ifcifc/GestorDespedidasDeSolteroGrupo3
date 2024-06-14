@@ -21,7 +21,7 @@ namespace GestorEventos.WebClient.Controllers
                 });
         }
         public async Task<IActionResult> GoogleResponse() {
-            var result = await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            /*var result = await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
 
             var accesToken = result.Properties.GetTokenValue("acess_token");
             var claims = result.Principal.Identities.FirstOrDefault().Claims.Select(x => new
@@ -31,8 +31,7 @@ namespace GestorEventos.WebClient.Controllers
                 x.Type,
                 x.Value
             });
-
-
+            */
 
             return RedirectToAction("Index", "Home");
         }

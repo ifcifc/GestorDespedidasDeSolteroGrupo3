@@ -1,4 +1,4 @@
-﻿@model GestorEventos.Servicios.Entidades.Localidad
+﻿@model GestorEventos.Servicios.Entidades.Models.LocalidadModel
 
 @{
     ViewData["Title"] = "Create";
@@ -7,16 +7,21 @@
 
 <h1>Create</h1>
 
-<h4>Localidad</h4>
+<h4>LocalidadModel</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input asp-for="IdLocalidad" class="form-control" type="hidden" value="0" />
+            <input asp-for="IdLocalidad" class="form-control" value="0" hidden />
             <div class="form-group">
                 <label asp-for="IdProvincia" class="control-label"></label>
-                <input asp-for="IdProvincia" class="form-control" />
+                <select asp-for="IdProvincia">
+                    @foreach (var p in ViewBag.Provincias)
+                    {
+                        <option value="@p.IdProvincia">@p.Nombre</option>
+                    }
+                </select>
                 <span asp-validation-for="IdProvincia" class="text-danger"></span>
             </div>
             <div class="form-group">

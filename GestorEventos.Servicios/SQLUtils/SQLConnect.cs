@@ -101,8 +101,10 @@ namespace GestorEventos.Servicios.SQLUtils
             {
                 return this.ExecuteWithResult(MakeTransaction(sql), args) == 1;
             }
-            catch (Exception) 
+            catch (Exception ex) 
             {
+                Console.WriteLine(ex.ToString());
+
                 return false;
             }
         }
@@ -112,7 +114,6 @@ namespace GestorEventos.Servicios.SQLUtils
         {
             try
             {
-                Console.WriteLine(sql);
                 int ret = this.DBConn.Execute(MakeTransaction(sql), args);
                 return ret;
             }

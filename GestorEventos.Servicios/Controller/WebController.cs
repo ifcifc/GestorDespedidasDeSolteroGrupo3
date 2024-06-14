@@ -1,5 +1,6 @@
 ﻿using GestorEventos.Servicios.Entidades;
 using GestorEventos.Servicios.Servicios;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GestorEventos.WebAdmin.Controllers
@@ -13,19 +14,19 @@ namespace GestorEventos.WebAdmin.Controllers
         }
 
         // GET: ServiceController
-        public ActionResult Index()
+        public virtual ActionResult Index()
         {
             return View(this.Service.GetAll());
         }
 
         // GET: ServiceController/Details/5
-        public ActionResult Details(int id)
+        public virtual ActionResult Details(int id)
         {
             return View(this.Service.GetByID(id));
         }
 
         // GET: ServiceController/Create
-        public ActionResult Create()
+        public virtual ActionResult Create()
         {
             return View();
         }
@@ -33,22 +34,22 @@ namespace GestorEventos.WebAdmin.Controllers
         // POST: ServiceController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public virtual ActionResult Create(IFormCollection collection)
         {
-            try
-            {
+            /*try
+            {*/
                 this.Service.Add(this.Service.FromFormCollection(collection));
 
                 return RedirectToAction(nameof(Index));
-            }
-            catch
+            //}
+            /*catch
             {
-                return View();
-            }
+                return this.Create();
+            }*/
         }
 
         // GET: ServiceController/Edit/5
-        public ActionResult Edit(int id)
+        public virtual ActionResult Edit(int id)
         {
             return View(this.Service.GetByID(id));
         }
@@ -56,24 +57,21 @@ namespace GestorEventos.WebAdmin.Controllers
         // POST: ServiceController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public virtual ActionResult Edit(int id, IFormCollection collection)
         {
-            try
-            {
-                this.Service.Modify(
-                    id,
-                    this.Service.FromFormCollection(collection));
+            V v = this.Service.FromFormCollection(collection);
+            this.Service.Modify(
+                id,
+                this.Service.FromFormCollection(collection));
 
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            Console.WriteLine(v.ToString());
+
+            return RedirectToAction(nameof(Index));
+          
         }
 
         // GET: ServiceController/Delete/5
-        public ActionResult Delete(int id)
+        public virtual ActionResult Delete(int id)
         {
             return View(this.Service.GetByID(id));
         }
@@ -81,7 +79,7 @@ namespace GestorEventos.WebAdmin.Controllers
         // POST: ServiceController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public virtual ActionResult Delete(int id, IFormCollection collection)
         {
             try
             {

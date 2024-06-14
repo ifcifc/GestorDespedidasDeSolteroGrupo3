@@ -1,4 +1,4 @@
-﻿@model IEnumerable<GestorEventos.Servicios.Entidades.Localidad>
+﻿@model IEnumerable<GestorEventos.Servicios.Entidades.Models.LocalidadModel>
 
 @{
     ViewData["Title"] = "Index";
@@ -14,10 +14,7 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.IdLocalidad)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdProvincia)
+                @Html.DisplayNameFor(model => model.Provincia)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Nombre)
@@ -32,10 +29,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.IdLocalidad)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdProvincia)
+                @Html.DisplayFor(modelItem => item.Provincia)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Nombre)
@@ -44,7 +38,7 @@
                 @Html.DisplayFor(modelItem => item.CodigoArea)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.IdLocalidad }) |
+                    @Html.ActionLink("Edit", "Edit", new { id = item.IdLocalidad }) |
                     @Html.ActionLink("Details", "Details", new { id = item.IdLocalidad }) |
                     @Html.ActionLink("Delete", "Delete", new { id = item.IdLocalidad })
             </td>
