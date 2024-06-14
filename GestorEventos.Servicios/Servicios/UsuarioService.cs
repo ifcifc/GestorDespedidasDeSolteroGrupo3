@@ -10,11 +10,14 @@ namespace GestorEventos.Servicios.Servicios
 {
     public class UsuarioService : Service<Usuario>
     {
+        public const string SQL_GetByGoogleIdentificador = "SELECT * FROM Usuarios WHERE GoogleIdentificador={0}";
+        public const string SQL_Add_GET_ID = "INSERT INTO Usuarios (GoogleIdentificador, NombreCompleto, Nombre, Apellido, Email) VALUES (@GoogleIdentificador, @NombreCompleto, @Nombre, @Apellido, @Email); SELECT {0}";
+
         public Usuario? GetByGoogleIdentifier(string identifier)
         {
             using (var db = SQLConnect.New())
             {
-                return db.QueryFirst<Usuario>(string.Format(Usuario.SQL_GetByGoogleIdentificador, identifier));
+                return db.QueryFirst<Usuario>(string.Format(SQL_GetByGoogleIdentificador, identifier));
             }
         }
 
@@ -22,9 +25,10 @@ namespace GestorEventos.Servicios.Servicios
         {
             using (var db = SQLConnect.New().Transaction())
             {
-
-                string sql = string.Format(Usuario.SQL_Add_GET_ID, ((SQLConnect.CONNECTION_TYPE == ConnectionTypes.MSSQL) ? "CAST(SCOPE_IDENTITY() AS int" : "LAST_INSERT_ID()"));
-                return db.ExecuteScalar<int>(sql, entity); 
+                return db.ExecuteScalar<int>(string.Format(SQL_Add_GET_ID,
+                    (SQLConnect.CONNECTION_TYPE == ConnectionTypes.MSSQL) ?
+                        "CAST(SCOPE_IDENTITY() AS int" : "LAST_INSERT_ID()")
+                    , entity); ;
             }
         }
     }

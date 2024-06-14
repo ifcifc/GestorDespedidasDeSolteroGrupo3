@@ -11,10 +11,5 @@ namespace GestorEventos.Servicios.Entidades
         public override string SQL_Modify() => "UPDATE Provincias SET Nombre=@Nombre WHERE IdProvincia={0}";
         public int IdProvincia { get; set; }
         public string Nombre { get; set; }
-
-        public override string ToString()
-        {
-            return string.Format("Provincia[IdProvincia: {0}, Nombre: {1}, Borrado: {2}]", this.IdProvincia, this.Nombre, this.Borrado);
-        }
     }
 }

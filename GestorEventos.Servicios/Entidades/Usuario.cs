@@ -14,13 +14,6 @@ namespace GestorEventos.Servicios.Entidades
         public override string SQL_Delete() => "UPDATE Usuarios SET Borrado=1 WHERE IdUsuario={0}";
         public override string SQL_Modify() => "UPDATE Usuarios SET GoogleIdentificador=@GoogleIdentificador, NombreCompleto=@NombreCompleto, Nombre=@Nombre, Apellido=@Apellido, Email=@Email WHERE IdUsuario={0}";
         
-        public const string SQL_GetByGoogleIdentificador = "SELECT * FROM Usuarios  WHERE GoogleIdentificador={0}";
-        public const string SQL_Add_GET_ID = "INSERT INTO Usuarios (GoogleIdentificador, NombreCompleto, Nombre, Apellido, Email) VALUES (@GoogleIdentificador, @NombreCompleto, @Nombre, @Apellido, @Email); SELECT {0}";
-
-        public override string ToString() {
-            return "";   
-        }
-
         public int IdUsuario { get; set; }
         public string GoogleIdentificador { get; set; }
         public string NombreCompleto { get; set; }

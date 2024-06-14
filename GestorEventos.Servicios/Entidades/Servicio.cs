@@ -21,11 +21,5 @@ namespace GestorEventos.Servicios.Entidades
 
         //decimal->similar a float, muy alta precision decimal, usar para manejar dinero 
         public decimal PrecioServicio { get; set; }
-        public override string ToString()
-        {
-            return string.Format(
-                "Servicio[IdServicio: {0}, Descripcion: {1}, PrecioServicio: {2}, Borrado]: {3}",
-                this.IdServicio, this.Descripcion, this.PrecioServicio, this.Borrado);
-        }
     }
 }

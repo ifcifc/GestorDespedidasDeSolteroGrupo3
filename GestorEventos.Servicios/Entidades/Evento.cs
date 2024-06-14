@@ -12,9 +12,6 @@ namespace GestorEventos.Servicios.Entidades
         public override string SQL_Delete() => "UPDATE Evento SET NombreEvento = @NombreEvento, FechaEvento = @FechaEvento, CantidadPersonas = @CantidadPersonas, IdTipoEvento = @IdTipoEvento, IdPersonaAgasajada = @IdPersonaAgasajada, IdUsuario = @IdUsuario, IdEstadoEvento = @IdEstadoEvento WHERE IdEvento={0}";
         public override string SQL_Modify() => "UPDATE Eventos SET Borrado=1 WHERE IdEvento={0}";
 
-        
-
-
         public int IdEvento { get; set; }
 		public string NombreEvento { get; set; }
 		public DateTime FechaEvento { get; set; }
@@ -26,11 +23,5 @@ namespace GestorEventos.Servicios.Entidades
 
 
 		//public int IdPersonaContacto { get; set; }
-
-        public override string ToString()
-        {
-            return string.Format("Evento[IdEvento: {0}, NombreEvento:{1}, FechaEvento: {2}, FechaEvento: {3}, CantidadPersonas:{4}, IdTipoEvento:{5}, IdPersonaAgasajada: {6}, Borrado: {7}]",
-                                IdEvento, NombreEvento, FechaEvento.ToString(), CantidadPersonas, IdTipoEvento, IdPersonaAgasajada, Borrado);
-        }
     }
 }

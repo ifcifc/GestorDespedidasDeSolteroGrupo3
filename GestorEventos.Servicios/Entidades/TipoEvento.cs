@@ -16,12 +16,5 @@ namespace GestorEventos.Servicios.Entidades
         public override string SQL_Modify() => "UPDATE TiposEventos SET Descripcion=@Descripcion WHERE IdTipoEvento={0}";
         public int IdTipoEvento { get; set; }
 		public string Descripcion { get; set; }
-
-        public override string ToString()
-        {
-            return string.Format(
-                "TipoEvento[IdTipoEvento: {0}, Descripcion: {1}, Borrado]: {2}",
-                this.IdTipoEvento, this.Descripcion,  this.Borrado);
-        }
     }
 }

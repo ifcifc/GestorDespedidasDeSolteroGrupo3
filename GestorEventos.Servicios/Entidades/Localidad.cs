@@ -21,9 +21,5 @@ namespace GestorEventos.Servicios.Entidades
         public string Nombre { get; set; }
         public int CodigoArea { get; set;}
 
-        public override string ToString()
-        {
-            return string.Format("Localidad[IdLocalidad: {0}, IdProvincia:{1}, Nombre: {2}, CodigoArea: {3}]", IdLocalidad, IdProvincia, Nombre, CodigoArea);
-        }
     }
 }
