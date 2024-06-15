@@ -8,8 +8,7 @@ namespace GestorEventos.Servicios.Servicios
         public IEnumerable<T>? GetAll();
 
         public T? GetByID(int idEntity);
-
-
+        public IEnumerable<T>? GetAllByID(int idEntity);
         public bool Add(T entity);
 
         public bool Modify(int idEntity, T entity);

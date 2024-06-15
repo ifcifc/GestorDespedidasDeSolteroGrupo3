@@ -22,6 +22,14 @@ namespace GestorEventos.Servicios.Servicios
             }
         }
 
+        public virtual IEnumerable<T>? GetAllByID(int idEntity)
+        {
+            using (var db = SQLConnect.New())
+            {
+                return db.Query<T>(string.Format(new T().SQL_GetAllByID(), idEntity));
+            }
+        }
+
         public virtual T? GetByID(int idEntity)
         {
             using (var db = SQLConnect.New())

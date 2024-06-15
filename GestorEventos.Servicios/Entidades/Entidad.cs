@@ -15,6 +15,7 @@ namespace GestorEventos.Servicios.Entidades
         public abstract string SQL_Add();
         public abstract string SQL_Delete();
         public abstract string SQL_Modify();
+        public virtual string SQL_GetAllByID() => "";
 
         public Entidad(){}
 

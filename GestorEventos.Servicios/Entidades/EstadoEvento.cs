@@ -13,7 +13,7 @@ namespace GestorEventos.Servicios.Entidades
         public override string SQL_GetAll() => "SELECT * FROM EstadosEventos WHERE Borrado=False";
         public override string SQL_GetByID() => "SELECT * FROM EstadosEventos WHERE Borrado=False AND IdEstadoEvento={0}";
         public override string SQL_Modify() => "UPDATE EstadosEventos SET Descripcion=@Descripcion WHERE IdEstadoEvento={0}";
-
+        public int IdEstadoEvento { get;set; }
         public string Descripcion { get; set; }
     }
 }

@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GestorEventos.Servicios\GestorEventos.Servicios.csproj" />
+    <ProjectReference Include="..\GestorEventos.WebAdmin\GestorEventos.WebAdmin.csproj" />
   </ItemGroup>
 
 </Project>
