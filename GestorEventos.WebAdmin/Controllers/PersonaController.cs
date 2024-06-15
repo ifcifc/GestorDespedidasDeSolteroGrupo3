@@ -25,5 +25,14 @@ namespace GestorEventos.WebAdmin.Controllers
             
             return base.Create();
         }
+
+        public override ActionResult Edit(int id)
+        {
+            IEnumerable<Provincia>? provincias = this.provinciaService.GetAll();
+            ViewBag.Provincias = provincias;
+            ViewBag.Localidad = this.localidadService.GetAllByID(provincias?.FirstOrDefault(x => true)?.IdProvincia ?? 1);
+
+            return base.Edit(id);
+        }
     }
 }

@@ -1,0 +1,90 @@
+﻿@model GestorEventos.Servicios.Entidades.Models.PersonaModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>PersonaModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input asp-for="IdPersona" class="form-control" hidden/>
+            <div class="form-group">
+                <label asp-for="Nombre" class="control-label"></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Apellido" class="control-label"></label>
+                <input asp-for="Apellido" class="form-control" />
+                <span asp-validation-for="Apellido" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Telefono" class="control-label"></label>
+                <input asp-for="Telefono" class="form-control" />
+                <span asp-validation-for="Telefono" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Provincias</label>
+                <select class="form-control" id="select_provincias">
+                    @foreach (var p in ViewBag.Provincias)
+                    {
+                        <option value="@p.IdProvincia">@p.Nombre</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdLocalidad" class="control-label">Localidades</label>
+                <select asp-for="IdLocalidad" class="form-control" id="select_localidades">
+                    @foreach (var p in ViewBag.Localidad)
+                    {
+                        <option value="@p.IdLocalidad">@p.Nombre</option>
+                    }
+                </select>
+                <span asp-validation-for="IdLocalidad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DireccionCalle" class="control-label"></label>
+                <input asp-for="DireccionCalle" class="form-control" />
+                <span asp-validation-for="DireccionCalle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DireccionNumero" class="control-label"></label>
+                <input asp-for="DireccionNumero" class="form-control" />
+                <span asp-validation-for="DireccionNumero" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DireccionPiso" class="control-label"></label>
+                <input asp-for="DireccionPiso" class="form-control" />
+                <span asp-validation-for="DireccionPiso" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DireccionDepartamento" class="control-label"></label>
+                <input asp-for="DireccionDepartamento" class="form-control" />
+                <span asp-validation-for="DireccionDepartamento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+<script src="~/js/localidadprovincia.js" asp-append-version="true"></script>
