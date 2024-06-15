@@ -32,7 +32,7 @@ namespace GestorEventos.WebAdmin.Controllers.Api
         {
             try
             {
-                var entidad = this.service.GetByID(id);
+                var entidad = this.service.GetAllByID(id);
                 return entidad == null ? NotFound() : Ok(entidad);
             }
             catch (Exception)

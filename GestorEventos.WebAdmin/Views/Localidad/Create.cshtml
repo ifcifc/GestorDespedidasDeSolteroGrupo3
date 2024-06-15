@@ -15,7 +15,7 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input asp-for="IdLocalidad" class="form-control" value="0" hidden />
             <div class="form-group">
-                <label asp-for="IdProvincia" class="control-label"></label>
+                <label asp-for="IdProvincia" class="control-label">Provincias</label>
                 <select asp-for="IdProvincia" class="form-control">
                     @foreach (var p in ViewBag.Provincias)
                     {
