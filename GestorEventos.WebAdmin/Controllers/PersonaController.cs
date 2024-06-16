@@ -1,4 +1,5 @@
-﻿using GestorEventos.Servicios.Entidades;
+﻿using GestorEventos.Servicios.Controllers;
+using GestorEventos.Servicios.Entidades;
 using GestorEventos.Servicios.Entidades.Models;
 using GestorEventos.Servicios.Servicios;
 using Microsoft.AspNetCore.Mvc;

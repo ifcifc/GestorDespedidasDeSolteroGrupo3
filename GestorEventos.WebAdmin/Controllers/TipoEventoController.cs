@@ -1,6 +1,6 @@
 ﻿using GestorEventos.Servicios.Entidades;
 using GestorEventos.Servicios.Servicios;
-using GestorEventos.Servicios.Controller;
+using GestorEventos.Servicios.Controllers;
 
 namespace GestorEventos.WebAdmin.Controllers
 {

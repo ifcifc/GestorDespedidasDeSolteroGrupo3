@@ -1,3 +1,4 @@
+using GestorEventos.Servicios.Api;
 using GestorEventos.Servicios.Entidades;
 using GestorEventos.Servicios.Scopes;
 using GestorEventos.Servicios.Servicios;
@@ -14,7 +15,10 @@ SQLConnect.SetConfig(
     builder.Configuration.GetValue<string>("DBServer") ?? ""
 );
 
+//Registro todos los Scopes de Servicios
 ServicesScopes.RegisterAllServices(builder);
+//Registro las Apis compartidas
+Apis.RegisterAllApis(builder);
 
 builder.Services.AddAuthentication(options =>
 {
@@ -33,14 +37,6 @@ builder.Services.AddAuthentication(options =>
 
             Usuario? usuario = usuarioService.GetByGoogleIdentifier(nameIdentifier);
             int idUsuario = usuario?.IdUsuario ?? 0;
-
-            /*foreach (var item in ctx.Identity.Claims)
-            {
-                Console.WriteLine(item.Value);
-                Console.WriteLine(item.Type);
-                Console.WriteLine("===================");
-            }*/
-
 
             if (usuario == null)
             {

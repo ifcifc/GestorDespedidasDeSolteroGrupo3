@@ -105,3 +105,11 @@
 /GestorEventos.WebClient/obj/GestorEventos.WebClient.csproj.EntityFrameworkCore.targets
 /GestorEventos.Servicios/obj/Debug/net8.0/GestorEventos.Servicios.csproj.FileListAbsolute.txt
 /GestorEventos.Servicios/obj/Debug/net8.0/GestorEventos.Servicios.GeneratedMSBuildEditorConfig.editorconfig
+/packages/Microsoft.AspNetCore.Authentication.Abstractions.2.2.0/.signature.p7s
+/packages/Microsoft.AspNetCore.Authentication.Abstractions.2.2.0/lib/netstandard2.0/Microsoft.AspNetCore.Authentication.Abstractions.dll
+/packages/Microsoft.AspNetCore.Authentication.Abstractions.2.2.0/lib/netstandard2.0/Microsoft.AspNetCore.Authentication.Abstractions.xml
+/packages/Microsoft.AspNetCore.Authentication.Abstractions.2.2.0/Microsoft.AspNetCore.Authentication.Abstractions.2.2.0.nupkg
+/packages/Microsoft.AspNetCore.Authentication.Core.2.2.0/.signature.p7s
+/packages/Microsoft.AspNetCore.Authentication.Core.2.2.0/lib/netstandard2.0/Microsoft.AspNetCore.Authentication.Core.dll
+/packages/Microsoft.AspNetCore.Authentication.Core.2.2.0/lib/netstandard2.0/Microsoft.AspNetCore.Authentication.Core.xml
+/packages/Microsoft.AspNetCore.Authentication.Core.2.2.0/Microsoft.AspNetCore.Authentication.Core.2.2.0.nupkg

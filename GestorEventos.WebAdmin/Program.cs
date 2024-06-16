@@ -1,4 +1,5 @@
 //Para evitar el problema de las comas en los numeros
+using GestorEventos.Servicios.Api;
 using GestorEventos.Servicios.Scopes;
 using GestorEventos.Servicios.SQLUtils;
 
@@ -10,8 +11,10 @@ SQLConnect.SetConfig(
     builder.Configuration.GetValue<string>("DBServer") ?? ""
 );
 
-// Registro todos los Scopes de Servicios
+//Registro todos los Scopes de Servicios
 ServicesScopes.RegisterAllServices(builder);
+//Registro las Apis compartidas
+Apis.RegisterAllApis(builder);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

@@ -1,12 +1,14 @@
-﻿using GestorEventos.Servicios.Entidades.Models;
+﻿using GestorEventos.Servicios.Entidades;
+using GestorEventos.Servicios.Entidades.Models;
 using GestorEventos.Servicios.Servicios;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace GestorEventos.WebAdmin.Controllers.Api
+namespace GestorEventos.Servicios.Api
 {
-    [Route("api/[controller]")]
+    [Route("api/localidad")]
     [ApiController]
-    public class LocalidadApiController : Controller
+    public class LocalidadApiController : Microsoft.AspNetCore.Mvc.Controller
     {
         IService<LocalidadesProvincia> service;
         public LocalidadApiController(IService<LocalidadesProvincia> service)
