@@ -1,8 +1,7 @@
-﻿using GestorEventos.Servicios.Entidades;
-using GestorEventos.Servicios.Servicios;
+﻿using Abp.Web.Mvc.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-
+using System.Diagnostics;
 
 namespace GestorEventos.Servicios.Controller
 {

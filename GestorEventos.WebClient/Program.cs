@@ -18,7 +18,7 @@ SQLConnect.SetConfig(
 //Registro todos los Scopes de Servicios
 ServicesScopes.RegisterAllServices(builder);
 //Registro las Apis compartidas
-Apis.RegisterAllApis(builder);
+//Apis.RegisterAllApis(builder);
 
 builder.Services.AddAuthentication(options =>
 {
