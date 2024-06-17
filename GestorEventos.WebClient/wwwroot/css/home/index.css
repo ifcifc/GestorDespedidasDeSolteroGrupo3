@@ -1,3 +1,7 @@
+.landing {
+    overflow: hidden;
+}
+
 .slider-icon {
   width: 100%;
   height: 100%;
@@ -41,6 +45,8 @@
   white-space: nowrap;
   max-width: 100%;
   z-index: 1;
+  user-select:none !important;
+  cursor:pointer;
 }
 .cta,
 .cta-wrapper {
@@ -478,12 +484,14 @@
   max-width: 100%;
 }
 .planifica-tu-despedida1 {
-  flex: 1;
-  position: relative;
-  font-weight: 500;
-  display: inline-block;
-  max-width: 100%;
-  z-index: 1;
+    flex: 1;
+    position: relative;
+    font-weight: 500;
+    display: inline-block;
+    max-width: 100%;
+    z-index: 1;
+    user-select: none !important;
+    cursor: pointer;
 }
 .rectangle-parent,
 .section-cta-inner {
