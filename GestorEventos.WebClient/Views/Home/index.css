@@ -1,0 +1,642 @@
+.slider-icon {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  margin: 0 !important;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+  object-fit: cover;
+}
+.celebra-tu-ltima,
+.de-soltera-con {
+  margin: 0;
+}
+.celebra-tu-ltima-container {
+  align-self: stretch;
+  position: relative;
+  font-weight: 900;
+  z-index: 1;
+}
+.cta-child {
+  height: 70px;
+  width: 510px;
+  position: relative;
+  background-color: var(--color-crimson);
+  display: none;
+  max-width: 100%;
+}
+.planifica-tu-despedida {
+  flex: 1;
+  position: relative;
+  font-weight: 500;
+  display: inline-block;
+  white-space: nowrap;
+  max-width: 100%;
+  z-index: 1;
+}
+.cta,
+.cta-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  max-width: 100%;
+}
+.cta {
+  width: 510px;
+  background-color: var(--color-crimson);
+  justify-content: flex-start;
+  padding: var(--padding-2xs) var(--padding-base) var(--padding-xs);
+  box-sizing: border-box;
+  z-index: 1;
+}
+.cta-wrapper {
+  width: 794px;
+  justify-content: center;
+  font-size: var(--font-size-17xl);
+}
+.section-slider {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 219px 318px 218px 317px;
+  box-sizing: border-box;
+  position: relative;
+  gap: 27px;
+  max-width: 100%;
+  text-align: center;
+  font-size: var(--font-size-29xl);
+  color: var(--color-white);
+  font-family: var(--font-inter);
+}
+.section-testimonios-child {
+  width: 1440px;
+  height: 650px;
+  position: relative;
+  background-color: var(--color-gray-200);
+  display: none;
+  max-width: 100%;
+}
+.testimonios {
+  width: 539px;
+  position: relative;
+  letter-spacing: 0.5em;
+  font-weight: 600;
+  display: inline-block;
+  flex-shrink: 0;
+  max-width: 100%;
+  z-index: 1;
+}
+.testimonios-wrapper {
+  width: 1076px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0 1px 0 0;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+.fue-una-noche,
+.juan-m {
+  position: relative;
+  z-index: 1;
+}
+.fue-una-noche {
+  align-self: stretch;
+  font-weight: 600;
+}
+.juan-m {
+  width: 180px;
+  font-weight: 300;
+  display: inline-block;
+  flex-shrink: 0;
+}
+.juan-m-wrapper {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0 var(--padding-xl) 0 21px;
+}
+.fue-una-noche-pica-todo-sali-parent,
+.section-testimonios {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  max-width: 100%;
+}
+.fue-una-noche-pica-todo-sali-parent {
+  width: 1075px;
+  align-items: flex-end;
+  gap: 30px;
+  font-size: var(--font-size-17xl);
+}
+.section-testimonios {
+  align-self: stretch;
+  background-color: var(--color-gray-200);
+  align-items: center;
+  padding: 60px var(--padding-xl) 209px;
+  box-sizing: border-box;
+  gap: 195px;
+  text-align: center;
+  font-size: var(--font-size-xl);
+  color: var(--color-white);
+  font-family: var(--font-inter);
+}
+.imagen-01-icon {
+  height: 622px;
+  width: 540px;
+  position: absolute;
+  margin: 0 !important;
+  top: -72px;
+  right: 130px;
+  object-fit: contain;
+  z-index: 2;
+}
+.bio-image-child {
+  width: 1440px;
+  height: 650px;
+  position: relative;
+  background-color: var(--color-gray-100);
+  display: none;
+  max-width: 100%;
+}
+.la-mejor-despedida {
+  margin: 0;
+  font-weight: 300;
+}
+.soltero-hecha-a {
+  margin: 0;
+  font-weight: 600;
+}
+.la-mejor-despedida-container {
+  width: 539px;
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+  z-index: 1;
+}
+.blank-line,
+.con-actividades-nicas,
+.menos-ordinaria,
+.organizar-la-despedida {
+  margin: 0;
+}
+.organizar-la-despedida-container {
+  width: 539px;
+  position: relative;
+  font-size: var(--font-size-base);
+  color: var(--color-white);
+  display: inline-block;
+  max-width: 100%;
+  z-index: 1;
+}
+.bio-image,
+.homepage {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  max-width: 100%;
+}
+.bio-image {
+  flex: 1;
+  background-color: var(--color-gray-100);
+  flex-direction: column;
+  padding: 201px var(--padding-xl) 202px var(--padding-112xl);
+  box-sizing: border-box;
+  gap: var(--gap-2xl);
+}
+.homepage {
+  align-self: stretch;
+  flex-direction: row;
+  position: relative;
+  text-align: left;
+  font-size: var(--font-size-17xl);
+  color: var(--color-turquoise);
+  font-family: var(--font-inter);
+}
+.section-eventos-child {
+  height: 650px;
+  width: 1440px;
+  position: relative;
+  background-color: var(--color-gray-200);
+  display: none;
+  max-width: 100%;
+}
+.testimonial-child {
+  height: 195px;
+  width: 195px;
+  position: relative;
+  object-fit: cover;
+  z-index: 1;
+}
+.testimonial {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 0 var(--padding-xs) 0 var(--padding-smi);
+}
+.fiestas-privadas {
+  margin-block-start: 0;
+  margin-block-end: 8px;
+  font-weight: 600;
+}
+.alquila-un-lugar {
+  margin: 0;
+  font-size: var(--font-size-base);
+  color: var(--color-white);
+}
+.fiestas-privadas-alquila-container {
+  align-self: stretch;
+  height: 138px;
+  position: relative;
+  display: inline-block;
+  flex-shrink: 0;
+  z-index: 1;
+}
+.section-eventos-inner,
+.testimonial-parent {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.testimonial-parent {
+  align-self: stretch;
+  align-items: flex-end;
+  gap: var(--gap-28xl);
+}
+.section-eventos-inner {
+  width: 220px;
+  align-items: flex-start;
+  padding: var(--padding-89xl) 0 0;
+  box-sizing: border-box;
+}
+.tipos-de-eventos {
+  align-self: stretch;
+  position: relative;
+  letter-spacing: 0.5em;
+  font-weight: 600;
+  z-index: 1;
+}
+.testimonial-content-child {
+  height: 195px;
+  width: 195px;
+  position: relative;
+  object-fit: cover;
+  z-index: 1;
+}
+.testimonial-content1 {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 0 var(--padding-xs) 0 var(--padding-smi);
+}
+.escapadas-de-fin {
+  margin-block-start: 0;
+  margin-block-end: 8px;
+  font-weight: 600;
+}
+.organizamos-viajes-a {
+  margin: 0;
+  font-size: var(--font-size-base);
+  color: var(--color-white);
+}
+.escapadas-de-fin-container {
+  align-self: stretch;
+  height: 148px;
+  position: relative;
+  display: inline-block;
+  flex-shrink: 0;
+  z-index: 1;
+}
+.testimonial-content {
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;
+  gap: var(--gap-28xl);
+}
+.testimonial-quote-child {
+  height: 195px;
+  width: 195px;
+  position: relative;
+  object-fit: cover;
+  z-index: 1;
+}
+.testimonial-quote {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0 var(--padding-smi) 0 var(--padding-xs);
+}
+.relax-y-bienestar {
+  margin-block-start: 0;
+  margin-block-end: 8px;
+  font-weight: 600;
+}
+.sesiones-de-spa {
+  margin: 0;
+  font-size: var(--font-size-base);
+  color: var(--color-white);
+}
+.relax-y-bienestar-container {
+  align-self: stretch;
+  height: 138px;
+  position: relative;
+  display: inline-block;
+  flex-shrink: 0;
+  z-index: 1;
+}
+.testimonial-content2 {
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--gap-28xl);
+}
+.testimonial-content-parent {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--gap-xl);
+  color: var(--color-turquoise);
+}
+.tipos-de-eventos-parent {
+  width: 540px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 84px;
+  max-width: 100%;
+  color: var(--color-white);
+}
+.frame-child {
+  height: 195px;
+  width: 195px;
+  position: relative;
+  object-fit: cover;
+  z-index: 1;
+}
+.frame-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0 var(--padding-smi) 0 var(--padding-xs);
+}
+.experiencias-gourmet {
+  margin-block-start: 0;
+  margin-block-end: 8px;
+  font-weight: 600;
+}
+.disfruta-de-una {
+  margin: 0;
+  font-size: var(--font-size-base);
+  color: var(--color-white);
+}
+.experiencias-gourmet-disfruta-container {
+  align-self: stretch;
+  height: 138px;
+  position: relative;
+  display: inline-block;
+  flex-shrink: 0;
+  z-index: 1;
+}
+.frame-parent {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--gap-28xl);
+}
+.frame-div,
+.section-eventos {
+  display: flex;
+  align-items: flex-start;
+  box-sizing: border-box;
+}
+.frame-div {
+  width: 220px;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: var(--padding-89xl) 0 0;
+}
+.section-eventos {
+  align-self: stretch;
+  background-color: var(--color-gray-200);
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 80px 130px 72px;
+  max-width: 100%;
+  gap: var(--gap-xl);
+  text-align: center;
+  font-size: var(--font-size-xl);
+  color: var(--color-turquoise);
+  font-family: var(--font-inter);
+}
+.section-cta-child {
+  width: 1440px;
+  height: 650px;
+  position: relative;
+  background-color: var(--color-steelblue);
+  display: none;
+  max-width: 100%;
+}
+.momentos-que-no {
+  position: relative;
+  font-weight: 600;
+  z-index: 1;
+}
+.frame-item {
+  height: 70px;
+  width: 510px;
+  position: relative;
+  background-color: var(--color-crimson);
+  display: none;
+  max-width: 100%;
+}
+.planifica-tu-despedida1 {
+  flex: 1;
+  position: relative;
+  font-weight: 500;
+  display: inline-block;
+  max-width: 100%;
+  z-index: 1;
+}
+.rectangle-parent,
+.section-cta-inner {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  max-width: 100%;
+}
+.rectangle-parent {
+  width: 510px;
+  background-color: var(--color-crimson);
+  justify-content: flex-start;
+  padding: var(--padding-2xs) var(--padding-base) var(--padding-xs);
+  box-sizing: border-box;
+  z-index: 1;
+}
+.section-cta-inner {
+  width: 780px;
+  justify-content: center;
+  font-size: var(--font-size-17xl);
+}
+.landing,
+.section-cta {
+  display: flex;
+  flex-direction: column;
+}
+.section-cta {
+  background-color: var(--color-steelblue);
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: var(--padding-210xl) 325px var(--padding-210xl) 324px;
+  box-sizing: border-box;
+  gap: 41px;
+  min-height: 650px;
+  max-width: 100%;
+  text-align: center;
+  font-size: var(--font-size-29xl);
+  color: var(--color-white);
+  font-family: var(--font-inter);
+}
+.landing {
+  width: 100%;
+  position: relative;
+  background-color: var(--color-white);
+  overflow: hidden;
+  align-items: flex-start;
+  justify-content: flex-start;
+  line-height: normal;
+  letter-spacing: normal;
+}
+@media screen and (max-width: 1275px) {
+  .section-testimonios {
+    gap: 97px;
+  }
+  .section-eventos {
+    flex-wrap: wrap;
+  }
+}
+@media screen and (max-width: 750px) {
+  .section-slider {
+    padding: var(--padding-123xl) 159px var(--padding-123xl) 158px;
+    box-sizing: border-box;
+  }
+  .fue-una-noche,
+  .juan-m {
+    font-size: var(--font-size-10xl);
+  }
+  .section-testimonios {
+    gap: 49px;
+    padding-top: 39px;
+    padding-bottom: 136px;
+    box-sizing: border-box;
+  }
+  .la-mejor-despedida-container {
+    font-size: var(--font-size-10xl);
+  }
+  .bio-image {
+    padding-left: var(--padding-46xl);
+    padding-top: var(--padding-112xl);
+    padding-bottom: var(--padding-112xl);
+    box-sizing: border-box;
+  }
+  .section-eventos-inner {
+    padding-top: var(--padding-51xl);
+    box-sizing: border-box;
+  }
+  .testimonial-content-parent {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .tipos-de-eventos-parent {
+    gap: 42px;
+  }
+  .frame-div {
+    padding-top: var(--padding-51xl);
+    box-sizing: border-box;
+  }
+  .section-eventos {
+    padding: 52px var(--padding-46xl) 47px;
+    box-sizing: border-box;
+  }
+  .momentos-que-no {
+    font-size: 38px;
+  }
+  .planifica-tu-despedida1 {
+    font-size: var(--font-size-10xl);
+  }
+  .section-cta {
+    gap: var(--gap-xl);
+    padding: 149px 162px;
+    box-sizing: border-box;
+  }
+}
+@media screen and (max-width: 450px) {
+  .section-slider {
+    padding-left: var(--padding-xl);
+    padding-right: var(--padding-xl);
+    box-sizing: border-box;
+  }
+  .testimonios {
+    font-size: var(--font-size-base);
+  }
+  .fue-una-noche,
+  .juan-m {
+    font-size: var(--font-size-3xl);
+  }
+  .section-testimonios {
+    gap: 24px;
+  }
+  .la-mejor-despedida-container {
+    font-size: var(--font-size-3xl);
+  }
+  .bio-image {
+    padding-left: var(--padding-xl);
+    box-sizing: border-box;
+  }
+  .tipos-de-eventos {
+    font-size: var(--font-size-base);
+  }
+  .tipos-de-eventos-parent {
+    gap: var(--gap-2xl);
+  }
+  .section-eventos {
+    padding-left: var(--padding-xl);
+    padding-right: var(--padding-xl);
+    box-sizing: border-box;
+  }
+  .momentos-que-no {
+    font-size: var(--font-size-10xl);
+  }
+  .planifica-tu-despedida1 {
+    font-size: var(--font-size-3xl);
+  }
+  .section-cta {
+    padding-left: var(--padding-xl);
+    padding-right: var(--padding-xl);
+    box-sizing: border-box;
+  }
+}

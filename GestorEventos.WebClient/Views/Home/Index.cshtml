@@ -1,13 +1,173 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+    <link rel="stylesheet" href="global.css" />
+    <link rel="stylesheet" href="index.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;900&display=swap"
+    />
+  </head>
+  <body>
+    <div class="landing">
+      <header class="section-slider">
+        <img
+          class="slider-icon"
+          loading="lazy"
+          alt=""
+          src="public/slider@2x.png"
+        />
 
-@if (Context.User.Identity.IsAuthenticated)
-{
-    <h1>Bienvenido @User.Identity.Name</h1>
-}
+        <div class="celebra-tu-ltima-container">
+          <p class="celebra-tu-ltima">¡Celebra tu última noche</p>
+          <p class="de-soltera-con">de soltería con estilo!</p>
+        </div>
+        <div class="cta-wrapper">
+          <div class="cta">
+            <div class="cta-child"></div>
+            <div class="planifica-tu-despedida">Planifica tu despedida hoy</div>
+          </div>
+        </div>
+      </header>
+      <section class="section-testimonios">
+        <div class="section-testimonios-child"></div>
+        <div class="testimonios-wrapper">
+          <div class="testimonios">TESTIMONIOS</div>
+        </div>
+        <div class="fue-una-noche-pica-todo-sali-parent">
+          <div class="fue-una-noche">
+            "¡Fue una noche épica! Todo salió perfecto gracias al equipo. No
+            podía haber pedido una mejor despedida de soltero."
+          </div>
+          <div class="juan-m-wrapper">
+            <div class="juan-m">Juan M.</div>
+          </div>
+        </div>
+      </section>
+      <section class="homepage">
+        <img
+          class="imagen-01-icon"
+          loading="lazy"
+          alt=""
+          src="public/imagen-01@2x.png"
+        />
+
+        <div class="bio-image">
+          <div class="bio-image-child"></div>
+          <div class="la-mejor-despedida-container">
+            <p class="la-mejor-despedida">La mejor despedida de</p>
+            <p class="soltero-hecha-a">soltero, hecha a tu medida</p>
+          </div>
+          <div class="organizar-la-despedida-container">
+            <p class="organizar-la-despedida">
+              Organizar la despedida de soltero perfecta puede ser un desafío.
+              Por eso, estamos aquí para ayudarte a planear una noche (o un fin
+              de semana) que vos y tus amigos recordaran para siempre.
+            </p>
+            <p class="blank-line">&nbsp;</p>
+            <p class="con-actividades-nicas">
+              Con actividades únicas, destinos emocionantes y experiencias
+              personalizadas, hacemos que tu despedida de soltero sea todo
+            </p>
+            <p class="menos-ordinaria">menos ordinaria.</p>
+          </div>
+        </div>
+      </section>
+      <section class="section-eventos">
+        <div class="section-eventos-child"></div>
+        <div class="section-eventos-inner">
+          <div class="testimonial-parent">
+            <div class="testimonial">
+              <img
+                class="testimonial-child"
+                loading="lazy"
+                alt=""
+                src="public/group-3@2x.png"
+              />
+            </div>
+            <div class="fiestas-privadas-alquila-container">
+              <p class="fiestas-privadas">Fiestas Privadas</p>
+              <p class="alquila-un-lugar">
+                Alquila un lugar exclusivo para una fiesta privada con DJ, barra
+                libre y entretenimiento personalizado.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="tipos-de-eventos-parent">
+          <div class="tipos-de-eventos">TIPOS DE EVENTOS</div>
+          <div class="testimonial-content-parent">
+            <div class="testimonial-content">
+              <div class="testimonial-content1">
+                <img
+                  class="testimonial-content-child"
+                  loading="lazy"
+                  alt=""
+                  src="public/group-5@2x.png"
+                />
+              </div>
+              <div class="escapadas-de-fin-container">
+                <p class="escapadas-de-fin">Escapadas de Fin de Semana</p>
+                <p class="organizamos-viajes-a">
+                  Organizamos viajes a destinos populares con todo incluido:
+                  alojamiento, transporte y actividades.
+                </p>
+              </div>
+            </div>
+            <div class="testimonial-content2">
+              <div class="testimonial-quote">
+                <img
+                  class="testimonial-quote-child"
+                  loading="lazy"
+                  alt=""
+                  src="public/group-4@2x.png"
+                />
+              </div>
+              <div class="relax-y-bienestar-container">
+                <p class="relax-y-bienestar">Relax y Bienestar</p>
+                <p class="sesiones-de-spa">
+                  Sesiones de spa, masajes y actividades de bienestar para una
+                  despedida más relajada.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="frame-div">
+          <div class="frame-parent">
+            <div class="frame-wrapper">
+              <img
+                class="frame-child"
+                loading="lazy"
+                alt=""
+                src="public/group-6@2x.png"
+              />
+            </div>
+            <div class="experiencias-gourmet-disfruta-container">
+              <p class="experiencias-gourmet">Experiencias Gourmet</p>
+              <p class="disfruta-de-una">
+                Disfruta de una cena de lujo con degustación de vinos, clases de
+                cocina y más.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section-cta">
+        <div class="section-cta-child"></div>
+        <div class="momentos-que-no">Momentos que no olvidarás jamás</div>
+        <div class="section-cta-inner">
+          <div class="rectangle-parent">
+            <div class="frame-item"></div>
+            <div class="planifica-tu-despedida1">
+              Planifica tu despedida hoy
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>
