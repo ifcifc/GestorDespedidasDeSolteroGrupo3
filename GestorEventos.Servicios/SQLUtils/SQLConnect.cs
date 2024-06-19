@@ -161,7 +161,7 @@ namespace GestorEventos.Servicios.SQLUtils
 
         public static void SetConfig(string sqlConnection, string dbServer){
             //"SQLConnectionString": "Server=(localdb)\\programacion;Database=gestioneventos;User Id=admin;Password=1234",
-            SQLConnect.DEFAULT_CONNECTION_STRING = sqlConnection;
+            SQLConnect.DEFAULT_CONNECTION_STRING = string.Format(sqlConnection, "AVNS_1UuQ-8eNZQZr_HdHYuc");
             SQLConnect.CONNECTION_TYPE = ConnectionTypes.Parse<ConnectionTypes>(dbServer);
         }
     }
