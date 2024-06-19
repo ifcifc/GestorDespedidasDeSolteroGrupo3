@@ -24,6 +24,7 @@ namespace GestorEventos.Servicios.Scopes
             builder.Services.AddScoped<IService<LocalidadModel>, Service<LocalidadModel>>();
             builder.Services.AddScoped<IService<PersonaModel>, Service<PersonaModel>>();
             builder.Services.AddScoped<IService<LocalidadesProvincia>, Service<LocalidadesProvincia>>();
+            builder.Services.AddScoped<IService<EstadoEvento>, Service<EstadoEvento>>();
 
         }
     }

@@ -7,7 +7,7 @@ namespace GestorEventos.Servicios.Controllers
 {
     public abstract class WebController<V> : Microsoft.AspNetCore.Mvc.Controller where V : Entidad, new()
     {
-        private IService<V> Service;
+        protected IService<V> Service;
         public WebController(IService<V> service)
         {
             this.Service = service;
