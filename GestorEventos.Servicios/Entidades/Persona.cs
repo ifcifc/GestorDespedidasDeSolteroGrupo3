@@ -1,4 +1,6 @@
-﻿namespace GestorEventos.Servicios.Entidades
+﻿using System.Text;
+
+namespace GestorEventos.Servicios.Entidades
 {
     public class Persona : Entidad
 	{
@@ -20,5 +22,15 @@
         public int DireccionNumero { get; set; }
         public int DireccionPiso { get; set; }
         public string DireccionDepartamento { get; set; }
+
+        public string getBasicInfo() {
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.Append(this.Nombre);
+            stringBuilder.Append(" ");
+            stringBuilder.Append(this.Apellido);
+            stringBuilder.Append(" ");
+            stringBuilder.Append(this.Email);
+            return stringBuilder.ToString();
+        }
     }
 }

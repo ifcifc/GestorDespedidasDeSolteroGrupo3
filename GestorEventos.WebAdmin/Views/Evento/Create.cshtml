@@ -13,7 +13,8 @@
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input asp-for="IdEvento" class="form-control" hidden/>
+            <input asp-for="IdEvento" class="form-control" value="0" hidden/>
+            <input asp-for="IdEstadoEvento" class="form-control" value="1" hidden />
 
             <div class="form-group">
                 <label asp-for="NombreEvento" class="control-label"></label>
@@ -31,25 +32,58 @@
                 <span asp-validation-for="CantidadPersonas" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="IdTipoEvento" class="control-label"></label>
-                <input asp-for="IdTipoEvento" class="form-control" />
+                <label asp-for="IdTipoEvento" class="control-label">Tipo de Evento</label>
+                <select asp-for="IdTipoEvento" class="form-control">
+                    @foreach (var p in ViewBag.TiposEventos)
+                    {
+                        <option value="@p.IdTipoEvento">@p.Descripcion</option>
+                    }
+                </select>
                 <span asp-validation-for="IdTipoEvento" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <label asp-for="IdPersonaAgasajada" class="control-label"></label>
-                <input asp-for="IdPersonaAgasajada" class="form-control" />
+                <label asp-for="IdPersonaAgasajada" class="control-label">Persona Agasajada</label>
+                <select asp-for="IdPersonaAgasajada" class="form-control">
+                    @foreach (var p in ViewBag.Personas)
+                    {
+                        <option value="@p.IdPersona">@p.getBasicInfo()</option>
+                    }
+                </select>
                 <span asp-validation-for="IdPersonaAgasajada" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <label asp-for="IdUsuario" class="control-label"></label>
-                <input asp-for="IdUsuario" class="form-control" />
+                <label asp-for="IdUsuario" class="control-label">Usuarios</label>
+                <select asp-for="IdUsuario" class="form-control">
+                    @foreach (var p in ViewBag.Usuarios)
+                    {
+                        <option value="@p.IdUsuario">@p.Email</option>
+                    }
+                </select>
                 <span asp-validation-for="IdUsuario" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="IdEstadoEvento" class="control-label"></label>
-                <input asp-for="IdEstadoEvento" class="form-control" />
-                <span asp-validation-for="IdEstadoEvento" class="text-danger"></span>
-            </div>
+
+            <table>
+                <thead>
+                <th></th>
+                <th>Servicios</th>
+                <th>Precio</th>
+                </thead>
+                <tbody>
+                    @foreach (var servicio in ViewBag.Servicios)
+                    {
+                        <tr>
+                            <td>
+                                <input type="checkbox" name="Servicio" value="@servicio.IdServicio" />
+                            </td>
+                            <td>@servicio.Descripcion</td>
+                            <td> $@servicio.FormatoPrecioServicio()</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
