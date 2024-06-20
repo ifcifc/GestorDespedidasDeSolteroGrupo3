@@ -13,13 +13,27 @@ namespace GestorEventos.WebAdmin.Controllers
         IService<TipoEvento> tipoEventoService;
         IService<Persona> personaService;
         IService<Servicio> sevicioService;
-        public EventoController(IService<EventoModel> eventoService, IService<Usuario> usuarioService, IService<TipoEvento> tipoEventoService, IService<Persona> personaService, IService<EstadoEvento> estadoEventoService, IService<Servicio> sevicioService) : base(eventoService)
+        IService<EventoServicio> eventoServicio;
+        EventoService eventoService;
+        public EventoController(
+                        IService<EventoModel> eventoModelService, 
+                        IService<Usuario> usuarioService, 
+                        IService<TipoEvento> tipoEventoService, 
+                        IService<Persona> personaService, 
+                        IService<EstadoEvento> estadoEventoService, 
+                        IService<Servicio> sevicioService, 
+                        IService<EventoServicio> eventoServicio, 
+                        IService<Evento> eventoService) : base(eventoModelService)
         {
             this.usuarioService = usuarioService;
             this.tipoEventoService = tipoEventoService;
             this.estadoEventoService = estadoEventoService;
             this.personaService = personaService;
             this.sevicioService = sevicioService;
+            this.eventoServicio = eventoServicio;
+            this.eventoService = (EventoService)eventoService;
+
+
         }
 
         public override ActionResult Create()
@@ -32,6 +46,22 @@ namespace GestorEventos.WebAdmin.Controllers
 
 
             return base.Create();
+        }
+
+        public override ActionResult Create(IFormCollection collection)
+        {
+            int id = eventoService.AddGetID(this.Service.FromFormCollection(collection));
+
+            foreach (var idServicio in (collection["Servicio"]))
+            {
+                this.eventoServicio.Add(new EventoServicio()
+                {
+                    IdEvento = id,
+                    IdServicio = int.Parse(idServicio)
+                });
+            }
+
+            return RedirectToAction(nameof(Index)); ;
         }
     }
 }

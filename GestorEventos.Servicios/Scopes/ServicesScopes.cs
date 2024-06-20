@@ -10,7 +10,7 @@ namespace GestorEventos.Servicios.Scopes
     {
         public static void RegisterAllServices(WebApplicationBuilder builder) 
         {
-            builder.Services.AddScoped<IService<Evento>, Service<Evento>>();
+            builder.Services.AddScoped<IService<Evento>, EventoService>();
             builder.Services.AddScoped<IService<Localidad>, Service<Localidad>>();
             builder.Services.AddScoped<IService<Persona>, Service<Persona>>();
             builder.Services.AddScoped<IService<Usuario>, UsuarioService>();
@@ -25,6 +25,7 @@ namespace GestorEventos.Servicios.Scopes
             builder.Services.AddScoped<IService<PersonaModel>, Service<PersonaModel>>();
             builder.Services.AddScoped<IService<LocalidadesProvincia>, Service<LocalidadesProvincia>>();
             builder.Services.AddScoped<IService<EstadoEvento>, Service<EstadoEvento>>();
+            builder.Services.AddScoped<IService<EventoServicio>, Service<EventoServicio>>();
 
         }
     }
