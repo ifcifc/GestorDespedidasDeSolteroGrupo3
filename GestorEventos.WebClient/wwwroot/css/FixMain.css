@@ -12,29 +12,6 @@
     padding-right: 0 !important;
     padding-left: 0 !important;
 }
-.btn-primary {
-    color: #fff;
-    background-color: #0de8e4 !important;
-    border-color: #0de8e4 !important;
-}
 
-.bg-white {
-    background-color: #00406b !important;
-}
-
-.border-bottom {
-    border-bottom: 1px solid #00406b !important;
-}
-
-.text-dark {
-    --bs-text-opacity: 1;
-    color: #fff !important;
-}
-
-.btn-primary:hover {
-    color: #fff;
-    background-color: #e01050 !important;
-    border-color: #e01050 !important;
-}
 
 
