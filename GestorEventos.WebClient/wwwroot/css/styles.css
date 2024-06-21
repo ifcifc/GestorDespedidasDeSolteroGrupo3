@@ -65,3 +65,7 @@ button {
 button:hover {
     background: #AF0036;
 }
+.btn-primary {
+    color: #fff;
+    background-color: #0de8e4;
+    border-color: #0de8e4;
