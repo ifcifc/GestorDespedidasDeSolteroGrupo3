@@ -50,7 +50,7 @@ builder.Services.AddAuthentication(options =>
                 });
             }
             
-            ctx.Identity?.AddClaim(new System.Security.Claims.Claim("Usuario", idUsuario.ToString()));
+            ctx.Identity?.AddClaim(new System.Security.Claims.Claim("UsuarioId", idUsuario.ToString()));
             return Task.CompletedTask;
         };
     });

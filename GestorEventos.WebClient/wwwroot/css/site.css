@@ -21,10 +21,7 @@ body {
   margin-bottom: 60px;
 }
 
-footer {
-    background-color: white !important;
-}
-
 .noSelected {
     user-select: none !important;
 }
+

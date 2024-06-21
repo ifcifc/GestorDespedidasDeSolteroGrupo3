@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Reserva de Evento";
+}
+<link rel="stylesheet" href="~/css/FixMain.css" />
+<link rel="stylesheet" href="~/css/reserva/style.css" />
+
+
+<div class="ItemSelec d-flex justify-content-center align-items-center">
+    <div class="card Item rounded" style="width: 18rem;">
+        <img class="card-img-top" src="~/images/reserva/userAdd.png" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">Cargar una persona</h5>
+            <p class="card-text">Cargue los datos de una nueva persona agasajada.</p>
+        </div>
+    </div>
+
+    <div class="card Item rounded" style="width: 18rem;">
+        <img class="card-img-top" src="~/images/reserva/userSelect.png" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">Seleccionar una persona</h5>
+            <p class="card-text">Seleccione a una persona agasajada anteriormente agasajada por usted.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const items = document.querySelectorAll(".Item");
+        items.forEach(function (item) {
+            item.addEventListener("click", function () {
+                alert("Trabajo en progreso");
+                alert("Te estoy viendo ColliePaciente");
+            });
+        });
+    });
+</script>
