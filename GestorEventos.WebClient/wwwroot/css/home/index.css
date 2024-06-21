@@ -17,63 +17,63 @@
   margin: 0;
 }
 .celebra-tu-ltima-container {
-  width: 805px;
+  align-self: stretch;
   position: relative;
   font-weight: 900;
+  z-index: 1;
+}
+.cta-child {
+  height: 70px;
+  width: 510px;
+  position: relative;
+  background-color: var(--color-crimson);
+  display: none;
+  max-width: 100%;
+}
+.planifica-tu-despedida {
+  flex: 1;
+  position: relative;
+  font-weight: 500;
   display: inline-block;
+  white-space: nowrap;
   max-width: 100%;
   z-index: 1;
 }
-.planifica-tu-despedida {
-  position: relative;
-  font-weight: 500;
-}
-.botonprimario,
-.cta-button {
+.cta,
+.cta-wrapper {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  box-sizing: border-box;
   max-width: 100%;
 }
-.botonprimario {
-  border-radius: var(--br-xl);
+.cta {
+  width: 510px;
   background-color: var(--color-crimson);
   justify-content: flex-start;
-  padding: var(--padding-3xl);
-  white-space: nowrap;
+  padding: var(--padding-2xs) var(--padding-base) var(--padding-xs);
+  box-sizing: border-box;
   z-index: 1;
 }
-.cta-button {
-  width: 806px;
+.cta-wrapper {
+  width: 794px;
   justify-content: center;
-  padding: 0 2px 0 0;
   font-size: var(--font-size-17xl);
 }
-.section-slider,
-.section-slider-wrapper {
-  display: flex;
-  justify-content: flex-start;
-  box-sizing: border-box;
-  max-width: 100%;
-}
 .section-slider {
-  flex: 1;
+  align-self: stretch;
+  display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 219px var(--padding-xl) 203px;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 219px 318px 218px 317px;
+  box-sizing: border-box;
   position: relative;
-  gap: 24px;
+  gap: 27px;
+  max-width: 100%;
   text-align: center;
   font-size: var(--font-size-29xl);
   color: var(--color-white);
   font-family: var(--font-inter);
-}
-.section-slider-wrapper {
-  align-self: stretch;
-  flex-direction: row;
-  align-items: flex-start;
-  padding: 0 0 var(--padding-531xl);
 }
 .section-testimonios-child {
   width: 1440px;
@@ -99,7 +99,7 @@
   flex-direction: row;
   align-items: flex-start;
   justify-content: center;
-  padding: 0 var(--padding-12xs) 0 0;
+  padding: 0 1px 0 0;
   box-sizing: border-box;
   max-width: 100%;
 }
@@ -118,13 +118,13 @@
   display: inline-block;
   flex-shrink: 0;
 }
-.testimonial-author {
+.juan-m-wrapper {
   align-self: stretch;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   justify-content: center;
-  padding: 0 var(--padding-xl) 0 var(--padding-2xl);
+  padding: 0 var(--padding-xl) 0 21px;
 }
 .fue-una-noche-pica-todo-sali-parent,
 .section-testimonios {
@@ -145,7 +145,29 @@
   align-items: center;
   padding: 60px var(--padding-xl) 209px;
   box-sizing: border-box;
-  gap: 202px;
+  gap: 195px;
+  text-align: center;
+  font-size: var(--font-size-xl);
+  color: var(--color-white);
+  font-family: var(--font-inter);
+}
+.imagen-01-icon {
+  height: 622px;
+  width: 540px;
+  position: absolute;
+  margin: 0 !important;
+  top: -72px;
+  right: 130px;
+  object-fit: contain;
+  z-index: 2;
+}
+.bio-image-child {
+  width: 1440px;
+  height: 650px;
+  position: relative;
+  background-color: var(--color-gray-100);
+  display: none;
+  max-width: 100%;
 }
 .la-mejor-despedida {
   margin: 0;
@@ -156,8 +178,11 @@
   font-weight: 600;
 }
 .la-mejor-despedida-container {
-  align-self: stretch;
+  width: 539px;
   position: relative;
+  display: inline-block;
+  max-width: 100%;
+  z-index: 1;
 }
 .blank-line,
 .con-actividades-nicas,
@@ -166,110 +191,59 @@
   margin: 0;
 }
 .organizar-la-despedida-container {
-  align-self: stretch;
+  width: 539px;
   position: relative;
   font-size: var(--font-size-base);
   color: var(--color-white);
+  display: inline-block;
+  max-width: 100%;
+  z-index: 1;
 }
-.description,
-.description-wrapper {
+.bio-image,
+.homepage {
   display: flex;
-  flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-}
-.description {
-  align-self: stretch;
-  gap: 19px;
-}
-.description-wrapper {
-  width: 539px;
-  padding: 188.5px 0 0;
-  box-sizing: border-box;
-  min-width: 539px;
   max-width: 100%;
 }
-.imagen-01-icon {
-  height: 622px;
+.bio-image {
   flex: 1;
-  position: relative;
-  max-width: 100%;
-  overflow: hidden;
-  object-fit: cover;
-  min-width: 383px;
-}
-.about-us,
-.contenedor-nosotros {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  max-width: 100%;
-}
-.contenedor-nosotros {
-  width: 1179px;
-  justify-content: flex-start;
-  gap: 50.5px;
-  z-index: 2;
-}
-.about-us {
-  align-self: stretch;
-  justify-content: center;
-  padding: 0 var(--padding-xl) 0 var(--padding-2xl);
+  background-color: var(--color-gray-100);
+  flex-direction: column;
+  padding: 201px var(--padding-xl) 202px var(--padding-112xl);
   box-sizing: border-box;
-  margin-top: -72px;
+  gap: var(--gap-2xl);
+}
+.homepage {
+  align-self: stretch;
+  flex-direction: row;
+  position: relative;
   text-align: left;
   font-size: var(--font-size-17xl);
   color: var(--color-turquoise);
-}
-.section-testimonios-parent {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  justify-content: flex-start;
-  margin-top: -550px;
-  text-align: center;
-  font-size: var(--font-size-sm);
-  color: var(--color-white);
   font-family: var(--font-inter);
 }
-.frame-child,
-.landing-inner,
-.section-testimonios-parent {
-  align-self: stretch;
+.section-eventos-child {
+  height: 650px;
+  width: 1440px;
+  position: relative;
+  background-color: var(--color-gray-200);
+  display: none;
   max-width: 100%;
 }
-.frame-child {
-  flex: 1;
+.testimonial-child {
+  height: 195px;
+  width: 195px;
   position: relative;
-  background-color: var(--color-gray-100);
+  object-fit: cover;
+  z-index: 1;
 }
-.landing-inner {
-  height: 1200px;
+.testimonial {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  justify-content: flex-start;
-  padding: 0 0 var(--padding-531xl);
-  box-sizing: border-box;
-  margin-top: -550px;
-}
-.tipos-de-eventos {
-  text-decoration: none;
-  width: 539px;
-  height: 40px;
-  position: relative;
-  letter-spacing: 0.5em;
-  font-weight: 600;
-  color: inherit;
-  display: inline-block;
-  flex-shrink: 0;
-  max-width: 100%;
-}
-.img01-icon {
-  width: 195px;
-  height: 195px;
-  position: relative;
-  object-fit: contain;
+  justify-content: flex-end;
+  padding: 0 var(--padding-xs) 0 var(--padding-smi);
 }
 .fiestas-privadas {
   margin-block-start: 0;
@@ -287,55 +261,87 @@
   position: relative;
   display: inline-block;
   flex-shrink: 0;
+  z-index: 1;
 }
-.card-evento-01 {
-  width: 259px;
+.section-eventos-inner,
+.testimonial-parent {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: var(--padding-xs);
+  justify-content: flex-start;
+}
+.testimonial-parent {
+  align-self: stretch;
+  align-items: flex-end;
+  gap: var(--gap-28xl);
+}
+.section-eventos-inner {
+  width: 220px;
+  align-items: flex-start;
+  padding: var(--padding-89xl) 0 0;
   box-sizing: border-box;
-  gap: var(--gap-10xl);
 }
-.img02-icon {
-  width: 195px;
-  height: 195px;
+.tipos-de-eventos {
+  align-self: stretch;
   position: relative;
-  object-fit: contain;
+  letter-spacing: 0.5em;
+  font-weight: 600;
+  z-index: 1;
 }
-.experiencias-gourmet {
+.testimonial-content-child {
+  height: 195px;
+  width: 195px;
+  position: relative;
+  object-fit: cover;
+  z-index: 1;
+}
+.testimonial-content1 {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 0 var(--padding-xs) 0 var(--padding-smi);
+}
+.escapadas-de-fin {
   margin-block-start: 0;
   margin-block-end: 8px;
   font-weight: 600;
 }
-.disfruta-de-una {
+.organizamos-viajes-a {
   margin: 0;
   font-size: var(--font-size-base);
   color: var(--color-white);
 }
-.experiencias-gourmet-disfruta-container {
+.escapadas-de-fin-container {
   align-self: stretch;
   height: 148px;
   position: relative;
   display: inline-block;
   flex-shrink: 0;
+  z-index: 1;
 }
-.card-evento-02 {
-  width: 259px;
+.testimonial-content {
+  width: 220px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-end;
   justify-content: flex-start;
-  padding: var(--padding-xs);
-  box-sizing: border-box;
-  gap: var(--gap-10xl);
+  gap: var(--gap-28xl);
 }
-.img03-icon {
-  width: 195px;
+.testimonial-quote-child {
   height: 195px;
+  width: 195px;
   position: relative;
-  object-fit: contain;
+  object-fit: cover;
+  z-index: 1;
+}
+.testimonial-quote {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0 var(--padding-smi) 0 var(--padding-xs);
 }
 .relax-y-bienestar {
   margin-block-start: 0;
@@ -353,90 +359,98 @@
   position: relative;
   display: inline-block;
   flex-shrink: 0;
+  z-index: 1;
 }
-.card-evento-03 {
-  width: 259px;
+.testimonial-content2 {
+  width: 220px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: flex-start;
-  padding: var(--padding-xs);
-  box-sizing: border-box;
-  gap: var(--gap-10xl);
+  gap: var(--gap-28xl);
 }
-.img04-icon {
-  width: 195px;
-  height: 195px;
-  position: relative;
-  object-fit: contain;
-}
-.escapadas-de-fin {
-  margin-block-start: 0;
-  margin-block-end: 8px;
-  font-weight: 600;
-}
-.organizamos-viajes-a {
-  margin: 0;
-  font-size: var(--font-size-base);
-  color: var(--color-white);
-}
-.escapadas-de-fin-container {
-  align-self: stretch;
-  position: relative;
-}
-.card-evento-04 {
-  width: 259px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding: var(--padding-xs);
-  box-sizing: border-box;
-  gap: var(--gap-10xl);
-}
-.card-grupoeventos {
+.testimonial-content-parent {
   align-self: stretch;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
   gap: var(--gap-xl);
-  font-size: var(--font-size-xl);
   color: var(--color-turquoise);
 }
-.contenedor-eventos,
-.event-types,
+.tipos-de-eventos-parent {
+  width: 540px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 84px;
+  max-width: 100%;
+  color: var(--color-white);
+}
+.frame-child {
+  height: 195px;
+  width: 195px;
+  position: relative;
+  object-fit: cover;
+  z-index: 1;
+}
+.frame-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0 var(--padding-smi) 0 var(--padding-xs);
+}
+.experiencias-gourmet {
+  margin-block-start: 0;
+  margin-block-end: 8px;
+  font-weight: 600;
+}
+.disfruta-de-una {
+  margin: 0;
+  font-size: var(--font-size-base);
+  color: var(--color-white);
+}
+.experiencias-gourmet-disfruta-container {
+  align-self: stretch;
+  height: 138px;
+  position: relative;
+  display: inline-block;
+  flex-shrink: 0;
+  z-index: 1;
+}
+.frame-parent {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--gap-28xl);
+}
+.frame-div,
 .section-eventos {
   display: flex;
-  justify-content: flex-start;
-  max-width: 100%;
-}
-.contenedor-eventos {
-  align-self: stretch;
-  flex-direction: column;
-  align-items: center;
-  gap: 68px;
-}
-.event-types,
-.section-eventos {
   align-items: flex-start;
   box-sizing: border-box;
 }
-.section-eventos {
-  flex: 1;
-  background-color: var(--color-gray-200);
-  overflow: hidden;
+.frame-div {
+  width: 220px;
   flex-direction: column;
-  padding: 66px var(--padding-69xl);
+  justify-content: flex-start;
+  padding: var(--padding-89xl) 0 0;
 }
-.event-types {
+.section-eventos {
   align-self: stretch;
+  background-color: var(--color-gray-200);
   flex-direction: row;
-  padding: 0 0 var(--padding-531xl);
-  margin-top: -550px;
+  justify-content: space-between;
+  padding: 80px 130px 72px;
+  max-width: 100%;
+  gap: var(--gap-xl);
   text-align: center;
-  font-size: var(--font-size-sm);
-  color: var(--color-white);
+  font-size: var(--font-size-xl);
+  color: var(--color-turquoise);
   font-family: var(--font-inter);
 }
 .section-cta-child {
@@ -450,202 +464,61 @@
 .momentos-que-no {
   position: relative;
   font-weight: 600;
+  z-index: 1;
+}
+.frame-item {
+  height: 70px;
+  width: 510px;
+  position: relative;
+  background-color: var(--color-crimson);
+  display: none;
+  max-width: 100%;
+}
+.planifica-tu-despedida1 {
+  flex: 1;
+  position: relative;
+  font-weight: 500;
   display: inline-block;
   max-width: 100%;
   z-index: 1;
 }
-.planifica-tu-despedida1 {
-  position: relative;
-  font-weight: 500;
-}
-.botonprimario-wrapper,
-.botonprimario1 {
+.rectangle-parent,
+.section-cta-inner {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  box-sizing: border-box;
   max-width: 100%;
 }
-.botonprimario1 {
-  border-radius: var(--br-xl);
+.rectangle-parent {
+  width: 510px;
   background-color: var(--color-crimson);
   justify-content: flex-start;
-  padding: var(--padding-3xl);
-  white-space: nowrap;
+  padding: var(--padding-2xs) var(--padding-base) var(--padding-xs);
+  box-sizing: border-box;
   z-index: 1;
 }
-.botonprimario-wrapper {
-  width: 791px;
+.section-cta-inner {
+  width: 780px;
   justify-content: center;
-  padding: 0 0 0 var(--padding-12xs);
   font-size: var(--font-size-17xl);
 }
-.section-cta,
-.section-cta-wrapper {
+.landing,
+.section-cta {
   display: flex;
-  justify-content: flex-start;
-  box-sizing: border-box;
-  max-width: 100%;
+  flex-direction: column;
 }
 .section-cta {
-  flex: 1;
   background-color: var(--color-steelblue);
-  flex-direction: column;
-  align-items: center;
-  padding: 250px var(--padding-2xl) 218px var(--padding-xl);
-  gap: var(--gap-15xl);
-}
-.section-cta-wrapper {
-  align-self: stretch;
-  flex-direction: row;
-  align-items: flex-start;
-  padding: 0 0 var(--padding-531xl);
-  margin-top: -550px;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: var(--padding-210xl) 325px var(--padding-210xl) 324px;
+  box-sizing: border-box;
+  gap: 41px;
+  min-height: 650px;
+  max-width: 100%;
   text-align: center;
   font-size: var(--font-size-29xl);
   color: var(--color-white);
-  font-family: var(--font-inter);
-}
-.footer-child,
-.image-8-icon {
-  position: relative;
-  max-width: 100%;
-}
-.footer-child {
-  height: 476px;
-  width: 1440px;
-  background-color: var(--color-gray-100);
-  display: none;
-}
-.image-8-icon {
-  align-self: stretch;
-  flex: 1;
-  overflow: hidden;
-  max-height: 100%;
-  object-fit: cover;
-  z-index: 1;
-}
-.footer-logo {
-  height: 67px;
-  width: 199px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  padding: 0 5px 0 0;
-  box-sizing: border-box;
-}
-.servicios {
-  margin: 0;
-  font-size: var(--font-size-5xl);
-}
-.blank-line1,
-.blank-line2,
-.blank-line3,
-.blank-line4,
-.escapadas-de-fin1,
-.experiencias-gourmet1,
-.fiestas-privadas1,
-.relax-y-bienestar1 {
-  margin: 0;
-}
-.servicios-fiestas-privadas-container {
-  align-self: stretch;
-  position: relative;
-  z-index: 1;
-}
-.footer-services {
-  width: 197px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  padding: 0 7px 0 0;
-  box-sizing: border-box;
-}
-.contacto {
-  margin: 0;
-  font-size: var(--font-size-5xl);
-}
-.blank-line5,
-.blank-line6,
-.blank-line7,
-.celular-54293566566,
-.direccin-av-caser,
-.email-infodespedidascom {
-  margin: 0;
-}
-.contacto-direccin-av-container {
-  width: 195px;
-  position: relative;
-  display: inline-block;
-  flex-shrink: 0;
-  z-index: 1;
-}
-.objects-icon,
-.objects-icon1 {
-  position: absolute;
-  top: 79px;
-  left: 0;
-  width: 15px;
-  height: 15px;
-  overflow: hidden;
-  z-index: 1;
-}
-.objects-icon1 {
-  top: 45px;
-}
-.redes-sociales {
-  margin: 0;
-  white-space: pre-wrap;
-  font-size: var(--font-size-5xl);
-}
-.blank-line8 {
-  margin: 0;
-}
-.despedidassol {
-  margin: 0;
-  white-space: pre-wrap;
-}
-.blank-line9 {
-  margin: 0;
-}
-.despedidassol1 {
-  margin: 0;
-  white-space: pre-wrap;
-}
-.redes-sociales-despedidassol-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: inline-block;
-  width: 100%;
-  height: 100%;
-  z-index: 2;
-}
-.social-links {
-  height: 95px;
-  width: 206px;
-  position: relative;
-}
-.footer,
-.landing {
-  display: flex;
-  align-items: flex-start;
-}
-.footer {
-  align-self: stretch;
-  background-color: var(--color-gray-100);
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 191px 186px 105px var(--padding-69xl);
-  box-sizing: border-box;
-  max-width: 100%;
-  gap: var(--gap-xl);
-  margin-top: -550px;
-  text-align: left;
-  font-size: var(--font-size-sm);
-  color: var(--color-gray-300);
   font-family: var(--font-inter);
 }
 .landing {
@@ -653,52 +526,22 @@
   position: relative;
   background-color: var(--color-white);
   overflow: hidden;
-  flex-direction: column;
+  align-items: flex-start;
   justify-content: flex-start;
   line-height: normal;
   letter-spacing: normal;
 }
 @media screen and (max-width: 1275px) {
-  .section-slider-wrapper {
-    padding-bottom: var(--padding-338xl);
-    box-sizing: border-box;
-  }
   .section-testimonios {
-    gap: 101px;
+    gap: 97px;
   }
-  .landing-inner {
-    padding-bottom: var(--padding-338xl);
-    box-sizing: border-box;
-  }
-  .card-grupoeventos {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  .event-types,
-  .section-cta-wrapper {
-    padding-bottom: var(--padding-338xl);
-    box-sizing: border-box;
-  }
-  .footer {
-    flex-wrap: wrap;
-  }
-}
-@media screen and (max-width: 1100px) {
-  .description-wrapper {
-    flex: 1;
-  }
-  .contenedor-nosotros {
+  .section-eventos {
     flex-wrap: wrap;
   }
 }
 @media screen and (max-width: 750px) {
   .section-slider {
-    padding-top: var(--padding-123xl);
-    padding-bottom: 132px;
-    box-sizing: border-box;
-  }
-  .section-slider-wrapper {
-    padding-bottom: var(--padding-213xl);
+    padding: var(--padding-123xl) 159px var(--padding-123xl) 158px;
     box-sizing: border-box;
   }
   .fue-una-noche,
@@ -706,74 +549,79 @@
     font-size: var(--font-size-10xl);
   }
   .section-testimonios {
-    gap: 50px;
-    padding-top: var(--padding-551xl);
+    gap: 49px;
+    padding-top: 39px;
     padding-bottom: 136px;
     box-sizing: border-box;
   }
   .la-mejor-despedida-container {
     font-size: var(--font-size-10xl);
   }
-  .description-wrapper {
-    min-width: 100%;
-  }
-  .contenedor-nosotros {
-    gap: var(--gap-6xl);
-  }
-  .landing-inner {
-    padding-bottom: var(--padding-213xl);
+  .bio-image {
+    padding-left: var(--padding-46xl);
+    padding-top: var(--padding-112xl);
+    padding-bottom: var(--padding-112xl);
     box-sizing: border-box;
   }
-  .contenedor-eventos {
-    gap: var(--gap-15xl);
+  .section-eventos-inner {
+    padding-top: var(--padding-51xl);
+    box-sizing: border-box;
+  }
+  .testimonial-content-parent {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .tipos-de-eventos-parent {
+    gap: 42px;
+  }
+  .frame-div {
+    padding-top: var(--padding-51xl);
+    box-sizing: border-box;
   }
   .section-eventos {
-    padding: var(--padding-551xl) var(--padding-25xl) 43px;
-    box-sizing: border-box;
-  }
-  .event-types {
-    padding-bottom: var(--padding-213xl);
+    padding: 52px var(--padding-46xl) 47px;
     box-sizing: border-box;
   }
   .momentos-que-no {
     font-size: 38px;
   }
+  .planifica-tu-despedida1 {
+    font-size: var(--font-size-10xl);
+  }
   .section-cta {
-    padding-top: var(--padding-551xl);
-    padding-bottom: var(--padding-123xl);
-    box-sizing: border-box;
-  }
-  .section-cta-wrapper {
-    padding-bottom: var(--padding-213xl);
-    box-sizing: border-box;
-  }
-  .footer {
-    padding-left: var(--padding-25xl);
-    padding-right: 93px;
-    padding-bottom: 68px;
+    gap: var(--gap-xl);
+    padding: 149px 162px;
     box-sizing: border-box;
   }
 }
 @media screen and (max-width: 450px) {
+  .section-slider {
+    padding-left: var(--padding-xl);
+    padding-right: var(--padding-xl);
+    box-sizing: border-box;
+  }
+  .testimonios {
+    font-size: var(--font-size-base);
+  }
   .fue-una-noche,
   .juan-m {
     font-size: var(--font-size-3xl);
   }
   .section-testimonios {
-    gap: var(--gap-6xl);
+    gap: 24px;
   }
   .la-mejor-despedida-container {
     font-size: var(--font-size-3xl);
   }
-  .description-wrapper {
-    padding-top: var(--padding-551xl);
+  .bio-image {
+    padding-left: var(--padding-xl);
     box-sizing: border-box;
   }
-  .imagen-01-icon {
-    min-width: 100%;
+  .tipos-de-eventos {
+    font-size: var(--font-size-base);
   }
-  .contenedor-eventos {
-    gap: var(--gap-mid);
+  .tipos-de-eventos-parent {
+    gap: var(--gap-2xl);
   }
   .section-eventos {
     padding-left: var(--padding-xl);
@@ -783,14 +631,12 @@
   .momentos-que-no {
     font-size: var(--font-size-10xl);
   }
-  .section-cta {
-    gap: var(--gap-mid);
+  .planifica-tu-despedida1 {
+    font-size: var(--font-size-3xl);
   }
-  .footer {
+  .section-cta {
     padding-left: var(--padding-xl);
     padding-right: var(--padding-xl);
     box-sizing: border-box;
   }
 }
-
-
