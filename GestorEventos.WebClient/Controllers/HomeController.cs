@@ -8,6 +8,14 @@ namespace GestorEventos.WebClient.Controllers
     public class HomeController : SimpleController
     {
 
+        public IActionResult Privacy()
+        {
+            return View();
+        }
 
+        public IActionResult Reserva()
+        {
+            return View();
+        }
     }
 }
