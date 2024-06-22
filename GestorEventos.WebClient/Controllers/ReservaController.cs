@@ -43,6 +43,22 @@ namespace GestorEventos.WebClient.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+        
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public virtual ActionResult PersonaAction(IFormCollection collection)
+        {
+            foreach (var item in collection)
+            {
+                Console.WriteLine(">>" + item.Key);
+            }
+            return RedirectToAction(nameof(Index));
+        }
+
+        public ActionResult PersonaList()
+        {
+            return View(this.personaService.GetAll());
+        }
     }
 
     

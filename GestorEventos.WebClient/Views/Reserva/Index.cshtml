@@ -6,36 +6,22 @@
 
 
 <div class="ItemSelec d-flex justify-content-center align-items-center">
-    <a href="Reserva/PersonaCreate" class="card-select">
+    <a asp-action="PersonaCreate" class="card-select">
         <div class="card Item rounded" style="width: 18rem;">
-        <img class="card-img-top" src="~/images/reserva/userAdd.png" alt="Card image cap">
-        <div class="card-body">
-            <h5 class="card-title">Cargar una persona</h5>
-            <p class="card-text">Cargue los datos de una nueva persona agasajada.</p>
+            <img class="card-img-top" src="~/images/reserva/userAdd.png" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Cargar una persona</h5>
+                <p class="card-text">Cargue los datos de una nueva persona agasajada.</p>
+            </div>
         </div>
-    </div></a>
-
-    <div class="card Item rounded workInProgress" style="width: 18rem;">
-        <img class="card-img-top" src="~/images/reserva/userSelect.png" alt="Card image cap">
-        <div class="card-body">
-            <h5 class="card-title">Seleccionar una persona</h5>
-            <p class="card-text">Seleccione a una persona agasajada anteriormente por usted.</p>
+    </a>
+    <a asp-action="PersonaList" class="card-select">
+        <div class="card Item rounded" style="width: 18rem;">
+            <img class="card-img-top" src="~/images/reserva/userSelect.png" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Seleccionar una persona</h5>
+                <p class="card-text">Seleccione a una persona agasajada anteriormente por usted.</p>
+            </div>
         </div>
-    </div>
+    </a>
 </div>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const items = document.querySelectorAll(".workInProgress");
-        items.forEach(function (item) {
-            item.addEventListener("click", function () {
-                alert("Trabajo en progreso");
-                alert("Te estoy viendo ColliePaciente");
-            });
-        });
-    });
-
-    function create() {
-        window.location.assign("PersonaCreate");
-    }
-</script>

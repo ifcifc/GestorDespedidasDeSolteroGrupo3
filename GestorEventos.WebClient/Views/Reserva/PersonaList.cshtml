@@ -1,0 +1,98 @@
+﻿@model IEnumerable<GestorEventos.Servicios.Entidades.Models.PersonaModel>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="~/css/reserva/style_Persona.css" />
+<div class="persona_container">
+    <h1>Lista de personas</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nombre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Apellido)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Telefono)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Localidad)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Provincia)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Apellido)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Telefono)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Localidad)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Provincia)
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal" data-idpersona="@item.IdPersona" data-info="@item.Nombre @item.Apellido">Seleccionar</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+            </div>
+            <div class="modal-body">
+                <button class="btn btn-primary btn-modal-persona">Reservar Evento</button>
+                <button class="btn btn-primary btn-modal-persona">Eliminar Persona</button>
+                <button class="btn btn-primary btn-modal-persona">Modificar Persona</button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    window.addEventListener('load', () => { 
+        $('#exampleModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            var modal = $(this)
+            modal.find('.modal-title').text('Persona ' + button.data('info'))
+            modal.find('.btn-modal-persona').val(button.data('idpersona'))
+        });
+
+        $(".btn-modal-persona").on("click", (e) => {
+            console.log(e.target.value);
+        });
+    });
+</script>
