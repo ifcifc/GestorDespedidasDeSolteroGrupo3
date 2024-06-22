@@ -15,8 +15,13 @@ namespace GestorEventos.Servicios.Entidades.Models
 
         [Display(Name = "Tipo de Evento")]
         public string Descripcion { get; set; }
+
+        [Display(Name = "Persona Agasajada Nombre")]
         public string PersonaAgasajadaNombre { get; set; }
+        [Display(Name = "Persona Agasajada Apellido")]
         public string PersonaAgasajadaApellido { get; set; }
+
+        [Display(Name = "Persona Agasajada Telefono")]
         public string PersonaAgasajadaTelefono { get; set; }
         public string UsuarioNombre { get; set; }
         public string UsuarioEmail { get; set; }

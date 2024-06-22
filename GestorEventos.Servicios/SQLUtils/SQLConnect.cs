@@ -57,13 +57,14 @@ namespace GestorEventos.Servicios.SQLUtils
 
         //Inicia una transaccion
         public SQLConnect Transaction() {
-            this.UseTransactions = true;
+            Console.WriteLine("Transacciones desactivadas");
+            //this.UseTransactions = true;
             return this;
         }
         private string MakeTransaction(string sql) {
             if (this.UseTransactions) return 
                     ((CONNECTION_TYPE == ConnectionTypes.MYSQL)? "START":"BEGIN") +
-                    " TRANSACTION;\n" + sql + ";\n COMMIT;";
+                    " TRANSACTION;\n" + sql + ";\nCOMMIT;";
             return sql;
         }
         //Ejecuta un SQL
