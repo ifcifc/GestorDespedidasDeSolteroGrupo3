@@ -1,4 +1,5 @@
-﻿@model GestorEventos.Servicios.Entidades.Models.PersonaModel
+﻿@using GestorEventos.Servicios.Entidades
+@model GestorEventos.Servicios.Entidades.Models.PersonaModel
 
 @{
     ViewData["Title"] = "Create";
@@ -34,6 +35,15 @@
                 <input asp-for="Email" class="form-control" />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
+            <div class="form-group">
+                <label  class="control-label">Usuario</label>
+                <select class="form-control" asp-for="IdUsuario">
+                    @foreach (Usuario p in ViewBag.Usuarios)
+                    {
+                        <option value="@p.IdUsuario">@p.NombreCompleto @p.Email</option>
+                    }
+                </select>
+            </div>            
             <div class="form-group">
                 <label  class="control-label">Provincias</label>
                 <select class="form-control" id="select_provincias">

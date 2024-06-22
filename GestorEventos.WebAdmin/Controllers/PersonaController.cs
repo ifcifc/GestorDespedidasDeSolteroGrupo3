@@ -11,11 +11,13 @@ namespace GestorEventos.WebAdmin.Controllers
         private IService<PersonaModel> personaService;
         private IService<Provincia> provinciaService;
         private IService<LocalidadesProvincia> localidadService;
-        public PersonaController(IService<PersonaModel> personaService, IService<Provincia> provinciaService, IService<LocalidadesProvincia> localidadService) : base(personaService)
+        private IService<Usuario> usuarioService;
+        public PersonaController(IService<PersonaModel> personaService, IService<Provincia> provinciaService, IService<LocalidadesProvincia> localidadService, IService<Usuario> usuarioService) : base(personaService)
         {
             this.personaService = personaService;
             this.provinciaService = provinciaService;
             this.localidadService = localidadService;
+            this.usuarioService = usuarioService;
         }
 
         public override ActionResult Create()
@@ -23,7 +25,7 @@ namespace GestorEventos.WebAdmin.Controllers
             IEnumerable<Provincia>? provincias = this.provinciaService.GetAll();
             ViewBag.Provincias = provincias;
             ViewBag.Localidad  = this.localidadService.GetAllByID(provincias?.FirstOrDefault(x=>true)?.IdProvincia ?? 1);
-            
+            ViewBag.Usuarios = this.usuarioService.GetAll();
             return base.Create();
         }
 

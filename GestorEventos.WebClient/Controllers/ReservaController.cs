@@ -29,6 +29,8 @@ namespace GestorEventos.WebClient.Controllers
         {
             IEnumerable<Provincia>? provincias = this.provinciaService.GetAll();
             ViewBag.Provincias = provincias;
+            ViewBag.IdUsuario = int.Parse(
+                    HttpContext.User.Claims.First(x => x.Type == "UsuarioId").Value);
             ViewBag.Localidad = this.localidadService.GetAllByID(provincias?.FirstOrDefault(x => true)?.IdProvincia ?? 1);
             return View();
         }
