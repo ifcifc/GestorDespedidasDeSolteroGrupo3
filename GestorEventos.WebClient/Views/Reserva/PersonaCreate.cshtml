@@ -5,34 +5,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<style>
-    .persona_container {
-        background-color: white;
-        min-height: 95vh !important;
-    }
+<link rel="stylesheet" href="~/css/reserva/style_PersonaCreate.css" />
 
-    .form_persona {
-        min-width: 25rem;
-        min-height: 100%;
-    }
-
-    .d-flex {
-        gap: 2rem;
-        min-width: 100% !important;
-        min-height: 100%;
-    }
-
-    input.btn.btn-primary {
-        width: 90%;
-        margin-top: 3rem;
-    }
-</style>
 
 <div class="persona_container">
 
-    <h1>Create</h1>
-
-    <h4>PersonaModel</h4>
+    <h1 style="padding-left: 1rem;">Cargue los datos de la persona a agasajar</h1>
     <hr />
     <div class="row">
         <div>
@@ -94,18 +72,18 @@
                         </div>
                         <div class="form-group">
                             <label asp-for="DireccionPiso" class="control-label"></label>
-                            <input asp-for="DireccionPiso" class="form-control" />
+                            <input asp-for="DireccionPiso" class="form-control" value="0"/>
                             <span asp-validation-for="DireccionPiso" class="text-danger"></span>
                         </div>
                         <div class="form-group">
                             <label asp-for="DireccionDepartamento" class="control-label"></label>
-                            <input asp-for="DireccionDepartamento" class="form-control" />
+                            <input asp-for="DireccionDepartamento" class="form-control" value="-"/>
                             <span asp-validation-for="DireccionDepartamento" class="text-danger"></span>
                         </div>
                     </div>
                 </div>
                 <div class="form-group d-flex justify-content-center">
-                    <input type="submit" value="Create" class="btn btn-primary" />
+                    <input type="submit" value="Siguiente" class="btn btn-primary" />
                 </div>
             </form>
         </div>
