@@ -1,7 +1,7 @@
 body {
     margin: 0;
     line-height: normal;
-    background-color: var(--color-steelblue);
+    background-color: #005c9d !important;
 }
 
 :root {
