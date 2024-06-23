@@ -22,6 +22,7 @@ namespace GestorEventos.Servicios.Controllers
         // GET: ServiceController/Details/5
         public virtual ActionResult Details(int id)
         {
+            if (!ValidateAction(id)) return RedirectToAction("Index", "Home");
             return View(this.Service.GetByID(id));
         }
 
@@ -36,21 +37,15 @@ namespace GestorEventos.Servicios.Controllers
         [ValidateAntiForgeryToken]
         public virtual ActionResult Create(IFormCollection collection)
         {
-            /*try
-            {*/
-                this.Service.Add(this.Service.FromFormCollection(collection));
+            this.Service.Add(this.Service.FromFormCollection(collection));
 
-                return RedirectToAction(nameof(Index));
-            //}
-            /*catch
-            {
-                return this.Create();
-            }*/
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: ServiceController/Edit/5
         public virtual ActionResult Edit(int id)
         {
+            if (!ValidateAction(id)) return RedirectToAction("Index", "Home");
             return View(this.Service.GetByID(id));
         }
 
@@ -59,12 +54,11 @@ namespace GestorEventos.Servicios.Controllers
         [ValidateAntiForgeryToken]
         public virtual ActionResult Edit(int id, IFormCollection collection)
         {
+            if (!ValidateAction(id)) return RedirectToAction("Index", "Home");
             V v = this.Service.FromFormCollection(collection);
             this.Service.Modify(
                 id,
                 this.Service.FromFormCollection(collection));
-
-            Console.WriteLine(v.ToString());
 
             return RedirectToAction(nameof(Index));
           
@@ -73,6 +67,7 @@ namespace GestorEventos.Servicios.Controllers
         // GET: ServiceController/Delete/5
         public virtual ActionResult Delete(int id)
         {
+            if (!ValidateAction(id)) return RedirectToAction("Index", "Home");
             return View(this.Service.GetByID(id));
         }
 
@@ -81,6 +76,7 @@ namespace GestorEventos.Servicios.Controllers
         [ValidateAntiForgeryToken]
         public virtual ActionResult Delete(int id, IFormCollection collection)
         {
+            if(!ValidateAction(id)) return RedirectToAction("Index", "Home");
             try
             {
                 this.Service.Delete(id);
@@ -91,5 +87,7 @@ namespace GestorEventos.Servicios.Controllers
                 return View();
             }
         }
+
+        protected virtual bool ValidateAction(int idEntity) => true;
     }
 }

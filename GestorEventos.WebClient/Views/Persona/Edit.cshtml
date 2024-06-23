@@ -1,29 +1,20 @@
-﻿@using GestorEventos.Servicios.Entidades
-@model GestorEventos.Servicios.Entidades.Models.PersonaModel
+﻿@model GestorEventos.Servicios.Entidades.Models.PersonaModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <link rel="stylesheet" href="~/css/reserva/style_Persona.css" />
 
-<style>
-    input.btn.btn-primary {
-        width: 90%;
-        margin-top: 6rem;
-    }
-</style>
-
 <div class="persona_container">
-
-    <h1>Cargue los datos de la persona a agasajar</h1>
+    <h1>Edit</h1>
     <hr />
     <div class="row">
         <div>
-            <form asp-action="PersonaCreate">
+            <form asp-action="Edit">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <input asp-for="IdPersona" class="form-control" value="0" hidden />
-                <input asp-for="IdUsuario" class="form-control" value="@ViewBag.IdUsuario" hidden />
+                <input asp-for="IdPersona" class="form-control" hidden />
+                <input asp-for="IdUsuario" class="form-control" hidden />
                 <div class="d-flex justify-content-center align-items-center">
                     <div class="form_persona">
                         <div class="form-group">
@@ -98,9 +89,6 @@
 </div>
 
 @section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
-
 <script src="~/js/localidadprovincia.js" asp-append-version="true"></script>

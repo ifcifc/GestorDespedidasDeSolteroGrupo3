@@ -24,3 +24,9 @@
 .container:not(footer *) {
     max-width: 70% !important;
 }
+
+
+input.btn {
+    width: 90%;
+    margin-top: 6rem;
+}
