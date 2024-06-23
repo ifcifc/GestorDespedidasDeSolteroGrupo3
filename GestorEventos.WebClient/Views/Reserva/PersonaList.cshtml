@@ -56,7 +56,7 @@
                         @Html.DisplayFor(modelItem => item.Provincia)
                     </td>
                     <td>
-                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal" data-idpersona="@item.IdPersona" data-info="@item.Nombre @item.Apellido">Seleccionar</button>
+                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#personaMenuModal" data-idpersona="@item.IdPersona" data-info="@item.Nombre @item.Apellido">Seleccionar</button>
                     </td>
                 </tr>
             }
@@ -64,11 +64,11 @@
     </table>
 </div>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+<div class="modal fade" id="personaMenuModal" tabindex="-1" role="dialog" aria-labelledby="personaMenuModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                <h5 class="modal-title" id="personaMenuModalLabel">New message</h5>
             </div>
             <div class="modal-body">
                 <form method="post" asp-action="PersonaAction" class="d-flex" style="gap:0.25rem; flex-direction:column !important;">
@@ -89,7 +89,7 @@
 
 <script>
     window.addEventListener('load', () => { 
-        $('#exampleModal').on('show.bs.modal', function (event) {
+        $('#personaMenuModal').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget) // Button that triggered the modal
             var modal = $(this)
             var id = button.data('idpersona');

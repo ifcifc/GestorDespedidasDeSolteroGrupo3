@@ -55,18 +55,17 @@ namespace GestorEventos.WebClient.Controllers
             int IdPersona = int.Parse(collection["IdPersona"]);
             int IdUsuario = int.Parse(HttpContext.User.Claims.First(x => x.Type == "UsuarioId").Value);
 
-            if(this.personaService.PersonaDeUsuario(IdPersona, IdUsuario)) 
+            if(!this.personaService.PersonaDeUsuario(IdPersona, IdUsuario)) 
                 return RedirectToAction("Index", "Home"); ;
-
 
             TempData["IdPersona"] = IdPersona;
 
             switch (collection["actionType"]) 
             {
-                case "Evento":  return RedirectToAction(nameof(Evento));
-                case "Delete":  return RedirectToAction(nameof(Index));
-                case "Edit":    return RedirectToAction(nameof(Index));
-                case "Details": return RedirectToAction(nameof(Index));
+                case "Evento":  return RedirectToAction(nameof(Index));
+                case "Delete":  return RedirectToAction("Index", "Home");
+                case "Edit":    return RedirectToAction("Index", "Home");
+                case "Details": return RedirectToAction("Index", "Home");
             }
 
             return RedirectToAction(nameof(Index));
