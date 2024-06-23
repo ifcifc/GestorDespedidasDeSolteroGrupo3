@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Text;
 
 namespace GestorEventos.Servicios.Entidades
 {
@@ -22,9 +23,16 @@ namespace GestorEventos.Servicios.Entidades
 		public string Telefono { get; set; }
 		public string Email { get; set; }
 
+        [Display(Name = "Calle")]
         public string DireccionCalle { get; set; }
+
+        [Display(Name = "Numero")]
         public int DireccionNumero { get; set; }
+
+        [Display(Name = "Piso")]
         public int DireccionPiso { get; set; }
+
+        [Display(Name = "Departamento")]
         public string DireccionDepartamento { get; set; }
 
         public string getBasicInfo() {
