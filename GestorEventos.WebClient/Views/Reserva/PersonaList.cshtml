@@ -71,9 +71,14 @@
                 <h5 class="modal-title" id="exampleModalLabel">New message</h5>
             </div>
             <div class="modal-body">
-                <button class="btn btn-primary btn-modal-persona">Reservar Evento</button>
-                <button class="btn btn-primary btn-modal-persona">Eliminar Persona</button>
-                <button class="btn btn-primary btn-modal-persona">Modificar Persona</button>
+                <form method="post" asp-action="PersonaAction" class="d-flex" style="gap:0.25rem; flex-direction:column !important;">
+                    <input name="IdPersona" value="0" type="hidden" />
+                    <input name="__RequestVerificationToken" type="hidden">
+                    <button class="btn btn-primary" type="submit" name="actionType" value="Evento">Crear un evento</button>
+                    <button class="btn btn-primary" type="submit" name="actionType" value="Delete">Eliminar Persona</button>
+                    <button class="btn btn-primary" type="submit" name="actionType" value="Edit">Modificar Persona</button>
+                    <button class="btn btn-primary" type="submit" name="actionType" value="Details">Detalles Persona</button>
+                </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -87,12 +92,10 @@
         $('#exampleModal').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget) // Button that triggered the modal
             var modal = $(this)
+            var id = button.data('idpersona');
             modal.find('.modal-title').text('Persona ' + button.data('info'))
-            modal.find('.btn-modal-persona').val(button.data('idpersona'))
-        });
-
-        $(".btn-modal-persona").on("click", (e) => {
-            console.log(e.target.value);
+            //modal.find('#IdPersona').val(id);
+            $("[name='IdPersona']").val(id);
         });
     });
 </script>

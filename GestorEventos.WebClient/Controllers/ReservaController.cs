@@ -4,20 +4,24 @@ using GestorEventos.Servicios.Entidades;
 using GestorEventos.Servicios.Servicios;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using GestorEventos.Servicios.SQLUtils;
 
 namespace GestorEventos.WebClient.Controllers
 {
     [Authorize]
     public class ReservaController : Controller
     {
-        private IService<PersonaModel> personaService;
+        private IService<PersonaModel> personaModelService;
         private IService<Provincia> provinciaService;
         private IService<LocalidadesProvincia> localidadService;
-        public ReservaController(IService<PersonaModel> personaService, IService<Provincia> provinciaService, IService<LocalidadesProvincia> localidadService)
+        private PersonaService personaService;
+
+        public ReservaController(IService<Persona> personaService, IService<PersonaModel> personaModelService, IService<Provincia> provinciaService, IService<LocalidadesProvincia> localidadService)
         {
-            this.personaService = personaService;
+            this.personaModelService = personaModelService;
             this.provinciaService = provinciaService;
             this.localidadService = localidadService;
+            this.personaService = (PersonaService)personaService;
         }
 
         public virtual ActionResult Index()
@@ -39,7 +43,7 @@ namespace GestorEventos.WebClient.Controllers
         [ValidateAntiForgeryToken]
         public virtual ActionResult PersonaCreate(IFormCollection collection)
         {
-            this.personaService.Add(this.personaService.FromFormCollection(collection));
+            this.personaModelService.Add(this.personaModelService.FromFormCollection(collection));
 
             return RedirectToAction(nameof(Index));
         }
@@ -48,16 +52,30 @@ namespace GestorEventos.WebClient.Controllers
         [ValidateAntiForgeryToken]
         public virtual ActionResult PersonaAction(IFormCollection collection)
         {
-            foreach (var item in collection)
+            int IdPersona = int.Parse(collection["IdPersona"]);
+            int IdUsuario = int.Parse(HttpContext.User.Claims.First(x => x.Type == "UsuarioId").Value);
+
+            if(this.personaService.PersonaDeUsuario(IdPersona, IdUsuario)) 
+                return RedirectToAction("Index", "Home"); ;
+
+
+            TempData["IdPersona"] = IdPersona;
+
+            switch (collection["actionType"]) 
             {
-                Console.WriteLine(">>" + item.Key);
+                case "Evento":  return RedirectToAction(nameof(Evento));
+                case "Delete":  return RedirectToAction(nameof(Index));
+                case "Edit":    return RedirectToAction(nameof(Index));
+                case "Details": return RedirectToAction(nameof(Index));
             }
+
             return RedirectToAction(nameof(Index));
         }
 
         public ActionResult PersonaList()
         {
-            return View(this.personaService.GetAll());
+            int IdUsuario = int.Parse(HttpContext.User.Claims.First(x => x.Type == "UsuarioId").Value);
+            return View(this.personaModelService.GetAllByID(IdUsuario));
         }
     }
 

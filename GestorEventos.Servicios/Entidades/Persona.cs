@@ -11,6 +11,8 @@ namespace GestorEventos.Servicios.Entidades
         public override string SQL_Delete() => "UPDATE Personas SET Borrado=1 WHERE IdPersona={0}";
         public override string SQL_Modify() => "UPDATE Personas SET IdLocalidad=@IdLocalidad, Nombre=@Nombre, Apellido= @Apellido, Telefono=@Telefono, Email=@Email, DireccionCalle=@DireccionCalle, DireccionNumero=@DireccionNumero, DireccionPiso=@DireccionPiso, DireccionDepartamento=@DireccionDepartamento WHERE IdPersona={0}";
 
+        public override string SQL_GetAllByID() => "SELECT * FROM Personas WHERE Borrado=0 AND IdUsuario={0}  ORDER BY Nombre";
+
         public int IdPersona { get; set; }
         public int IdLocalidad { get; set; }
 
