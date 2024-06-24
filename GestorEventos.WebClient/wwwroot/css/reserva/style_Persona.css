@@ -1,8 +1,23 @@
 .persona_container {
     min-height: 100vh !important;
     height: 100%;
-    background-color: white;
+    background-color: #191D22;
     box-shadow: 0px 0px 106px 0px rgba(0,0,0,0.6);
+    color: white;
+}
+
+.persona_container .table {
+    color: white !important;
+}
+
+.persona_container .btn-info {
+    background: #E01050;
+    border-color: #E01050;
+}
+
+.persona_container .btn-info:hover {
+    background: #f45f8c;
+    border-color: #f45f8c
 }
 
 .persona_container h1 {
@@ -12,6 +27,12 @@
 .form_persona {
     min-width: 25rem;
     min-height: 100%;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #0DE8E4;
 }
 
 .d-flex {

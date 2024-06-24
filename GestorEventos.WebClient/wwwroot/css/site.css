@@ -25,3 +25,6 @@ body {
     user-select: none !important;
 }
 
+.bg-dark {
+    background-color: #191D22 !important;
+}
