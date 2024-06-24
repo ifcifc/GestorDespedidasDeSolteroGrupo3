@@ -42,3 +42,14 @@ body {
   --padding-112xl: 131px;
   --padding-123xl: 142px;
 }
+
+.tooltip-inner {
+    background-color: red;
+}
+
+footer div.container {
+    min-width: 100% !important;
+    max-width: 100% !important;
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+}
