@@ -461,7 +461,6 @@
   width: 1440px;
   height: 650px;
   position: relative;
-  background-color: var(--color-steelblue);
   display: none;
   max-width: 100%;
 }
@@ -512,7 +511,6 @@
   flex-direction: column;
 }
 .section-cta {
-  background-color: var(--color-steelblue);
   align-items: flex-end;
   justify-content: flex-end;
   padding: var(--padding-210xl) 325px var(--padding-210xl) 324px;
@@ -528,7 +526,6 @@
 .landing {
   width: 100%;
   position: relative;
-  background-color: var(--color-white);
   overflow: hidden;
   align-items: flex-start;
   justify-content: flex-start;

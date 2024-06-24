@@ -63,9 +63,9 @@ namespace GestorEventos.WebClient.Controllers
             switch (collection["actionType"]) 
             {
                 case "Evento":  return RedirectToAction(nameof(Index));
-                case "Delete":  return RedirectToAction("Index", "Home");
-                case "Edit":    return RedirectToAction("Index", "Home");
-                case "Details": return RedirectToAction("Index", "Home");
+                case "Delete":  return RedirectToAction("Delete", "Persona", new { id = IdPersona });
+                case "Edit":    return RedirectToAction("Edit", "Persona", new { id = IdPersona });
+                case "Details": return RedirectToAction("Details", "Persona", new { id = IdPersona });
             }
 
             return RedirectToAction(nameof(Index));
