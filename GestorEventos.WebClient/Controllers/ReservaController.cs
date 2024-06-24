@@ -47,29 +47,6 @@ namespace GestorEventos.WebClient.Controllers
 
             return RedirectToAction(nameof(Index));
         }
-        
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public virtual ActionResult PersonaAction(IFormCollection collection)
-        {
-            int IdPersona = int.Parse(collection["IdPersona"]);
-            int IdUsuario = int.Parse(HttpContext.User.Claims.First(x => x.Type == "UsuarioId").Value);
-
-            if(!this.personaService.PersonaDeUsuario(IdPersona, IdUsuario)) 
-                return RedirectToAction("Index", "Home"); ;
-
-            TempData["IdPersona"] = IdPersona;
-
-            switch (collection["actionType"]) 
-            {
-                case "Evento":  return RedirectToAction(nameof(Index));
-                case "Delete":  return RedirectToAction("Delete", "Persona", new { id = IdPersona });
-                case "Edit":    return RedirectToAction("Edit", "Persona", new { id = IdPersona });
-                case "Details": return RedirectToAction("Details", "Persona", new { id = IdPersona });
-            }
-
-            return RedirectToAction(nameof(Index));
-        }
 
         public ActionResult PersonaList()
         {

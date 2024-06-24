@@ -43,6 +43,7 @@ namespace GestorEventos.Servicios.Controllers
         }
 
         // GET: ServiceController/Edit/5
+
         public virtual ActionResult Edit(int id)
         {
             if (!ValidateAction(id)) return RedirectToAction("Index", "Home");

@@ -53,12 +53,12 @@
                     @Html.DisplayFor(modelItem => item.Provincia)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id=item.IdPersona }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.IdPersona }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.IdPersona })
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#personaMenuModal" data-idpersona="@item.IdPersona" data-info="@item.Nombre @item.Apellido">Seleccionar</button>
                 </td>
             </tr>
     }
         </tbody>
     </table>
 </div>
+
+@Html.Partial("_ModalMenu")
