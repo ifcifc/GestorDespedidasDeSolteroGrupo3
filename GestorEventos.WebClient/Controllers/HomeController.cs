@@ -21,5 +21,10 @@ namespace GestorEventos.WebClient.Controllers
         {
             return View();
         }
+
+        public IActionResult Reserva()
+        {
+            return View();
+        }
     }
 }
