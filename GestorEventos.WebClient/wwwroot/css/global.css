@@ -2,6 +2,9 @@ body {
     margin: 0;
     line-height: normal;
     background-color: #005c9d !important;
+    background-image: url("../images/fondo.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 :root {
