@@ -1,5 +1,5 @@
 using GestorEventos.Servicios.Entidades;
-using GestorEventos.Servicios.Scopes;
+using GestorEventos.Compartido.Scopes;
 using GestorEventos.Servicios.Servicios;
 using GestorEventos.Servicios.SQLUtils;
 

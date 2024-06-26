@@ -149,3 +149,10 @@
 /packages/Microsoft.AspNetCore.Hosting.Abstractions.2.2.0/lib/netstandard2.0/Microsoft.AspNetCore.Hosting.Abstractions.xml
 /packages/Microsoft.AspNetCore.Hosting.Abstractions.2.2.0/Microsoft.AspNetCore.Hosting.Abstractions.2.2.0.nupkg
 /GestorEventos.WebClient/bin/Debug/net8.0
+/Compartido/obj/Debug/net8.0
+/Compartido/obj
+/GestorEvento.Compartido/obj/Debug/net8.0
+/GestorEvento.Compartido/obj
+/GestorEventos.Compartido/bin/Debug/net8.0
+/GestorEventos.Compartido/obj/Debug/net8.0
+/GestorEventos.Compartido/obj

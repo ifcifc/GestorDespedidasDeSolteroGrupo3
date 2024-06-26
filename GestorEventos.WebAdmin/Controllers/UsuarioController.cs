@@ -1,7 +1,7 @@
 ﻿using GestorEventos.Servicios.Entidades;
 using GestorEventos.Servicios.Servicios;
 using Microsoft.AspNetCore.Mvc;
-using GestorEventos.Servicios.Controllers;
+using GestorEventos.Compartido.Controller;
 
 namespace GestorEventos.WebAdmin.Controllers
 {

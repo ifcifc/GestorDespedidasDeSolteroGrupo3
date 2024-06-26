@@ -1,7 +1,9 @@
 //Para evitar el problema de las comas en los numeros
-using GestorEventos.Servicios.Api;
-using GestorEventos.Servicios.Scopes;
+//using GestorEventos.Compartido.Api;
+using GestorEventos.Compartido.Scopes;
 using GestorEventos.Servicios.SQLUtils;
+using GestorEventos.Api.Controllers;
+using Google.Protobuf.WellKnownTypes;
 
 Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
 var builder = WebApplication.CreateBuilder(args);

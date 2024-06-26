@@ -2,8 +2,7 @@
 using GestorEventos.Servicios.Servicios;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using GestorEventos.Servicios.Controller;
-using GestorEventos.Servicios.Controllers;
+using GestorEventos.Compartido.Controller;
 
 
 namespace GestorEventos.WebAdmin.Controllers

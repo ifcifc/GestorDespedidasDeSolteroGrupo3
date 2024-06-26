@@ -4,7 +4,7 @@ using GestorEventos.Servicios.Servicios;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace GestorEventos.Servicios.Scopes
+namespace GestorEventos.Compartido.Scopes
 {
     public class ServicesScopes
     {

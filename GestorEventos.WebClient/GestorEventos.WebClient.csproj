@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GestorEventos.Api\GestorEventos.Api.csproj" />
+    <ProjectReference Include="..\GestorEventos.Compartido\GestorEventos.Compartido.csproj" />
     <ProjectReference Include="..\GestorEventos.Servicios\GestorEventos.Servicios.csproj" />
   </ItemGroup>
 

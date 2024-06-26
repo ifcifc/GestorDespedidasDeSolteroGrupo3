@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\GestorEventos.Compartido\GestorEventos.Compartido.csproj" />
     <ProjectReference Include="..\GestorEventos.Servicios\GestorEventos.Servicios.csproj" />
   </ItemGroup>
 

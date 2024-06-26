@@ -3,8 +3,9 @@ using GestorEventos.Servicios.Servicios;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace GestorEventos.Servicios.Controllers
+namespace GestorEventos.Compartido.Controller
 {
+    //Controlador para vistas MVC conectada a un servicio
     public abstract class WebController<V> : Microsoft.AspNetCore.Mvc.Controller where V : Entidad, new()
     {
         protected IService<V> Service;
@@ -88,7 +89,7 @@ namespace GestorEventos.Servicios.Controllers
                 return View();
             }
         }
-
+        //Para cuando el controlador requiere de algun tipo de validacion
         protected virtual bool ValidateAction(int idEntity) => true;
     }
 }

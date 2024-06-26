@@ -3,7 +3,7 @@
         var provinciaId = $(this).val();
 
         // Asegúrate de cambiar la URL a la de tu API
-        var apiURL = '/api/localidad/' + provinciaId;
+        var apiURL = '/api/localidad/GetAllByID/' + provinciaId;
 
         $.ajax({
             url: apiURL,

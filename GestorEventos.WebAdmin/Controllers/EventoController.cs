@@ -1,4 +1,4 @@
-﻿using GestorEventos.Servicios.Controllers;
+﻿using GestorEventos.Compartido.Controller;
 using GestorEventos.Servicios.Entidades;
 using GestorEventos.Servicios.Entidades.Models;
 using GestorEventos.Servicios.Servicios;

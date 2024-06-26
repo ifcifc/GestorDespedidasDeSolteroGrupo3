@@ -2,14 +2,14 @@
 using GestorEventos.Servicios.Servicios;
 using Microsoft.AspNetCore.Mvc;
 
-namespace GestorEventos.Api.Controllers
+namespace GestorEventos.Compartido.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BaseController <V> : Controller where V : Entidad, new()
+    public class ApiController <V> : Microsoft.AspNetCore.Mvc.Controller where V : Entidad, new()
     {
         protected IService<V> Service;
-        public BaseController(IService<V> service) { 
+        public ApiController(IService<V> service) { 
             this.Service = service;
         }
 

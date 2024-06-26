@@ -1,4 +1,4 @@
-﻿using GestorEventos.Servicios.Controllers;
+﻿using GestorEventos.Compartido.Controller;
 using GestorEventos.Servicios.Entidades;
 using GestorEventos.Servicios.Entidades.Models;
 using GestorEventos.Servicios.Servicios;
@@ -10,9 +10,9 @@ namespace GestorEventos.WebAdmin.Controllers
     {
         private IService<PersonaModel> personaService;
         private IService<Provincia> provinciaService;
-        private IService<LocalidadesProvincia> localidadService;
+        private IService<Localidad> localidadService;
         private IService<Usuario> usuarioService;
-        public PersonaController(IService<PersonaModel> personaService, IService<Provincia> provinciaService, IService<LocalidadesProvincia> localidadService, IService<Usuario> usuarioService) : base(personaService)
+        public PersonaController(IService<PersonaModel> personaService, IService<Provincia> provinciaService, IService<Localidad> localidadService, IService<Usuario> usuarioService) : base(personaService)
         {
             this.personaService = personaService;
             this.provinciaService = provinciaService;

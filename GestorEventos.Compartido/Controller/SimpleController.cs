@@ -3,8 +3,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace GestorEventos.Servicios.Controller
+namespace GestorEventos.Compartido.Controller
 {
+    //Controlador simple para vistas MVC
     public class SimpleController : Microsoft.AspNetCore.Mvc.Controller
     {
         public virtual ActionResult Index()

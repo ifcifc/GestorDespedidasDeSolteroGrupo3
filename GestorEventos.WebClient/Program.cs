@@ -1,5 +1,5 @@
 using GestorEventos.Servicios.Entidades;
-using GestorEventos.Servicios.Scopes;
+using GestorEventos.Compartido.Scopes;
 using GestorEventos.Servicios.Servicios;
 using GestorEventos.Servicios.SQLUtils;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -17,7 +17,7 @@ SQLConnect.SetConfig(
 //Registro todos los Scopes de Servicios
 ServicesScopes.RegisterAllServices(builder);
 //Registro las Apis compartidas
-//Apis.RegisterAllApis(builder);
+Apis.RegisterAllApis(builder);
 
 builder.Services.AddAuthentication(options =>
 {
