@@ -12,10 +12,10 @@ namespace GestorEventos.WebAdmin.Controllers
     {
         private IService<PersonaModel> personaModelService;
         private IService<Provincia> provinciaService;
-        private IService<LocalidadesProvincia> localidadService;
+        private IService<Localidad> localidadService;
         private IService<Usuario> usuarioService;
         private PersonaService personaService;
-        public PersonaController(IService<Persona> personaService, IService<PersonaModel> personaModelService, IService<Provincia> provinciaService, IService<LocalidadesProvincia> localidadService, IService<Usuario> usuarioService) : base(personaModelService)
+        public PersonaController(IService<Persona> personaService, IService<PersonaModel> personaModelService, IService<Provincia> provinciaService, IService<Localidad> localidadService, IService<Usuario> usuarioService) : base(personaModelService)
         {
             this.personaModelService = personaModelService;
             this.provinciaService = provinciaService;

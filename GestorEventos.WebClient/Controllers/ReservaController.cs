@@ -13,10 +13,10 @@ namespace GestorEventos.WebClient.Controllers
     {
         private IService<PersonaModel> personaModelService;
         private IService<Provincia> provinciaService;
-        private IService<LocalidadesProvincia> localidadService;
+        private IService<Localidad> localidadService;
         private PersonaService personaService;
 
-        public ReservaController(IService<Persona> personaService, IService<PersonaModel> personaModelService, IService<Provincia> provinciaService, IService<LocalidadesProvincia> localidadService)
+        public ReservaController(IService<Persona> personaService, IService<PersonaModel> personaModelService, IService<Provincia> provinciaService, IService<Localidad> localidadService)
         {
             this.personaModelService = personaModelService;
             this.provinciaService = provinciaService;

@@ -1,4 +1,3 @@
-using GestorEventos.Servicios.Api;
 using GestorEventos.Servicios.Entidades;
 using GestorEventos.Servicios.Scopes;
 using GestorEventos.Servicios.Servicios;
@@ -6,7 +5,7 @@ using GestorEventos.Servicios.SQLUtils;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.Google;
 using System.Security.Claims;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+using GestorEventos.Api.Controllers;
 
 var builder = WebApplication.CreateBuilder(args);
 

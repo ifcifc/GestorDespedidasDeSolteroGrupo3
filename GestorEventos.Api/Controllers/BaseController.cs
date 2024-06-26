@@ -8,7 +8,7 @@ namespace GestorEventos.Api.Controllers
     [ApiController]
     public class BaseController <V> : Controller where V : Entidad, new()
     {
-        private IService<V> Service;
+        protected IService<V> Service;
         public BaseController(IService<V> service) { 
             this.Service = service;
         }
@@ -39,7 +39,7 @@ namespace GestorEventos.Api.Controllers
                 return NotFound();
             }
         }
-
+        /*
         [HttpPost("Add")]
         public IActionResult Add([FromBody] V entidad)
         {
@@ -75,7 +75,20 @@ namespace GestorEventos.Api.Controllers
             {
                 return UnprocessableEntity();
             }
-        }
+        }*/
 
+        [HttpGet("GetAllByID/{id:int}")]
+        public IActionResult GetAllById(int id)
+        {
+            try
+            {
+                var entidad = this.Service.GetAllByID(id);
+                return entidad == null ? NotFound() : Ok(entidad);
+            }
+            catch (Exception)
+            {
+                return NotFound();
+            }
+        }
     }
 }
