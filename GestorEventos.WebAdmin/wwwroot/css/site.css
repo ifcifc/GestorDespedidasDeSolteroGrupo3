@@ -18,7 +18,8 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background-color: #eeeeee;
 }
 
 .menu {
@@ -61,7 +62,16 @@ body {
     display: block; /* Mostramos el menú desplegable al pasar el mouse */
 }
 
-.menu:hover ul li:hover, .menu:hover ul li:hover a {
+/*Efecto raro, me gusta*/
+/*.menu:hover ul li:hover, .menu:hover ul li:hover a {
     background-color: #212121;
     color: white !important;
+}*/
+
+.menu:hover ul li:hover a {
+    color: white !important;
+}
+
+.menu:hover ul li:hover {
+    background-color: #212121;
 }
