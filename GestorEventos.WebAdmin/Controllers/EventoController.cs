@@ -2,7 +2,9 @@
 using GestorEventos.Servicios.Entidades;
 using GestorEventos.Servicios.Entidades.Models;
 using GestorEventos.Servicios.Servicios;
+using GestorEventos.Servicios.SQLUtils;
 using Microsoft.AspNetCore.Mvc;
+using System.Text;
 
 namespace GestorEventos.WebAdmin.Controllers
 {
@@ -49,6 +51,29 @@ namespace GestorEventos.WebAdmin.Controllers
             return base.Details(id);
         }
 
+
+        public override ActionResult Edit(int id)
+        {
+            ViewBag.Usuarios = usuarioService.GetAll();
+            ViewBag.TiposEventos = tipoEventoService.GetAll();
+            ViewBag.Personas = personaService.GetAll();
+            ViewBag.Servicios = sevicioService.GetAll();
+            ViewBag.ServiciosSelect =  sevicioService?
+                .GetServiciosByIdEvento(id)?
+                .Select(item => item.IdServicio).ToList();
+
+
+            return base.Edit(id);
+        }
+
+        public override ActionResult Edit(int id, IFormCollection collection)
+        {
+
+            this.EditServicesOfEvent(id, collection["Servicio"]);
+
+            return base.Edit(id, collection);
+        }
+
         public override ActionResult Create()
         {
             ViewBag.Usuarios = usuarioService.GetAll();
@@ -75,6 +100,30 @@ namespace GestorEventos.WebAdmin.Controllers
             }
 
             return RedirectToAction(nameof(Index)); ;
+        }
+
+        public void EditServicesOfEvent(int idEvent, string[] servicesList)
+        {
+            StringBuilder query = new StringBuilder()
+                .Append("UPDATE EventosServicios SET Borrado=1 WHERE IdEvento=")
+                .Append(idEvent)
+                .Append(";\n");
+
+            Console.WriteLine(query.ToString());
+            using (var db = SQLConnect.New().Transaction()) 
+            {
+                db.Execute(query.ToString());
+            }
+
+            foreach (var idServicio in servicesList)
+            {
+                this.eventoServicio.Add(new EventoServicio()
+                {
+                    IdEvento = idEvent,
+                    IdServicio = int.Parse(idServicio)
+                });
+            }
+
         }
     }
 }

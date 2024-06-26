@@ -1,21 +1,111 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model GestorEventos.Servicios.Entidades.Models.EventoModel
+
 @{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<style>
-    main {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-    }
+<h1>Edit</h1>
 
-    img {
-        border-radius: 50%;
-    }
-</style>
+<h4>EventoModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input asp-for="IdEvento" class="form-control" hidden />
+            <input asp-for="IdEstadoEvento" class="form-control" hidden />
+            <input asp-for="Borrado" class="form-control" value="0" hidden />
 
-<h1>Municipales Trabajando</h1>
-<img src="https://64.media.tumblr.com/tumblr_mdg6lryWTJ1rs13ydo1_500.gif" />
+            <div class="form-group">
+                <label asp-for="NombreEvento" class="control-label"></label>
+                <input asp-for="NombreEvento" class="form-control" />
+                <span asp-validation-for="NombreEvento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaEvento" class="control-label"></label>
+                <input asp-for="FechaEvento" class="form-control" />
+                <span asp-validation-for="FechaEvento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CantidadPersonas" class="control-label"></label>
+                <input asp-for="CantidadPersonas" class="form-control" />
+                <span asp-validation-for="CantidadPersonas" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdTipoEvento" class="control-label">Tipo de Evento</label>
+                <select asp-for="IdTipoEvento" class="form-control">
+                    @foreach (var p in ViewBag.TiposEventos)
+                    {
+                        <option value="@p.IdTipoEvento">@p.Descripcion</option>
+                    }
+                </select>
+                <span asp-validation-for="IdTipoEvento" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="IdPersonaAgasajada" class="control-label">Persona Agasajada</label>
+                <select asp-for="IdPersonaAgasajada" class="form-control">
+                    @foreach (var p in ViewBag.Personas)
+                    {
+                        <option value="@p.IdPersona">@p.getBasicInfo()</option>
+                    }
+                </select>
+                <span asp-validation-for="IdPersonaAgasajada" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="IdUsuario" class="control-label">Usuarios</label>
+                <select asp-for="IdUsuario" class="form-control">
+                    @foreach (var p in ViewBag.Usuarios)
+                    {
+                        <option value="@p.IdUsuario">@p.Email</option>
+                    }
+                </select>
+                <span asp-validation-for="IdUsuario" class="text-danger"></span>
+            </div>
+
+            <table>
+                <thead>
+                <th></th>
+                <th>Servicios</th>
+                <th>Precio</th>
+                </thead>
+                <tbody>
+
+                    @{
+                        
+                        foreach (var servicio in ViewBag.Servicios)
+                        {
+                            <tr>
+                                <td>
+                                    @if (ViewBag.ServiciosSelect.Contains(servicio.IdServicio))
+                                    {
+                                        <input type="checkbox" name="Servicio" value="@servicio.IdServicio" checked/>
+                                    }
+                                    else
+                                    {
+                                        <input type="checkbox" name="Servicio" value="@servicio.IdServicio"/>
+                                    }
+                                </td>
+                                <td>@servicio.Descripcion</td>
+                                <td> $@servicio.FormatoPrecioServicio()</td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
