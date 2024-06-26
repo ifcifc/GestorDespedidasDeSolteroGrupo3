@@ -9,7 +9,6 @@ using System.Diagnostics;
 
 namespace GestorEventos.WebClient.Controllers
 {
-    [Authorize]
     public class HomeController : SimpleController
     {
         public override ActionResult Index()
@@ -22,9 +21,5 @@ namespace GestorEventos.WebClient.Controllers
             return View();
         }
 
-        public IActionResult Reserva()
-        {
-            return View();
-        }
     }
 }

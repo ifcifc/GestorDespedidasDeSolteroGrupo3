@@ -29,24 +29,7 @@ namespace GestorEventos.WebClient.Controllers
             return View();
         }
 
-        public ActionResult PersonaCreate()
-        {
-            IEnumerable<Provincia>? provincias = this.provinciaService.GetAll();
-            ViewBag.Provincias = provincias;
-            ViewBag.IdUsuario = int.Parse(
-                    HttpContext.User.Claims.First(x => x.Type == "UsuarioId").Value);
-            ViewBag.Localidad = this.localidadService.GetAllByID(provincias?.FirstOrDefault(x => true)?.IdProvincia ?? 1);
-            return View();
-        }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public virtual ActionResult PersonaCreate(IFormCollection collection)
-        {
-            this.personaModelService.Add(this.personaModelService.FromFormCollection(collection));
-
-            return RedirectToAction(nameof(Index));
-        }
 
         public ActionResult PersonaList()
         {

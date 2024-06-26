@@ -37,10 +37,19 @@ namespace GestorEventos.WebAdmin.Controllers
         {
             IEnumerable<Provincia>? provincias = this.provinciaService.GetAll();
             ViewBag.Provincias = provincias;
-            ViewBag.Localidad = this.localidadService.GetAllByID(provincias?.FirstOrDefault(x => true)?.IdProvincia ?? 1);
             ViewBag.IdUsuario = int.Parse(
                     HttpContext.User.Claims.First(x => x.Type == "UsuarioId").Value);
-            return base.Create();
+            ViewBag.Localidad = this.localidadService.GetAllByID(provincias?.FirstOrDefault(x => true)?.IdProvincia ?? 1);
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public override ActionResult Create(IFormCollection collection)
+        {
+            this.personaModelService.Add(this.personaModelService.FromFormCollection(collection));
+
+            return RedirectToAction(nameof(Index));
         }
 
 
