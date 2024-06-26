@@ -80,6 +80,18 @@ namespace GestorEventos.Servicios.Servicios
             return entidad;
         }
 
+        public virtual int AddGetID(T entity)
+        {
+            
+            using (var db = SQLConnect.New().Transaction())
+            {
+                return db.ExecuteScalar<int>(string.Format(new T().SQL_Add_GET_ID(),
+                    (SQLConnect.CONNECTION_TYPE == ConnectionTypes.MSSQL) ?
+                        "CAST(SCOPE_IDENTITY() AS int)" : "LAST_INSERT_ID()")
+                    , entity); ;
+            }
+        }
+
         private static Object? ParseValue(String value, Type type)
         {
 

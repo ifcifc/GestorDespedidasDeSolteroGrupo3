@@ -11,7 +11,8 @@ namespace GestorEventos.Servicios.Entidades
                                                         "VALUES(@NombreEvento, @FechaEvento, @CantidadPersonas, @IdTipoEvento, @IdPersonaAgasajada, @IdUsuario, @IdEstadoEvento)";
         public override string SQL_Modify() => "UPDATE Eventos SET NombreEvento = @NombreEvento, FechaEvento = @FechaEvento, CantidadPersonas = @CantidadPersonas, IdTipoEvento = @IdTipoEvento, IdPersonaAgasajada = @IdPersonaAgasajada, IdEstadoEvento = @IdEstadoEvento WHERE IdEvento={0}";
         public override string SQL_Delete() => "UPDATE Eventos SET Borrado=1 WHERE IdEvento={0}";
-        
+        public override string SQL_Add_GET_ID() => "INSERT INTO Eventos(NombreEvento, FechaEvento, CantidadPersonas, IdTipoEvento, IdPersonaAgasajada, IdUsuario, IdEstadoEvento)" +
+                                                          "VALUES(@NombreEvento, @FechaEvento, @CantidadPersonas, @IdTipoEvento, @IdPersonaAgasajada, @IdUsuario, @IdEstadoEvento); SELECT {0}";
         public int IdEvento { get; set; }
 		public string NombreEvento { get; set; }
 		public DateTime FechaEvento { get; set; }

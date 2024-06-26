@@ -14,9 +14,9 @@ namespace GestorEventos.WebAdmin.Controllers
         IService<EstadoEvento> estadoEventoService;
         IService<TipoEvento> tipoEventoService;
         IService<Persona> personaService;
-        ServiciosService sevicioService;
+        IService<Servicio> sevicioService;
         IService<EventoServicio> eventoServicio;
-        EventoService eventoService;
+        IService<Evento> eventoService;
         public EventoController(
                         IService<EventoModel> eventoModelService, 
                         IService<Usuario> usuarioService, 
@@ -31,16 +31,13 @@ namespace GestorEventos.WebAdmin.Controllers
             this.tipoEventoService = tipoEventoService;
             this.estadoEventoService = estadoEventoService;
             this.personaService = personaService;
-            this.sevicioService = (ServiciosService)sevicioService;
+            this.sevicioService = sevicioService;
             this.eventoServicio = eventoServicio;
-            this.eventoService = (EventoService)eventoService;
-
-
         }
 
         public override ActionResult Details(int id)
         {
-            ViewBag.ListaServicios = this.sevicioService.GetServiciosByIdEvento(id);
+            ViewBag.ListaServicios = this.sevicioService.GetAllByID(id);
             decimal total = 0;
             foreach (Servicio s in ViewBag.ListaServicios) {
                 total += s.PrecioServicio;
@@ -59,7 +56,7 @@ namespace GestorEventos.WebAdmin.Controllers
             ViewBag.Personas = personaService.GetAll();
             ViewBag.Servicios = sevicioService.GetAll();
             ViewBag.ServiciosSelect =  sevicioService?
-                .GetServiciosByIdEvento(id)?
+                .GetAllByID(id)?
                 .Select(item => item.IdServicio).ToList();
 
 

@@ -16,6 +16,9 @@ namespace GestorEventos.Servicios.Entidades
                                                          "VALUES (@Descripcion,  @PrecioServicio)";
         public override string SQL_Delete() => "UPDATE Servicios SET Borrado=1 WHERE IdServicio={0}";
         public override string SQL_Modify() => "UPDATE Servicios SET Descripcion=@Descripcion, PrecioServicio=@PrecioServicio WHERE IdServicio={0}";
+
+        public override string SQL_GetAllByID() => "SELECT Servicios.* FROM EventosServicios INNER JOIN Servicios ON Servicios.idServicio = EventosServicios.IdServicio WHERE EventosServicios.Borrado = 0 AND EventosServicios.IdEvento = {0}";
+
         public int IdServicio { get; set; }
 		public string Descripcion { get; set; }
 
