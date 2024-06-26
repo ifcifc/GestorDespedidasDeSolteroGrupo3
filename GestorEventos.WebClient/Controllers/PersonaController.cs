@@ -99,10 +99,13 @@ namespace GestorEventos.WebAdmin.Controllers
 
             switch (collection["actionType"])
             {
-                case "Evento": return RedirectToAction(nameof(Index));
                 case "Delete": return RedirectToAction("Delete", "Persona");
                 case "Edit": return RedirectToAction("Edit", "Persona");
                 case "Details": return RedirectToAction("Details", "Persona");
+                case "Evento":
+                    TempData["IdPersona"] = null;
+                    TempData["IdPersonaAgasajada"] = IdPersona;
+                    return RedirectToAction("Create", "Evento");
             }
 
             return RedirectToAction(nameof(Index));
