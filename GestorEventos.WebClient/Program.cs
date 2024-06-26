@@ -11,7 +11,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 SQLConnect.SetConfig(
     builder.Configuration.GetValue<string>("SQLConnectionString") ?? "",
-    builder.Configuration.GetValue<string>("DBServer") ?? ""
+    builder.Configuration.GetValue<string>("DBServer") ?? "",
+    builder.Configuration.GetValue<bool>("EnableTransactions")
 );
 
 //Registro todos los Scopes de Servicios

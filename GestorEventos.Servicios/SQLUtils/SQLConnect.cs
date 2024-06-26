@@ -13,6 +13,8 @@ namespace GestorEventos.Servicios.SQLUtils
         //Para indicar el tipo de servidor a conectarse
         public static ConnectionTypes CONNECTION_TYPE = ConnectionTypes.MSSQL;
 
+        private static bool ENABLE_TRANSACTIONS = true;
+
         private string ConnectionString;
         private IDbConnection?  DBConn;//Para almacenar manejar la coneccion con la DB
         private bool UseTransactions;
@@ -57,8 +59,8 @@ namespace GestorEventos.Servicios.SQLUtils
 
         //Inicia una transaccion
         public SQLConnect Transaction() {
-            Console.WriteLine("Transacciones desactivadas");
-            //this.UseTransactions = true;
+            //Console.WriteLine("Transacciones desactivadas");
+            this.UseTransactions = ENABLE_TRANSACTIONS;
             return this;
         }
         private string MakeTransaction(string sql) {
@@ -160,10 +162,11 @@ namespace GestorEventos.Servicios.SQLUtils
             this.DBConn?.Dispose();
         }
 
-        public static void SetConfig(string sqlConnection, string dbServer){
+        public static void SetConfig(string sqlConnection, string dbServer, bool enableTransactions=true){
             //"SQLConnectionString": "Server=(localdb)\\programacion;Database=gestioneventos;User Id=admin;Password=1234",
             SQLConnect.DEFAULT_CONNECTION_STRING = string.Format(sqlConnection, "AVNS_1UuQ-8eNZQZr_HdHYuc");
             SQLConnect.CONNECTION_TYPE = ConnectionTypes.Parse<ConnectionTypes>(dbServer);
+            SQLConnect.ENABLE_TRANSACTIONS = enableTransactions;
         }
     }
 

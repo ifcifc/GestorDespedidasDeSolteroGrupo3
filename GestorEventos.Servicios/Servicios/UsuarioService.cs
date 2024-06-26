@@ -27,7 +27,7 @@ namespace GestorEventos.Servicios.Servicios
             {
                 return db.ExecuteScalar<int>(string.Format(SQL_Add_GET_ID,
                     (SQLConnect.CONNECTION_TYPE == ConnectionTypes.MSSQL) ?
-                        "CAST(SCOPE_IDENTITY() AS int" : "LAST_INSERT_ID()")
+                        "CAST(SCOPE_IDENTITY() AS int)" : "LAST_INSERT_ID()")
                     , entity); ;
             }
         }
