@@ -12,10 +12,27 @@ namespace GestorEventos.WebAdmin.Controllers
 
         private IService<LocalidadModel> localidadService;
         private IService<Provincia> provinciaService;
+
+
         public LocalidadController(IService<LocalidadModel> localidadService, IService<Provincia> provinciaService) : base(localidadService)
         {
             this.localidadService = localidadService;
             this.provinciaService = provinciaService;
+        }
+
+        public override ActionResult Index()
+        {//this.localidadService.GetAllByID(19)
+            ViewBag.Provincias = provinciaService.GetAll();
+            return View(new List<LocalidadModel>());
+        }
+
+        [HttpPost]
+        public  ActionResult Lista(IFormCollection collection)
+        {
+            if (collection["IdProvincia"] == 0) Index();
+
+            ViewBag.Provincias = provinciaService.GetAll();
+            return View("Index", this.localidadService.GetAllByID(int.Parse(collection["IdProvincia"])));
         }
 
         public override ActionResult Create()

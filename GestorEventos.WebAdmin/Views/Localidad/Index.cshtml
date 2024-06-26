@@ -10,6 +10,19 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+<form asp-action="Lista">
+    <div class="form-group">
+        <label class="control-label">Provincia</label>
+        <select name="IdProvincia" onchange="this.form.submit()">
+            <option value="0">-</option>
+            @foreach (var p in ViewBag.Provincias)
+            {
+                <option value="@p.IdProvincia">@p.Nombre</option>
+            }
+        </select>
+    </div>
+</form>
+
 <table class="table">
     <thead>
         <tr>

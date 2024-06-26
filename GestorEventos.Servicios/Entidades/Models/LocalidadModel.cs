@@ -12,6 +12,8 @@ namespace GestorEventos.Servicios.Entidades.Models
 
         public override string SQL_GetByID() => "SELECT Localidades.*, Provincias.Nombre AS Provincia FROM Localidades INNER JOIN Provincias ON Localidades.IdProvincia = Provincias.IdProvincia WHERE Localidades.Borrado=0 AND Localidades.IdLocalidad={0} ORDER BY Localidades.Nombre";
 
+        public override string SQL_GetAllByID() => "SELECT Localidades.*, Provincias.Nombre AS Provincia FROM Localidades INNER JOIN Provincias ON Localidades.IdProvincia = Provincias.IdProvincia WHERE Localidades.Borrado=0 AND Localidades.IdProvincia = {0} ORDER BY Localidades.Nombre";
+
         public string Provincia { get; set; }
     }
 }
