@@ -21,7 +21,7 @@ namespace GestorEventos.Api.Controllers
         {
             try
             {
-                Console.WriteLine(this.service.CheckDateEvent(date));
+                //Console.WriteLine(this.service.CheckDateEvent(date));
                 return  Ok(this.service.CheckDateEvent(date));
             }
             catch (Exception)

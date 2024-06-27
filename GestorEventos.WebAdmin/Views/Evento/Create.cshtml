@@ -22,7 +22,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="FechaEvento" class="control-label"></label>
-                <input asp-for="FechaEvento" class="form-control" />
+                <input asp-for="FechaEvento" class="form-control" id="select_date" />
                 <span asp-validation-for="FechaEvento" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -84,7 +84,7 @@
             </table>
 
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input id="button_create" type="submit" value="Create" class="btn btn-primary" disabled />
             </div>
         </form>
     </div>
@@ -93,6 +93,9 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
+
+<script src="~/js/EventoCheck.js" asp-append-version="true"></script>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
