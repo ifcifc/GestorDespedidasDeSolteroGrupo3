@@ -2,7 +2,7 @@
 @model GestorEventos.Servicios.Entidades.Models.EventoModel
 
 @{
-    ViewData["Title"] = "Detail";
+    ViewData["Title"] = "Detalles del evento";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -15,10 +15,9 @@
     }
 </style>
 
-<h1>Detail</h1>
+<h1>@ViewData["Title"]</h1>
 
 <div>
-    <h4>EventoModel</h4>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
