@@ -64,6 +64,7 @@ namespace GestorEventos.Servicios.SQLUtils
             return this;
         }
         private string MakeTransaction(string sql) {
+
             if (this.UseTransactions) return 
                     ((CONNECTION_TYPE == ConnectionTypes.MYSQL)? "START":"BEGIN") +
                     " TRANSACTION;\n" + sql + ";\nCOMMIT;";

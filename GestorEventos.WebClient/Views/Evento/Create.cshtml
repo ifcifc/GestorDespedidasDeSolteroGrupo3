@@ -1,14 +1,12 @@
 ﻿@model GestorEventos.Servicios.Entidades.Evento
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Crear reserva de evento";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <link rel="stylesheet" href="~/css/reserva/style_Persona.css" />
 <div class="persona_container">
-<h1>Create</h1>
-
-<h4>Evento</h4>
+<h1>Crear reserva de evento</h1>
 <hr />
 <div class="row">
     <div class="">
@@ -28,7 +26,7 @@
                     </div>
                     <div class="form-group">
                         <label asp-for="FechaEvento" class="control-label"></label>
-                        <input asp-for="FechaEvento" class="form-control" />
+                        <input asp-for="FechaEvento" class="form-control" id="select_date" />
                         <span asp-validation-for="FechaEvento" class="text-danger"></span>
                     </div>
                     <div class="form-group">
@@ -70,12 +68,13 @@
                 </div>
             </div>
             <div class="form-group d-flex justify-content-center">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                    <input id="button_create" type="submit" value="Create" class="btn btn-primary" disabled />
             </div>
         </form>
     </div>
 </div>
 </div>
+<script src="~/js/EventoCheck.js" asp-append-version="true"></script>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

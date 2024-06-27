@@ -47,9 +47,11 @@ namespace GestorEventos.WebAdmin.Controllers
         [ValidateAntiForgeryToken]
         public override ActionResult Create(IFormCollection collection)
         {
-            this.personaModelService.Add(this.personaModelService.FromFormCollection(collection));
+            int IdPersona = this.personaModelService
+                    .AddGetID(this.personaModelService.FromFormCollection(collection));
 
-            return RedirectToAction(nameof(Index));
+            TempData["IdPersonaAgasajada"] = IdPersona;
+            return RedirectToAction("Create", "Evento");
         }
 
 
@@ -59,16 +61,16 @@ namespace GestorEventos.WebAdmin.Controllers
             ViewBag.Provincias = provincias;
             ViewBag.Localidad = this.localidadService.GetAllByID(provincias?.FirstOrDefault(x => true)?.IdProvincia ?? 1);
 
-            return base.Edit(GetId(id));
+            return base.Edit(id);
         }
 
         public override ActionResult Details(int id)
         {
-            return base.Details(GetId(id));
+            return base.Details(id);
         }
         public override ActionResult Delete(int id)
         {
-            return base.Delete(GetId(id));
+            return base.Delete(id);
         }
 
         protected override bool ValidateAction(int idEntity) {
@@ -77,13 +79,14 @@ namespace GestorEventos.WebAdmin.Controllers
             return this.personaService.PersonaDeUsuario(idEntity, IdUsuario);
         }
 
-        //Si se pasa el Id a travez del TempData este se prioriza
+        /*Mucho trabajo
+         * //Si se pasa el Id a travez del TempData este se prioriza
         private int GetId(int id) 
         {
             int idPersona = (TempData["IdPersona"] == null) ? id : (int)TempData["IdPersona"];
             TempData["IdPersona"] = null;
             return idPersona;
-        }
+        }*/
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -95,17 +98,14 @@ namespace GestorEventos.WebAdmin.Controllers
             if (!this.personaService.PersonaDeUsuario(IdPersona, IdUsuario))
                 return RedirectToAction("Index", "Home"); ;
 
-            TempData["IdPersona"] = IdPersona;
-
             switch (collection["actionType"])
             {
-                case "Delete": return RedirectToAction("Delete", "Persona");
-                case "Edit": return RedirectToAction("Edit", "Persona");
-                case "Details": return RedirectToAction("Details", "Persona");
+                case "Delete": return RedirectToAction("Delete", "Persona", new { id = IdPersona });
+                case "Edit": return RedirectToAction("Edit", "Persona", new { id = IdPersona });
+                case "Details": return RedirectToAction("Details", "Persona", new { id = IdPersona });
                 case "Evento":
-                    TempData["IdPersona"] = null;
                     TempData["IdPersonaAgasajada"] = IdPersona;
-                    return RedirectToAction("Create", "Evento");
+                    return RedirectToAction("Create", "Evento", new { id = IdPersona });
             }
 
             return RedirectToAction(nameof(Index));

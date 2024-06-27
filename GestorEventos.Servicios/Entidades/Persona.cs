@@ -14,6 +14,8 @@ namespace GestorEventos.Servicios.Entidades
 
         public override string SQL_GetAllByID() => "SELECT * FROM Personas WHERE Borrado=0 AND IdUsuario={0}  ORDER BY Nombre";
 
+        public override string SQL_Add_GET_ID() => SQL_Add() + "; SELECT {0}";
+
         public int IdPersona { get; set; }
         public int IdLocalidad { get; set; }
 

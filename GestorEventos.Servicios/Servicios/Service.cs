@@ -57,6 +57,8 @@ namespace GestorEventos.Servicios.Servicios
 
         public virtual bool Delete(int idEntity)
         {
+            Console.WriteLine(">" + idEntity);
+
             using (var db = SQLConnect.New().Transaction())
             {
                 return db.ExecuteWithCheck(string.Format(new T().SQL_Delete(), idEntity));

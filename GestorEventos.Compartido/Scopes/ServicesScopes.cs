@@ -10,7 +10,7 @@ namespace GestorEventos.Compartido.Scopes
     {
         public static void RegisterAllServices(WebApplicationBuilder builder) 
         {
-            builder.Services.AddScoped<IService<Evento>, Service<Evento>>();
+            builder.Services.AddScoped<IService<Evento>, EventoService>();
             builder.Services.AddScoped<IService<Localidad>, Service<Localidad>>();
             builder.Services.AddScoped<IService<Persona>, PersonaService>();
             builder.Services.AddScoped<IService<Usuario>, UsuarioService>();

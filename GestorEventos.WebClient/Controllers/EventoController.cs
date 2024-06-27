@@ -14,7 +14,7 @@ namespace GestorEventos.WebClient.Controllers
         IService<TipoEvento> tipoEventoService;
         IService<Servicio> sevicioService;
         IService<EventoServicio> eventoServicio;
-        IService<Evento> eventoService;
+        EventoService eventoService;
         IService<Persona> personaService;
         public EventoController(
                         IService<EventoModel> eventoModelService, 
@@ -29,7 +29,7 @@ namespace GestorEventos.WebClient.Controllers
             this.estadoEventoService = estadoEventoService;
             this.sevicioService = sevicioService;
             this.eventoServicio = eventoServicio;
-            this.eventoService = eventoService;
+            this.eventoService = (EventoService)eventoService;
             this.personaService = personaService;
 
 
@@ -37,7 +37,6 @@ namespace GestorEventos.WebClient.Controllers
 
         public override ActionResult Edit(int id)
         {
-
             int IdUsuario = int.Parse(HttpContext.User.Claims.First(x => x.Type == "UsuarioId").Value);
             //ViewBag.Usuarios = usuarioService.GetAll();
             ViewBag.TiposEventos = tipoEventoService.GetAll();
@@ -47,13 +46,11 @@ namespace GestorEventos.WebClient.Controllers
                 .GetAllByID(id)?
                 .Select(item => item.IdServicio).ToList();
 
-
             return base.Edit(id);
         }
 
         public override ActionResult Edit(int id, IFormCollection collection)
         {
-
             this.EditServicesOfEvent(id, collection["Servicio"]);
 
             return base.Edit(id, collection);
@@ -69,7 +66,8 @@ namespace GestorEventos.WebClient.Controllers
 
         public override ActionResult Details(int id)
         {
-            ViewBag.ListaServicios = this.sevicioService.GetAllByID(id);
+            int idEvento = id;
+            ViewBag.ListaServicios = this.sevicioService.GetAllByID(idEvento);
             decimal total = 0;
             foreach (Servicio s in ViewBag.ListaServicios) {
                 total += s.PrecioServicio;
@@ -77,7 +75,7 @@ namespace GestorEventos.WebClient.Controllers
             ViewBag.ServicioTotal = total.ToString("F2");
 
 
-            return base.Details(id);
+            return base.Details(idEvento);
         }
 
         public override ActionResult Create()
@@ -112,7 +110,11 @@ namespace GestorEventos.WebClient.Controllers
 
             return RedirectToAction(nameof(Index)); ;
         }
-
+        public override ActionResult Delete(int id)
+        {
+            int idPersona = id;
+            return base.Delete(idPersona);
+        }
         public void EditServicesOfEvent(int idEvent, string[] servicesList)
         {
             StringBuilder query = new StringBuilder()
@@ -136,19 +138,29 @@ namespace GestorEventos.WebClient.Controllers
 
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public virtual ActionResult EventoAction(IFormCollection collection)
+        {
+            int IdEvento = int.Parse(collection["IdEvento"]);
+
+
+            switch (collection["actionType"])
+            {
+                case "Delete": return RedirectToAction("Delete", "Evento", new { id = IdEvento });
+                case "Edit": return RedirectToAction("Edit", "Evento", new { id = IdEvento });
+                case "Details": return RedirectToAction("Details", "Evento", new { id = IdEvento });
+                case "Evento": return RedirectToAction("Index", "Reserva");
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
+
         protected override bool ValidateAction(int idEntity)
         {
             int IdUsuario = int.Parse(
                     HttpContext.User.Claims.First(x => x.Type == "UsuarioId").Value);
-
-            using (var db = SQLConnect.New())
-            {
-                int count = db.ExecuteScalar<int>(string.Format(
-                    "SELECT count(*)  FROM Eventos WHERE IdUsuario={0} AND IdEvento={1}",
-                    IdUsuario, idEntity));
-
-                return count > 0;
-            }
+            return this.eventoService.EventoDeUsuario(idEntity, IdUsuario);
         }
 
     }

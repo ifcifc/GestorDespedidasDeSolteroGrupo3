@@ -1,12 +1,12 @@
 ﻿@model IEnumerable<GestorEventos.Servicios.Entidades.Models.EventoModel>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Lista de eventos";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <link rel="stylesheet" href="~/css/reserva/style_Persona.css" />
 <div class="persona_container">
-<h1>Index</h1>
+<h1>@ViewData["Title"]</h1>
 <table class="table">
     <thead>
         <tr>
@@ -35,12 +35,12 @@
                 @Html.DisplayFor(modelItem => item.FechaEvento)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.IdEvento }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.IdEvento }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.IdEvento })
+                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#eventoMenuModal" data-idevento="@item.IdEvento" data-info="@item.NombreEvento">Seleccionar</button>
             </td>
         </tr>
 }
     </tbody>
 </table>
 </div>
+
+@Html.Partial("_ModalMenuEvento")

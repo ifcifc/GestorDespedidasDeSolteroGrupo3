@@ -15,7 +15,6 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input asp-for="IdEvento" class="form-control" hidden />
             <input asp-for="IdEstadoEvento" class="form-control" hidden />
-            <input asp-for="Borrado" class="form-control" value="0" hidden />
 
             <div class="form-group">
                 <label asp-for="NombreEvento" class="control-label"></label>
@@ -74,18 +73,18 @@
                 <tbody>
 
                     @{
-                        
+
                         foreach (var servicio in ViewBag.Servicios)
                         {
                             <tr>
                                 <td>
                                     @if (ViewBag.ServiciosSelect.Contains(servicio.IdServicio))
                                     {
-                                        <input type="checkbox" name="Servicio" value="@servicio.IdServicio" checked/>
+                                        <input type="checkbox" name="Servicio" value="@servicio.IdServicio" checked />
                                     }
                                     else
                                     {
-                                        <input type="checkbox" name="Servicio" value="@servicio.IdServicio"/>
+                                        <input type="checkbox" name="Servicio" value="@servicio.IdServicio" />
                                     }
                                 </td>
                                 <td>@servicio.Descripcion</td>
@@ -107,5 +106,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

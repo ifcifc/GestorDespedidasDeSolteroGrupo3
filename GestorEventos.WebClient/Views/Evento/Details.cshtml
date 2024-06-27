@@ -2,17 +2,16 @@
 @model GestorEventos.Servicios.Entidades.Models.EventoModel
 
 @{
-    ViewData["Title"] = "Detail";
+    ViewData["Title"] = "Ver detalles del evento";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <link rel="stylesheet" href="~/css/reserva/style_Persona.css" />
 <div class="persona_container">
-<h1>Detail</h1>
+<h1>@ViewData["Title"]</h1>
 
-<div>
-    <h4>EventoModel</h4>
-    <hr />
-    <dl class="row">
+<div class="persona_info">
+        <hr />
+     <dl class="row">
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.NombreEvento)
         </dt>

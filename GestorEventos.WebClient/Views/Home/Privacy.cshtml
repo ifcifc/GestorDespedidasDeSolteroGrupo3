@@ -27,3 +27,23 @@
 <h1>Municipales Trabajando</h1>
 <img src="https://64.media.tumblr.com/tumblr_mdg6lryWTJ1rs13ydo1_500.gif" />
 <img src="~/images/icon.png" class="icon" />
+
+<script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var apiURL = '/api/EventoControler/2024-06-17';
+
+        $.ajax({
+            url: apiURL,
+            method: 'GET',
+            success: function (data) {
+                
+
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.error('Error api evento:', textStatus, errorThrown);
+            }
+        });
+    });
+
+</script>
