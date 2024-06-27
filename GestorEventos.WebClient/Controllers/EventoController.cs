@@ -3,11 +3,13 @@ using GestorEventos.Servicios.Entidades;
 using GestorEventos.Servicios.Entidades.Models;
 using GestorEventos.Servicios.Servicios;
 using GestorEventos.Servicios.SQLUtils;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Text;
 
 namespace GestorEventos.WebClient.Controllers
 {
+    [Authorize]
     public class EventoController : WebController<EventoModel>
     {
         IService<EstadoEvento> estadoEventoService;
