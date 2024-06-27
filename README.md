@@ -23,6 +23,9 @@ Al igual qué el proyecto base esté utiliza Dapper y SQLConnect se encarga de l
 
 El proyecto es compatible con MySQL y con SQL Server. los comandos SQL usados en el proyecto son compatibles con estas dos bases de datos, y los archivos qué están en el proyecto “MysqlDB.sql” y “SQLServerDB.sql” contienen los datos para crear las bases de datos.
 
+## **Base de Datos**
+La base de datos utilizada en el proyecto es MySQL a través del servicio de Aiven, los datos para conectarse se encuentran en “appsettings.json”
+
 ## **APIs**
 Proyecto utilizan dos APIs para qué el cliente pueda obtener información del servidor, estas APIs se encuentran dentro del proyecto GestorEventos.Api y son cargadas junto a los proyectos WebClient y WebAdmin
  - La Api “ **api/Evento{date}** ” devuelve un valor booleano verdadero
