@@ -6,6 +6,7 @@ using static Dapper.SqlMapper;
 
 namespace GestorEventos.Servicios.Servicios
 {
+    //Clase base para los servicios, para realizar operaciones sobre las Entidades
     public class Service<T> : IService<T> where T : Entidad, new()
     {
         public Service()
@@ -13,6 +14,7 @@ namespace GestorEventos.Servicios.Servicios
             //Para evitar el problema de las comas en los numeros
             Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
         }
+
 
         public virtual IEnumerable<T>? GetAll()
         {
@@ -65,6 +67,7 @@ namespace GestorEventos.Servicios.Servicios
             }
         }
 
+        //Convierte un IFormCollection en una Entidad<T>
         public T FromFormCollection(IFormCollection collection)// where X : new()
         {
             T entidad = new T();
@@ -94,6 +97,7 @@ namespace GestorEventos.Servicios.Servicios
             }
         }
 
+        //Convierte los valores al tipo correspondiente
         private static Object? ParseValue(String value, Type type)
         {
 

@@ -34,6 +34,7 @@ namespace GestorEventos.Servicios.Servicios
                                                         WHERE IdEvento={1};
                                                  """;
 
+        //Metodo para cambiar el Estado del Evento
         public void SetEstado(int idEvento, int idEstadoEvento) 
         {
             using (var db = SQLConnect.New().Transaction())
@@ -44,7 +45,7 @@ namespace GestorEventos.Servicios.Servicios
                     idEvento));
             }
         }
-
+        //Obtiene todos los eventos ordenados por EstadoEvento
         public IEnumerable<EventoModel>? GetAllOrder()
         {
             using (var db = SQLConnect.New())

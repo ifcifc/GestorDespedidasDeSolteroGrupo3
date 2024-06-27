@@ -8,6 +8,7 @@ Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.Invariant
 
 var builder = WebApplication.CreateBuilder(args);
 
+//Establece la configuracion para conectarse a la base de datos
 SQLConnect.SetConfig(
     builder.Configuration.GetValue<string>("SQLConnectionString") ?? "",
     builder.Configuration.GetValue<string>("DBServer") ?? "",

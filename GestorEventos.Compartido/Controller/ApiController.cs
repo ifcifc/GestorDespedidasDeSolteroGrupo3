@@ -6,6 +6,7 @@ namespace GestorEventos.Compartido.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    //Clase base para crear un ApiController a partir de una Entidad
     public class ApiController <V> : Microsoft.AspNetCore.Mvc.Controller where V : Entidad, new()
     {
         protected IService<V> Service;

@@ -8,10 +8,12 @@ using System.Threading.Tasks;
 
 namespace GestorEventos.Servicios.Servicios
 {
+
     public class UsuarioService : Service<Usuario>
     {
         public const string SQL_GetByGoogleIdentificador = "SELECT * FROM Usuarios WHERE GoogleIdentificador={0}";
 
+        //Obtiene un Usuario segun su GoogleIdentifier
         public Usuario? GetByGoogleIdentifier(string identifier)
         {
             using (var db = SQLConnect.New())

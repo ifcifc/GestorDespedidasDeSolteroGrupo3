@@ -34,7 +34,7 @@ namespace GestorEventos.WebAdmin.Controllers
         {
             ViewBag.ListaServicios = this.sevicioService.GetAllByID(id);
             ViewBag.ListaEstadoEventos = this.estadoEventoService.GetAll();
-            decimal total = 0;
+            decimal total = 0;//Para calcular el Precio total de todos los servicios
             foreach (Servicio s in ViewBag.ListaServicios)
             {
                 total += s.PrecioServicio;

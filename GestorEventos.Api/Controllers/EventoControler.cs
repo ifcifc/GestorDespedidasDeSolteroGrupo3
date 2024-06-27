@@ -7,6 +7,7 @@ namespace GestorEventos.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    //Api para validar si hay algun evento en una fecha
     public class EventoControler : Microsoft.AspNetCore.Mvc.Controller
     {
         EventoService service;

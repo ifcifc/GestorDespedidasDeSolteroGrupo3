@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace GestorEventos.Compartido.Scopes
 {
+    //Para registrar los Servicios en los proyectos
     public class ServicesScopes
     {
         public static void RegisterAllServices(WebApplicationBuilder builder) 

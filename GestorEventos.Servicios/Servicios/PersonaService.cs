@@ -9,7 +9,7 @@ namespace GestorEventos.Servicios.Servicios
         private const string SQL_PersonaDeUsuario = "SELECT count(*)  FROM Personas WHERE IdUsuario={0} AND IdPersona={1}";
 
 
-
+        //Verifica si la Persona pertenece al usuario
         public bool PersonaDeUsuario(int IdPersona, int IdUsuario) 
         {
             using (var db = SQLConnect.New())

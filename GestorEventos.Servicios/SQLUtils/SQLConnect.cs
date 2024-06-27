@@ -2,12 +2,14 @@
 using MySql.Data.MySqlClient;
 using System.Data;
 using System.Data.SqlClient;
+using System.Text;
 
 namespace GestorEventos.Servicios.SQLUtils
 {
+    //Clase responsable de la conexion con la base de datos
     public class SQLConnect : IDisposable
     {
-
+        
         public static string DEFAULT_CONNECTION_STRING = "";
 
         //Para indicar el tipo de servidor a conectarse
@@ -15,9 +17,9 @@ namespace GestorEventos.Servicios.SQLUtils
 
         private static bool ENABLE_TRANSACTIONS = true;
 
-        private string ConnectionString;
+        private string ConnectionString;//La ConnectionString a la que se conectara
         private IDbConnection?  DBConn;//Para almacenar manejar la coneccion con la DB
-        private bool UseTransactions;
+        private bool UseTransactions;//Indica si deben de usarse Transacciones
 
         //Crea una instancia de SQLConnect usando DEFAULT_CONNECTION_STRING
         public static SQLConnect New() {
@@ -34,12 +36,9 @@ namespace GestorEventos.Servicios.SQLUtils
             this.ConnectionString = connectionString;
 
             //Crea la un objeto IDbConnection con el ConnectionString
-            this.DBConn = (CONNECTION_TYPE == ConnectionTypes.MSSQL) ? 
-                new SqlConnection(this.ConnectionString) : 
+            this.DBConn = (CONNECTION_TYPE == ConnectionTypes.MSSQL) ?
+                new SqlConnection(this.ConnectionString) :
                 new MySqlConnection(this.ConnectionString);
-            
-            
-                
 
 
             try//Para comprobar si hay errores
@@ -63,11 +62,15 @@ namespace GestorEventos.Servicios.SQLUtils
             this.UseTransactions = ENABLE_TRANSACTIONS;
             return this;
         }
-        private string MakeTransaction(string sql) {
-
-            if (this.UseTransactions) return 
-                    ((CONNECTION_TYPE == ConnectionTypes.MYSQL)? "START":"BEGIN") +
-                    " TRANSACTION;\n" + sql + ";\nCOMMIT;";
+        //Metodo para armar la Transaccion
+        private string MakeTransaction(string sql) 
+        {
+            if (this.UseTransactions) return new StringBuilder()
+                    .Append((CONNECTION_TYPE == ConnectionTypes.MYSQL) ? "START" : "BEGIN")
+                    .AppendLine(" TRANSACTION;")
+                    .Append(sql).Append(";")
+                    .AppendLine("COMMIT;")
+                    .ToString();
             return sql;
         }
         //Ejecuta un SQL
@@ -84,7 +87,7 @@ namespace GestorEventos.Servicios.SQLUtils
             }
             return this;
         }
-
+        //Executa un SQL y retorna un valor
         public T? ExecuteScalar<T>(string sql, object? args = null) {
             
             try
@@ -163,6 +166,7 @@ namespace GestorEventos.Servicios.SQLUtils
             this.DBConn?.Dispose();
         }
 
+        //Define la configuracion del SQLConnect
         public static void SetConfig(string sqlConnection, string dbServer, bool enableTransactions=true){
             //"SQLConnectionString": "Server=(localdb)\\programacion;Database=gestioneventos;User Id=admin;Password=1234",
             SQLConnect.DEFAULT_CONNECTION_STRING = string.Format(sqlConnection, "AVNS_1UuQ-8eNZQZr_HdHYuc");
@@ -171,7 +175,7 @@ namespace GestorEventos.Servicios.SQLUtils
         }
     }
 
-
+    //Tipo de bases de datos usada
     public enum ConnectionTypes { 
         MSSQL,//SQL SERVER
         MYSQL

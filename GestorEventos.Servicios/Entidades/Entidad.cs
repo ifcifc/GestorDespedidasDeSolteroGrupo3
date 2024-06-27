@@ -8,8 +8,11 @@ using System.Threading.Tasks;
 
 namespace GestorEventos.Servicios.Entidades
 {
+    //Clase Base para definir una Entidad
     public abstract class Entidad
     {
+
+        //Metodos SQL_ son usador en los servicios
         public abstract string SQL_GetAll();
         public abstract string SQL_GetByID();
         public abstract string SQL_Add();
@@ -21,8 +24,10 @@ namespace GestorEventos.Servicios.Entidades
         public Entidad(){}
 
         [ScaffoldColumn(false)]
+        //Para el borrado logico de la entidad
         public bool Borrado { get; set; }
 
+        //Muestra el contenido de la entidad
         public string ToString() {
             System.Type type = this.GetType();
 
