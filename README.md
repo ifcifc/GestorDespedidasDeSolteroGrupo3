@@ -38,7 +38,7 @@ Está construido en su mayoría con MVC, con algunos retoques utilizando css, js
 Tiene dos apartados principales
 
  - **Gestionar reservas:** Donde aparecen todas las reservas ordenadas según su estado y donde se puede observar los detalles de la misma y cambiar su estado(Aprobar, Rechazar, ...).
- - **● Administrar entidades:** Un menú desde donde se puede crear, eliminar y modificar casi cualquier entidad.
+ - **Administrar entidades:** Un menú desde donde se puede crear, eliminar y modificar casi cualquier entidad.
 
 ## **Proyecto WebClient**
 En esté proyecto la “Página principal”, “FAQ” y “Reservar un evento” están construidas en su totalidad con HTML, CSS y JS.
@@ -47,11 +47,11 @@ Mientras qué los Apartados “Mis Personas” y “Mis Eventos” así cómo la
 Para acceder a “Reservar un evento”, “Mis Personas” y “Mis Eventos” es obligatorio haber
 iniciado sesión primero.
 
-## **Estructura de la Solución:
+## **Estructura de la Solución**:
 
  - **GestorEventos.Api** Esté proyecto contiene las Apis qué usan los demás proyectos.
  - **GestorEventos.Comun** Es una Biblioteca de Clases qué contiene las clases en común qué utilizan los demás proyectos.
- - **GestorEventos.Servicios** Contiene los servicios y entidades del proyecto, también contiene la clase SQLConnect qué gestiona las llamadas a la base de datos. Los servicios se encuentran declarados en la clase “ **ServicesScopes** ” de **GestorEventos.Comun**.
+ - **GestorEventos.Servicios** Contiene los servicios y entidades del proyecto, también contiene la clase SQLConnect qué gestiona las llamadas a la base de datos. Los servicios se encuentran declarados en la clase “**ServicesScopes**” de **GestorEventos.Comun**.
  - **GestorEventos.WebAdmin** Proyecto para administrar las entidades.
  - **GestorEventos.WebClient** Proyecto para el cliente.
  - **GestorEventos.Test** Proyecto para realizar pruebas.
