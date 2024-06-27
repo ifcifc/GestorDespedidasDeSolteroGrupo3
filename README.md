@@ -47,6 +47,10 @@ Mientras qué los Apartados “Mis Personas” y “Mis Eventos” así cómo la
 Para acceder a “Reservar un evento”, “Mis Personas” y “Mis Eventos” es obligatorio haber
 iniciado sesión primero.
 
+ - **Reservar un evento** Permite reservar un evento ya sea cargando datos de una nueva persona o eligiendo una ya previamente cargada.
+ - **Mis Personas** Permite Administrar los datos de las personas cargadas por el usuario.
+ - **Mis Eventos** Permite ver y cambiar las reservas de los eventos creados por el usuario.
+
 ## **Estructura de la Solución**:
 
  - **GestorEventos.Api** Esté proyecto contiene las Apis qué usan los demás proyectos.
