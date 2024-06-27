@@ -1,0 +1,102 @@
+﻿@using GestorEventos.Servicios.Entidades
+@model GestorEventos.Servicios.Entidades.Models.EventoModel
+
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .buttons{
+        gap: 1rem;
+    }
+    .buttons > a {
+            min-width: 10rem;
+    }
+</style>
+
+<h1>Detail</h1>
+
+<div>
+    <h4>EventoModel</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NombreEvento)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NombreEvento)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FechaEvento)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FechaEvento)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CantidadPersonas)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CantidadPersonas)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+        <dt class="col-sm-2">
+            Persona Agasajada
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PersonaAgasajadaNombre) @Html.DisplayFor(model => model.PersonaAgasajadaApellido)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PersonaAgasajadaTelefono)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PersonaAgasajadaTelefono)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UsuarioNombre)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UsuarioNombre)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UsuarioEmail)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UsuarioEmail)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+        <h3>Servicios Contratados</h3>
+
+        @foreach (var servicio in (IEnumerable<Servicio>)ViewBag.ListaServicios)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayFor(model => servicio.Descripcion)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => servicio.PrecioServicio)
+            </dd>
+        }
+        <dt class="col-sm-2"><h4>Total:</h4></dt>
+        <dd class="col-sm-10">$@ViewBag.ServicioTotal</dd>
+
+    </dl>
+</div>
+<div class="buttons d-flex justify-content-center">
+    @foreach (EstadoEvento estado in ViewBag.ListaEstadoEventos)
+    {
+        @Html.ActionLink(estado.Descripcion, "ChangeState", new { id = Model.IdEvento, idEstado=estado.IdEstadoEvento }, new {@class="btn btn-primary"})
+    }
+    
+</div>

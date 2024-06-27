@@ -16,4 +16,11 @@
     <ProjectReference Include="..\GestorEventos.Servicios\GestorEventos.Servicios.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="Views\EventoAdmin\Index.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>

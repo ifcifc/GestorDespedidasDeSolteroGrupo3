@@ -12,14 +12,15 @@ namespace GestorEventos.Servicios.Servicios
     {
         private const string SQL_EventoDeUsuario = "SELECT count(*)  FROM Eventos WHERE IdUsuario={0} AND IdEvento={1}";
         private const string SQL_CheckDateEvent = """
-                                                    SELECT * 
+                                                    SELECT count(*) 
                                                     FROM gestorevento.Eventos 
                                                     WHERE 	YEAR(FechaEvento)  = {0} AND
                                                             MONTH(FechaEvento) = {1} AND
-                                                            DAY(FechaEvento) = {2}
+                                                            DAY(FechaEvento)   = {2} AND
+                                                            IdEstadoEvento     = 2
                                                   """;
 
-
+        //IdEstadoEvento = 2 es cuando el evento fue aceptado
         public bool CheckDateEvent(DateTime date)
         {
             using (var db = SQLConnect.New())
@@ -32,7 +33,6 @@ namespace GestorEventos.Servicios.Servicios
 
                 return count > 0;
             }
-            return true;
         }
 
         public bool EventoDeUsuario(int IdPersona, int IdUsuario)

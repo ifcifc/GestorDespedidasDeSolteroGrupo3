@@ -33,6 +33,7 @@ namespace GestorEventos.WebAdmin.Controllers
             this.personaService = personaService;
             this.sevicioService = sevicioService;
             this.eventoServicio = eventoServicio;
+            this.eventoService = eventoService;
         }
 
         public override ActionResult Details(int id)

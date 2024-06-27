@@ -20,7 +20,7 @@ namespace GestorEventos.Compartido.Scopes
             builder.Services.AddScoped<IService<TipoEvento>, Service<TipoEvento>>();
 
 
-            builder.Services.AddScoped<IService<EventoModel>, Service<EventoModel>>();
+            builder.Services.AddScoped<IService<EventoModel>, EventoModelService>();
             builder.Services.AddScoped<IService<LocalidadModel>, Service<LocalidadModel>>();
             builder.Services.AddScoped<IService<PersonaModel>, Service<PersonaModel>>();
             builder.Services.AddScoped<IService<EstadoEvento>, Service<EstadoEvento>>();
