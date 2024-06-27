@@ -19,7 +19,7 @@ El “appsettings.json” contiene los siguientes valores:
 
 El proyecto está actualmente configurado para conectarse a la base de datos MySQL de aiven creada para el proyecto, debido a qué github no permitía subir la contraseña está se encuentra dentro del código de SQLConnect.
 
-Al igual qué el proyecto base esté utiliza Dapper y SQLConnect se encarga de la conexión a la base de dato y así cómo crear una instancia de SqlConnection para SQL Server o un MySqlConnection para MySQL.
+Al igual qué el proyecto base esté utiliza Dapper y SQLConnect se encarga de la conexión a la base de datos y así cómo crear una instancia de SqlConnection para SQL Server o un MySqlConnection para MySQL.
 
 El proyecto es compatible con MySQL y con SQL Server. los comandos SQL usados en el proyecto son compatibles con estas dos bases de datos, y los archivos qué están en el proyecto “MysqlDB.sql” y “SQLServerDB.sql” contienen los datos para crear las bases de datos.
 
