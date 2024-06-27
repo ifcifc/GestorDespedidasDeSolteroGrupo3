@@ -56,3 +56,16 @@ footer div.container {
     padding-right: 0 !important;
     padding-left: 0 !important;
 }
+
+
+.btn {
+    background: #E01050;
+    border-color: #E01050;
+    color: white;
+}
+
+.btn:hover {
+    background: #f45f8c;
+    border-color: #f45f8c;
+    /*font-weight: bold;*/
+}

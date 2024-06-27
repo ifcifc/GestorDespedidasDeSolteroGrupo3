@@ -10,19 +10,6 @@
     color: white !important;
 }
 
-.persona_container .btn-info {
-    background: #E01050;
-    border-color: #E01050;
-    color:white;
-    font-weight: bold;
-}
-
-.persona_container .btn-info:hover {
-    background: #f45f8c;
-    border-color: #f45f8c
-
-}
-
 .persona_container h1 {
     padding-left: 1rem;
 }
