@@ -21,7 +21,7 @@ El proyecto está actualmente configurado para conectarse a la base de datos MyS
 
 Al igual qué el proyecto base esté utiliza Dapper y SQLConnect se encarga de la conexión a la base de datos y así cómo crear una instancia de SqlConnection para SQL Server o un MySqlConnection para MySQL.
 
-El proyecto es compatible con MySQL y con SQL Server. los comandos SQL usados en el proyecto son compatibles con estas dos bases de datos, y los archivos qué están en el proyecto “MysqlDB.sql” y “SQLServerDB.sql” contienen los datos para crear las bases de datos.
+El proyecto es compatible con MySQL y con SQL Server. los comandos SQL usados en el proyecto son compatibles con estas dos bases de datos, y los archivos qué están en el proyecto “MysqlDB.sql” y “SQLServerDB.sql” contienen los scripts para crear las bases de datos.
 
 ## **Base de Datos**
 La base de datos utilizada en el proyecto es MySQL a través del servicio de Aiven, los datos para conectarse se encuentran en “appsettings.json”
